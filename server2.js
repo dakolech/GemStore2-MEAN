@@ -65,6 +65,10 @@ app["delete"]('/api/product/:id', api.deleteProduct);
 
 app.post('/api/product', api.addProduct);
 
+app.post('/api/product/review', api.addReviewToProduct);
+
+app.get('/api/product/image/:file', api.image);
+
 app.get('*', routes.index);
 
 http.createServer(app).listen(app.get('port'), function() {

@@ -60,9 +60,11 @@ app.get('/api/name', api.name);
 app.get('/api/products', api.products);
 app.get('/api/product/:id', api.product);
 app.delete('/api/product/:id', api.deleteProduct);
-#app.post '/api/products', (req, res) ->
 app.post('/api/product', api.addProduct);
-#app.put('/api/post/:id', api.editPost);
+app.post('/api/product/review', api.addReviewToProduct);
+
+app.get('/api/product/image/:file', api.image);
+
 
 
 

@@ -48,7 +48,6 @@ angular.module('myApp.controllers', []).
 				
 				
 		$scope.createProduct = ->
-			#$scope.formData.what = 'create'
 			$http.post('/api/product', $scope.formData)
 				.success (data) ->
 					$scope.formData = {}  #clear the form so our user is ready to enter another 
@@ -102,10 +101,9 @@ angular.module('myApp.controllers', []).
 			
 		$scope.addReview = (product) ->
 			$scope.formReview.id = product._id
-			$scope.formReview.what = 'addReview'
 			localReview=$scope.formReview
 			console.log(localReview)
-			$http.post('/api/products/', $scope.formReview)
+			$http.post('/api/product/review', $scope.formReview)
 				.success (data) ->
 					product.reviews.push(localReview)
 					console.log(data)

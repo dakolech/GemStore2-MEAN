@@ -49,6 +49,32 @@ exports.addProduct = function(req, res) {
   });
 };
 
+exports.addReviewToProduct = function(req, res) {
+  console.log('Review: ' + req.body.stars + ' stars, ' + req.body.body + ', by ' + req.body.author + ' added to: ' + req.body.id);
+  Product.findByIdAndUpdate(req.body.id, {
+    $push: {
+      reviews: {
+        stars: req.body.stars,
+        body: req.body.body,
+        author: req.body.author
+      }
+    }
+  }, {
+    safe: true,
+    upsert: true
+  }, function(err, product) {
+    if (err) {
+      res.send(err);
+    }
+    Product.find(function(err, products) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(products);
+    });
+  });
+};
+
 exports.deleteProduct = function(req, res) {
   Product.remove({
     _id: req.params.id
@@ -63,4 +89,15 @@ exports.deleteProduct = function(req, res) {
       res.json(products);
     });
   });
+};
+
+exports.image = function(req, res) {
+  var file, img;
+  console.log(req.params.file);
+  file = req.params.file;
+  img = fs.readFileSync("./public/images/" + file);
+  res.writeHead(200, {
+    'Content-Type': 'image/jpg'
+  });
+  res.end(img, 'binary');
 };

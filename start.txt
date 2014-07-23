@@ -1,0 +1,3 @@
+nodemon -e coffee server2.coffee
+
+coffee -o public/js/ -cw public/js/

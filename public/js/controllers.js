@@ -72,10 +72,9 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.addReview = function(product) {
       var localReview;
       $scope.formReview.id = product._id;
-      $scope.formReview.what = 'addReview';
       localReview = $scope.formReview;
       console.log(localReview);
-      $http.post('/api/products/', $scope.formReview).success(function(data) {
+      $http.post('/api/product/review', $scope.formReview).success(function(data) {
         product.reviews.push(localReview);
         console.log(data);
       }).error(function(data) {
