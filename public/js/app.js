@@ -8,7 +8,7 @@
       templateUrl: 'partials/partial2',
       controller: 'MyCtrl2'
     }).otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/'
     });
     $locationProvider.html5Mode(true);
   });
