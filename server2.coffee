@@ -51,6 +51,7 @@ app.locals.pretty = true if (app.get('env') == 'development')
 #serve index and view partials
 app.get('/', routes.index);
 app.get('/products', routes.products);
+app.get('/admin', routes.admin);
 app.get('/partials/:name', routes.partials);
 
 # JSON API
@@ -58,9 +59,11 @@ app.get('/api/name', api.name);
 
 app.get('/api/products', api.products);
 app.get('/api/product/:id', api.product);
-#app.post('/api/post', api.addPost);
+app.delete('/api/product/:id', api.deleteProduct);
+#app.post '/api/products', (req, res) ->
+app.post('/api/product', api.addProduct);
 #app.put('/api/post/:id', api.editPost);
-#app.delete('/api/post/:id', api.deletePost);
+
 
 
 # redirect all others to the index (HTML5 history)

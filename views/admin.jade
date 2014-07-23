@@ -1,0 +1,63 @@
+extends layout
+
+block body
+	div(ng-controller='StoreController')
+		div(class="row")
+			div(class="col-sm-8 col-sm-offset-2 text-center")
+				form
+					div(class="form-group")
+
+						//-BIND THIS VALUE TO formData.name IN ANGULAR 
+						input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formData.name")
+						input(input type="number", step="any",  class="form-control input-lg text-center", placeholder="Price", ng-model="formData.price")
+						input(input type="text", class="form-control input-lg text-center", placeholder="Description", ng-model="formData.description")
+
+					//-createProduct() WILL CREATE NEW PRODUCT -->
+					button(type="submit", class="btn btn-primary btn-lg", ng-click="createProduct()") Add
+
+		
+		ul(class="list-group", style='width:600px', class="pull-center")
+			li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
+				a(href  ng-click="stopEditProduct(product._id)") Preview 
+				a(href  ng-click="startEditProduct(product._id)") Edit 
+				
+				section(ng-controller="AdminEditPanelController")
+				
+					ul(class="nav nav-pills")
+						li(ng-class="{ active:isSelected(1) }")
+							a(href ng-click="selectTab(1)") Preview
+						li(ng-class="{ active:isSelected(2) }") 
+							a(href ng-click="selectTab(2)") Edit 
+
+					
+					div(class="panel", ng-show="isSelected(1)")
+						h3(product-title)
+						section(product-gallery, ng-controller="GalleryController")
+						section(product-panels, ng-controller="PanelController")
+					
+					div(class="panel", ng-show="isSelected(2)")
+						a(href class="pull-right", ng-click="deleteProduct(product._id)") x <br>
+						h3(product-title)
+						form
+							input(ng-model="formData.image",  type="file", accept="image/*", image="image", onchange="angular.element(this).scope().imagesChanged(this)", multiple )
+							li(ng-repeat="file in files") {{file.name}}
+							button(ng-click="addImages(product._id)") Upload
+						
+						div(class="list-group-item", ng-repeat="image in product.images")
+							a(href class="pull-right", ng-click="deleteImage(product._id, image)") x <br>
+							{{image}} 
+							img(ng-src="./images/thumbs/{{image}}")	
+
+
+	//-div(ng-view)
+
+	div
+		| Angular seed app: v
+		span(app-version)
+
+	script(src='js/lib/angular/angular.js')
+	script(src='js/app.js')
+	script(src='js/services.js')
+	script(src='js/controllers.js')
+	script(src='js/filters.js')
+	script(src='js/directives.js')

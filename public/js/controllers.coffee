@@ -38,8 +38,8 @@ angular.module('myApp.controllers', []).
 				
 				
 		$scope.createProduct = ->
-			$scope.formData.what = 'create'
-			$http.post('/api/products', $scope.formData)
+			#$scope.formData.what = 'create'
+			$http.post('/api/product', $scope.formData)
 				.success (data) ->
 					$scope.formData = {}  #clear the form so our user is ready to enter another 
 					$scope.products = data
@@ -52,7 +52,7 @@ angular.module('myApp.controllers', []).
 			
 		$scope.deleteProduct = (id) ->
 			if (confirm("Are you sure to delete this product?"))
-				$http.delete('/api/products/' + id)
+				$http.delete('/api/product/' + id)
 					.success (data) ->
 						$scope.products = data
 						console.log(data)

@@ -1,6 +1,5 @@
 div(ng-show="product.images.length")
 	div(class="img-wrap")
-		{{product.images[0]}}
 		img(ng-src="./images/gallerySize/{{product.images[current]}}")
 	ul(class="img-thumbnails clearfix")
 		li(class="small-image pull-left thumbnail", ng-repeat="image in product.images")
