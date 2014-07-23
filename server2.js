@@ -51,8 +51,6 @@ if (app.get('env') === 'development') {
 
 app.get('/', routes.index);
 
-app.get('/products', routes.products);
-
 app.get('/admin', routes.admin);
 
 app.get('/partials/:name', routes.partials);

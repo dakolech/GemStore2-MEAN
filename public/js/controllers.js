@@ -8,7 +8,16 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.name = 'Error!';
     console.log('Error: ' + data);
   });
-}).controller('MyCtrl1', function($scope) {}).controller('MyCtrl2', function($scope) {}).controller('StoreController', [
+}).controller('MyCtrl1', function($scope) {}).controller('MyCtrl2', function($scope) {}).controller('StoreControllerOne', [
+  '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    return $http.get('/api/product/' + $routeParams.id).success(function(data) {
+      $scope.product = data;
+      console.log(data);
+    }).error(function(data) {
+      console.log('Error: ' + data);
+    });
+  }
+]).controller('StoreController', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formData = {};
     $scope.formReview = {};

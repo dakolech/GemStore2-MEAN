@@ -2,13 +2,11 @@ extends layout
 
 block body
 
-	div(ng-controller='StoreController')
+	div(ng-controller='StoreControllerOne')
 		ul(class="list-group", style='width:600px', class="pull-center")
-			li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
-				h3(product-title)
-				section(product-gallery, ng-controller="GalleryController")
-				section(product-panels, ng-controller="PanelController")	
-
+			h3(product-title)
+			section(product-gallery, ng-controller="GalleryController")
+			section(product-panels, ng-controller="PanelController")
 	//-div(ng-view)
 
 	div

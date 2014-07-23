@@ -1,4 +1,5 @@
 angular.module('myApp', [
+  'ngRoute',
   'myApp.controllers',
   'myApp.filters',
   'myApp.services',
@@ -13,8 +14,15 @@ config( ($routeProvider, $locationProvider) ->
     when('/view2', {
       templateUrl: 'partials/partial2',
       controller: 'MyCtrl2'
+    }).
+    when('/product/:id', {
+        templateUrl: 'partials/product',
+        controller: 'StoreControllerOne'
+    }).
+    when('/products', {
+        templateUrl: 'partials/products',
+        controller: 'StoreController'
     });
-
   $locationProvider.html5Mode(true);
   return
 );

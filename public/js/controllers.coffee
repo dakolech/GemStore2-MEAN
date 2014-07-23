@@ -22,6 +22,16 @@ angular.module('myApp.controllers', []).
 	# write Ctrl here
 
 	)
+	.controller 'StoreControllerOne', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$http.get('/api/product/' + $routeParams.id)
+	        .success (data) ->
+				$scope.product = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+	]
 	.controller 'StoreController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formData = {}
 		$scope.formReview = {}

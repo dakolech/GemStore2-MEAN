@@ -50,7 +50,7 @@ app.locals.pretty = true if (app.get('env') == 'development')
 
 #serve index and view partials
 app.get('/', routes.index);
-app.get('/products', routes.products);
+#app.get('/products', routes.products);
 app.get('/admin', routes.admin);
 app.get('/partials/:name', routes.partials);
 

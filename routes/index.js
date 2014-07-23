@@ -3,10 +3,6 @@ exports.index = function(req, res) {
   return res.render('index');
 };
 
-exports.products = function(req, res) {
-  return res.render('products');
-};
-
 exports.admin = function(req, res) {
   return res.render('admin');
 };

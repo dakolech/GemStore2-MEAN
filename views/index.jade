@@ -8,6 +8,8 @@ block body
         a(href='view1') view1
       li
         a(href='view2') view2
+      li
+        a(href='products') All products
 
     div(ng-view) 
 
@@ -16,6 +18,8 @@ block body
       span(app-version)
 
   script(src='js/lib/angular/angular.js')
+  script(src='js/lib/angular/angular-resource.js')
+  script(src='js/lib/angular/angular-route.js')
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')
