@@ -1,0 +1,16 @@
+.ng-invalid.ng-dirty {
+	border-color: ;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}
+
+.ng-invalid.ng-pristine {
+	border-color: ;
+}
+
+ul {
+	margin: 0 auto;
+}
+

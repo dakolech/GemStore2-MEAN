@@ -5,6 +5,38 @@
     return function(scope, elm, attrs) {
       elm.text(version);
     };
+  }).directive('productTitle', function() {
+    return {
+      restrict: 'A',
+      templateUrl: 'partials/product-title'
+    };
+  }).directive('productPanels', function() {
+    return {
+      restrict: 'A',
+      templateUrl: 'partials/product-panels',
+      controller: function() {
+        this.tab = 1;
+        this.selectTab = function(setTab) {
+          return this.tab = setTab;
+        };
+        return this.isSelected = function(checkTab) {
+          return this.tab === checkTab;
+        };
+      },
+      controllerAs: 'panels'
+    };
+  }).directive("productGallery", function() {
+    return {
+      restrict: "A",
+      templateUrl: "partials/product-gallery",
+      controller: function() {
+        this.current = 0;
+        this.setCurrent = function(imageNumber) {
+          this.current = imageNumber || 0;
+        };
+      },
+      controllerAs: "gallery"
+    };
   });
 
 }).call(this);
