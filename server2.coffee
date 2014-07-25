@@ -8,6 +8,7 @@ api = require('./routes/api')
 http = require('http')
 path = require('path')
 mongoose = require('mongoose')
+busboy = require('connect-busboy')
 
 app = module.exports = express()
 
@@ -20,6 +21,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(morgan('dev'));
+app.use(busboy());
 #app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -61,9 +63,18 @@ app.get('/api/products', api.products);
 app.get('/api/product/:id', api.product);
 app.delete('/api/product/:id', api.deleteProduct);
 app.post('/api/product', api.addProduct);
+app.post('/api/product/:id', api.editProduct);
 app.post('/api/product/review', api.addReviewToProduct);
 
+app.get('/api/products/:category', api.productsCategory)
+
+app.get('/api/categories', api.categories);
+app.post('/api/category', api.addCategory);
+
 app.get('/api/product/image/:file', api.image);
+app.post('/api/product/image', api.AddImage);
+
+
 
 
 

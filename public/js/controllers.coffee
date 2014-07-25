@@ -4,13 +4,12 @@
 
 angular.module('myApp.controllers', []).
 	controller('AppCtrl',  ($scope, $http) ->
-		$http.get('/api/name')
+		$http.get('/api/categories')
 			.success (data) ->
-				$scope.name = data.name
+				$scope.categories = data
 				console.log(data)
 				return
 			.error (data) ->
-				$scope.name = 'Error!';
 				console.log('Error: ' + data)
 				return
 	).
@@ -32,10 +31,25 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	]
+	.controller 'StoreControllerCategory', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.category = $routeParams.category
+		
+		$http.get('/api/products/' + $routeParams.category)
+	        .success (data) ->
+				$scope.products = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+	]
 	.controller 'StoreController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formData = {}
 		$scope.formReview = {}
 		$scope.formImage = {}
+		$scope.formEdit = {}
+		$scope.formCategory = {}
+		$scope.editing = false
 				
 		$http.get('/api/products')
 			.success (data) ->
@@ -45,9 +59,19 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
+
+		$http.get('/api/categories')
+			.success (data) ->
+				$scope.categories = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
 				
 				
-		$scope.createProduct = ->
+		$scope.addProduct = ->
+			console.log $scope.formData.category
 			$http.post('/api/product', $scope.formData)
 				.success (data) ->
 					$scope.formData = {}  #clear the form so our user is ready to enter another 
@@ -70,35 +94,35 @@ angular.module('myApp.controllers', []).
 						console.log('Error: ' + data)
 						return
 			return
-			
+		
 		$scope.startEditProduct = (id) ->
-			$scope.formData.editing = true;
-			$scope.formData.what = 'edit'
-			$scope.formData.id = id
-			$http.post('/api/products/', $scope.formData)
-				.success (data) ->
-					$scope.products = data
+			console.log id
+			$scope.editing = true
+			$http.get('/api/product/' + id)
+		        .success (data) ->
+					$scope.formEdit = data
 					console.log(data)
 					return
 				.error (data) ->
 					console.log('Error: ' + data)
 					return
 			return
-			
-		$scope.stopEditProduct = (id) ->
-			$scope.formData.editing = false;
-			$scope.formData.what = 'edit'
-			$scope.formData.id = id		
-			$http.post('/api/products/', $scope.formData)
+
+		$scope.editProduct = (product) ->			
+			$http.post('/api/product/' + product._id, $scope.formEdit)
 				.success (data) ->
-					$scope.products = data
+					product.name = data.name
+					product.price = data.price
+					product.description = data.description
+					product.category = data.category
+					$scope.editing = false
 					console.log(data)
 					return
 				.error (data) ->
-					console.log('Error: ' + data);
+					console.log('Error: ' + data)
 					return
 			return
-			
+		
 		$scope.addReview = (product) ->
 			$scope.formReview.id = product._id
 			localReview=$scope.formReview
@@ -117,20 +141,21 @@ angular.module('myApp.controllers', []).
 
 
 		$scope.imagesChanged = (elm) ->
-			$scope.files=elm.files
+			$scope.files = elm.files
 			$scope.$apply();	
+			console.log $scope.files
 			return
 
 		$scope.addImages = (id) ->
 			for element, index in $scope.files
-				console.log(id)
 				fd = new FormData()
 
 				fd.append("file", $scope.files[index])
 				fd.append("id", id)
 				console.log(id)
+				console.log $scope.files[index]
 				
-				$http.post '/api/images/', fd, {
+				$http.post '/api/product/image', fd, {
 					withCredentials: true,
 					headers: {'Content-Type': undefined },
 					transformRequest: angular.identity}
@@ -161,6 +186,20 @@ angular.module('myApp.controllers', []).
 						return
 				
 				$scope.formImage = {}
+			return
+
+		$scope.addCategory = () ->
+			console.log($scope.formCategory.name)
+			$http.post('/api/category', $scope.formCategory)
+				.success (data) ->
+					$scope.categories = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
 			return
 
 			

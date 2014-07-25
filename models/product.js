@@ -12,5 +12,6 @@ module.exports = mongoose.model('Product', {
 					body 	: String,
 					author 	: String
 				  }],
-	images		: [String]
+	images		: [String],
+	category	: String
 });

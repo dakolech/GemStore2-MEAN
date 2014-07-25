@@ -9,6 +9,9 @@ angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.filters', 'myApp
   }).when('/product/:id', {
     templateUrl: 'partials/product',
     controller: 'StoreControllerOne'
+  }).when('/products/:category', {
+    templateUrl: 'partials/productCategory',
+    controller: 'StoreControllerCategory'
   }).when('/products', {
     templateUrl: 'partials/products',
     controller: 'StoreController'
