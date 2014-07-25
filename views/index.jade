@@ -5,11 +5,9 @@ block body
     h2 GemStore
     ul.menu
       li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
-      li
         a(href='products') All products
+      li(ng-repeat="category in categories")
+        a(href='products/{{category.name}}') {{category.name}}      
 
     div(ng-view) 
 

@@ -19,6 +19,10 @@ config( ($routeProvider, $locationProvider) ->
         templateUrl: 'partials/product',
         controller: 'StoreControllerOne'
     }).
+    when('/products/:category', {
+        templateUrl: 'partials/productCategory',
+        controller: 'StoreControllerCategory'
+    }).
     when('/products', {
         templateUrl: 'partials/products',
         controller: 'StoreController'
