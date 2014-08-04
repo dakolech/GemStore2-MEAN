@@ -173,129 +173,57 @@ exports.image = function(req, res) {
 };
 
 exports.AddImage = function(req, res) {
-  var filename1;
-  console.log(req.body.id);
+  console.log("Image: " + req.params.id);
   req.pipe(req.busboy);
-  filename1 = req.busboy.on('file', function(fieldname, file, filename, id) {
+  req.busboy.on('file', function(fieldname, file, filename, id) {
     var fstream, name;
     console.log("Uploading: " + filename);
     fstream = fs.createWriteStream('./public/images/' + filename);
     file.pipe(fstream);
     name = filename;
     console.log(name);
-    fstream.on('close', function() {});
-    return name;
-  });
-  req.busboy.on('field', function(key, value, keyTruncated, valueTruncated) {
-    console.log(value + filename1);
-    return Product.findByIdAndUpdate(value, {
-      $push: {
-        images: filename1
-      }
-    }, {
-      safe: true,
-      upsert: true
-    }, function(err, product) {
-      if (err) {
-        res.send(err);
-      }
-      Product.find(function(err, products) {
+    fstream.on('close', function() {
+      Product.findByIdAndUpdate(req.params.id, {
+        $push: {
+          images: filename
+        }
+      }, {
+        safe: true,
+        upsert: true
+      }, function(err, product) {
         if (err) {
           res.send(err);
         }
-        res.json(products);
+        Product.find(function(err, products) {
+          if (err) {
+            res.send(err);
+          }
+          res.json(products);
+        });
       });
     });
+    return name;
   });
+};
 
-  /*
-  req.busboy.on('file',  (fieldname, file, filename) ->
-    console.log filename
-    newPath = './public/images/' + filename
-    thumbPath = './public/images/thumbs/' + filename
-    galleryPath = './public/images/gallerySize/' + filename
-    console.log galleryPath
-    
-    im.resize {
-      srcPath: newPath,
-      dstPath: thumbPath,
-      height:   100 
-    }, (err, stdout, stderr) ->
-      throw err if (err)
-      console.log('resized image to fit within 200x200px');
-      return
-  
-    im.resize {
-      srcPath: newPath,
-      dstPath: galleryPath,
-      height:   400 
-    }, (err, stdout, stderr) ->
-      throw err if (err)
-      console.log('resized image to fit within 500x500px');
-      return
-    return
-  );
-   */
-
-  /*
-  console.log("Added image ("+req.files.file.name+") to "+req.body.id)
-  
-  fs.readFile req.files.file.path, (err, data) ->
-  
-    imageName = req.files.file.name
-  
-     * If there's an error
-    if !imageName
-      console.log("There was an error")
-      Product.find (err, products) ->
-        res.send(err) if (err)            
-        res.json(products);
-        return
-  
-    else 
-  
-      newPath = './public/images/' + imageName
-      thumbPath = './public/images/thumbs/' + imageName
-      galleryPath = './public/images/gallerySize/' + imageName
-  
-       * write file to images folder
-      fs.writeFile newPath, data, (err) ->
-       *console.log(newPath,thumbPath);        
-        im.resize {
-          srcPath: newPath,
-          dstPath: thumbPath,
-          height:   100 
-        }, (err, stdout, stderr) ->
-          throw err if (err)
-          console.log('resized image to fit within 200x200px');
-          return
-  
-        im.resize {
-          srcPath: newPath,
-          dstPath: galleryPath,
-          height:   400 
-        }, (err, stdout, stderr) ->
-          throw err if (err)
-          console.log('resized image to fit within 500x500px');
-          return
-  
-        return
-  
-       * let's see it
-       *res.redirect("/images/" + imageName);
-    return
-  
-  
-  Product.findByIdAndUpdate req.body.id,
-    {$push: {images: req.files.file.name}},
-    {safe: true, upsert: true}, (err, product) ->
-      res.send(err) if (err)
-      
-      
-      Product.find (err, products) ->
-        res.send(err) if (err)            
-        res.json(products)
-        return
-      return
-   */
+exports.deleteImage = function(req, res) {
+  console.log("Image deleting: " + req.params.id + req.params.name);
+  Product.findByIdAndUpdate(req.params.id, {
+    $pull: {
+      images: req.params.name
+    }
+  }, {
+    safe: true,
+    upsert: true
+  }, function(err, product) {
+    if (err) {
+      res.send(err);
+    }
+    Product.find(function(err, products) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(products);
+    });
+  });
 };

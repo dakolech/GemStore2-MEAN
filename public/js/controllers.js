@@ -113,10 +113,8 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
         element = _ref[index];
         fd = new FormData();
         fd.append("file", $scope.files[index]);
-        fd.append("id", id);
-        console.log(id);
         console.log($scope.files[index]);
-        $http.post('/api/product/image', fd, {
+        $http.post('/api/productImage/' + id, fd, {
           withCredentials: true,
           headers: {
             'Content-Type': void 0
@@ -134,10 +132,8 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     };
     $scope.deleteImage = function(id, name) {
       if (confirm("Are you sure to delete this image?")) {
-        $scope.formImage.id = id;
         $scope.formImage.name = name;
-        $scope.formImage.what = 'deleteImage';
-        $http.post('/api/products/', $scope.formImage).success(function(data) {
+        $http["delete"]('/api/productImage/' + id + '/' + name).success(function(data) {
           $scope.products = data;
           console.log(data);
         }).error(function(data) {

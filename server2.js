@@ -81,7 +81,9 @@ app.post('/api/category', api.addCategory);
 
 app.get('/api/product/image/:file', api.image);
 
-app.post('/api/product/image', api.AddImage);
+app.post('/api/productImage/:id', api.AddImage);
+
+app["delete"]('/api/productImage/:id/:name', api.deleteImage);
 
 app.get('*', routes.index);
 
