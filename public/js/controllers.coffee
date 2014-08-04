@@ -12,15 +12,27 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
-	).
-	controller('MyCtrl1',  ($scope) ->
-	# write Ctrl here
 
-	).
-	controller('MyCtrl2', ($scope) ->
-	# write Ctrl here
-
+		$http.get('/api/sites')
+			.success (data) ->
+				$scope.sites = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
 	)
+	.controller 'SiteController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$http.get('/api/site/' + $routeParams.title)
+	        .success (data) ->
+				$scope.site = data
+				console.log $scope.site
+				console.log(data.added)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+	]
 	.controller 'StoreControllerOne', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$http.get('/api/product/' + $routeParams.id)
 	        .success (data) ->
@@ -49,6 +61,7 @@ angular.module('myApp.controllers', []).
 		$scope.formImage = {}
 		$scope.formEdit = {}
 		$scope.formCategory = {}
+		$scope.formSite = {}
 		$scope.editing = false
 				
 		$http.get('/api/products')
@@ -63,6 +76,15 @@ angular.module('myApp.controllers', []).
 		$http.get('/api/categories')
 			.success (data) ->
 				$scope.categories = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+
+		$http.get('/api/sites')
+			.success (data) ->
+				$scope.sites = data
 				console.log(data)
 				return
 			.error (data) ->
@@ -196,6 +218,32 @@ angular.module('myApp.controllers', []).
 					return
 			
 			$scope.formReview = {}
+			return
+
+		$scope.addSite = () ->
+			console.log($scope.formSite.title)
+			$http.post('/api/site', $scope.formSite)
+				.success (data) ->
+					$scope.sites = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		$scope.deleteSite = (id) ->
+			if (confirm("Are you sure to delete this site?"))
+				$http.delete('/api/site/' + id)
+					.success (data) ->
+						$scope.sites = data
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data)
+						return
 			return
 
 			

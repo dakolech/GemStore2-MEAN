@@ -16,6 +16,10 @@ config( ($routeProvider, $locationProvider) ->
       templateUrl: 'partials/partial2',
       controller: 'MyCtrl2'
     }).
+    when('/site/:title', {
+        templateUrl: 'partials/site',
+        controller: 'SiteController'
+    }).
     when('/product/:id', {
         templateUrl: 'partials/product',
         controller: 'StoreControllerOne'

@@ -1,5 +1,6 @@
 Product = require('../models/product')
 Category = require('../models/category')
+Site = require('../models/site')
 fs = require('fs')
 im = require('imagemagick')
 im.identify.path = '../identify.exe'
@@ -184,4 +185,52 @@ exports.deleteImage = (req, res) ->
             res.json(products);
             return
           return
+  return
+
+
+exports.sites = (req, res) ->
+  Site.find((err, sites) ->
+        res.send(err) if (err)
+
+        res.json(sites)
+      );
+
+exports.addSite = (req, res) ->
+  console.log('Category created: '+req.body.title+' id: '+req.body.id)
+  Site.create {
+    title   : req.body.title,
+    content : req.body.content
+  }, (err, product) ->
+    if (err)
+      res.send(err);
+
+    # get and return all the products after you create another
+    Site.find (err, sites) ->
+      if (err)
+        res.send(err)
+      res.json(sites);
+      return
+    return
+  return
+
+exports.site = (req, res) ->
+  Site.findOne({ 'title': req.params.title }, (err, site) ->
+        res.send(err) if (err)
+    
+        res.json(site);
+      );
+
+exports.deleteSite = (req, res) ->
+  Site.remove {
+    _id : req.params.id
+  }, (err, product) ->
+    res.send(err) if (err)
+      
+
+    # get and return all the products after you create another
+    Site.find (err, sites) ->
+      res.send(err) if (err)            
+      res.json(sites)
+      return
+    return
   return

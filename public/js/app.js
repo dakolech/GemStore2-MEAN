@@ -6,6 +6,9 @@ angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.filters', 'myApp
   }).when('/view2', {
     templateUrl: 'partials/partial2',
     controller: 'MyCtrl2'
+  }).when('/site/:title', {
+    templateUrl: 'partials/site',
+    controller: 'SiteController'
   }).when('/product/:id', {
     templateUrl: 'partials/product',
     controller: 'StoreControllerOne'

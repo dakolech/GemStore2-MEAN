@@ -75,6 +75,11 @@ app.get('/api/product/image/:file', api.image);
 app.post('/api/productImage/:id', api.AddImage);
 app.delete('/api/productImage/:id/:name', api.deleteImage);
 
+app.get('/api/sites', api.sites);
+app.get('/api/site/:title', api.site);
+app.post('/api/site', api.addSite);
+app.delete('/api/site/:id', api.deleteSite);
+
 
 
 
