@@ -22,6 +22,16 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	)
+	.controller 'IndexController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$http.get('/api/site/index')
+	        .success (data) ->
+				$scope.site = data
+				console.log $scope.site
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+	]	
 	.controller 'SiteController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$http.get('/api/site/' + $routeParams.title)
 	        .success (data) ->
@@ -34,6 +44,8 @@ angular.module('myApp.controllers', []).
 				return
 	]
 	.controller 'StoreControllerOne', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.formReview = {}
+
 		$http.get('/api/product/' + $routeParams.id)
 	        .success (data) ->
 				$scope.product = data
@@ -42,9 +54,27 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
+
+		$scope.addReview = (id, product) ->
+			console.log(id)
+			localReview = $scope.formReview
+			$http.post('/api/product/review/'+id, $scope.formReview)
+				.success (data) ->
+					product.reviews.push(localReview)
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		return				
 	]
 	.controller 'StoreControllerCategory', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.category = $routeParams.category
+		$scope.formReview = {}
 		
 		$http.get('/api/products/' + $routeParams.category)
 	        .success (data) ->
@@ -54,8 +84,57 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
+
+		$scope.addReview = (id, product) ->
+			console.log(id)
+			localReview = $scope.formReview
+			$http.post('/api/product/review/'+id, $scope.formReview)
+				.success (data) ->
+					product.reviews.push(localReview)
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		return	
 	]
-	.controller 'StoreController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'ProductsController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.formReview = {}
+				
+		$http.get('/api/products')
+			.success (data) ->
+				$scope.products = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+
+		$scope.addReview = (id, product) ->
+			console.log(id)
+			localReview = $scope.formReview
+			$http.post('/api/product/review/'+id, $scope.formReview)
+				.success (data) ->
+					product.reviews.push(localReview)
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+
+		
+		return
+
+	] 
+	.controller 'AdminController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formData = {}
 		$scope.formReview = {}
 		$scope.formImage = {}
@@ -250,7 +329,7 @@ angular.module('myApp.controllers', []).
 		return
 
 	] 
-	  
+  
 	.controller "PanelController", ['$scope', '$http', ($scope, $http) ->
 		$scope.tab = 1
 

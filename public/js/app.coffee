@@ -8,29 +8,25 @@ angular.module('myApp', [
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
-    }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
-    }).
-    when('/site/:title', {
+    when('/:title', {
         templateUrl: 'partials/site',
         controller: 'SiteController'
     }).
-    when('/product/:id', {
+    when('/product/show/:id', {
         templateUrl: 'partials/product',
         controller: 'StoreControllerOne'
     }).
-    when('/products/:category', {
+    when('/products/show/:category', {
         templateUrl: 'partials/productCategory',
         controller: 'StoreControllerCategory'
     }).
-    when('/products', {
+        when('/', {
+        templateUrl: 'partials/main',
+        controller: 'IndexController'
+    }).
+    when('/products/show', {
         templateUrl: 'partials/products',
-        controller: 'StoreController'
+        controller: 'ProductsController'
     });
   $locationProvider.html5Mode(true);
   return

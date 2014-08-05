@@ -13,7 +13,16 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
   }).error(function(data) {
     console.log('Error: ' + data);
   });
-}).controller('SiteController', [
+}).controller('IndexController', [
+  '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    return $http.get('/api/site/index').success(function(data) {
+      $scope.site = data;
+      console.log($scope.site);
+    }).error(function(data) {
+      console.log('Error: ' + data);
+    });
+  }
+]).controller('SiteController', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     return $http.get('/api/site/' + $routeParams.title).success(function(data) {
       $scope.site = data;
@@ -25,24 +34,72 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
   }
 ]).controller('StoreControllerOne', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-    return $http.get('/api/product/' + $routeParams.id).success(function(data) {
+    $scope.formReview = {};
+    $http.get('/api/product/' + $routeParams.id).success(function(data) {
       $scope.product = data;
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
     });
+    $scope.addReview = function(id, product) {
+      var localReview;
+      console.log(id);
+      localReview = $scope.formReview;
+      $http.post('/api/product/review/' + id, $scope.formReview).success(function(data) {
+        product.reviews.push(localReview);
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+      $scope.formReview = {};
+    };
   }
 ]).controller('StoreControllerCategory', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.category = $routeParams.category;
-    return $http.get('/api/products/' + $routeParams.category).success(function(data) {
+    $scope.formReview = {};
+    $http.get('/api/products/' + $routeParams.category).success(function(data) {
       $scope.products = data;
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
     });
+    $scope.addReview = function(id, product) {
+      var localReview;
+      console.log(id);
+      localReview = $scope.formReview;
+      $http.post('/api/product/review/' + id, $scope.formReview).success(function(data) {
+        product.reviews.push(localReview);
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+      $scope.formReview = {};
+    };
   }
-]).controller('StoreController', [
+]).controller('ProductsController', [
+  '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    $scope.formReview = {};
+    $http.get('/api/products').success(function(data) {
+      $scope.products = data;
+      console.log(data);
+    }).error(function(data) {
+      console.log('Error: ' + data);
+    });
+    $scope.addReview = function(id, product) {
+      var localReview;
+      console.log(id);
+      localReview = $scope.formReview;
+      $http.post('/api/product/review/' + id, $scope.formReview).success(function(data) {
+        product.reviews.push(localReview);
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+      $scope.formReview = {};
+    };
+  }
+]).controller('AdminController', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formData = {};
     $scope.formReview = {};

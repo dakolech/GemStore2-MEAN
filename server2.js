@@ -71,7 +71,7 @@ app.post('/api/product', api.addProduct);
 
 app.post('/api/product/:id', api.editProduct);
 
-app.post('/api/product/review', api.addReviewToProduct);
+app.post('/api/product/review/:id', api.addReviewToProduct);
 
 app.get('/api/products/:category', api.productsCategory);
 

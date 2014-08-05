@@ -5,5 +5,6 @@ module.exports = mongoose.model('Site', {
 	content 	: String,
 	type 		: String,
 	added		: { type: Date, default: Date.now },
-	place 		: Number
+	place 		: Number,
+	isIndex		: { type: Boolean, default: false },
 });

@@ -96,8 +96,8 @@ exports.editProduct = function(req, res) {
 };
 
 exports.addReviewToProduct = function(req, res) {
-  console.log('Review: ' + req.body.stars + ' stars, ' + req.body.body + ', by ' + req.body.author + ' added to: ' + req.body.id);
-  Product.findByIdAndUpdate(req.body.id, {
+  console.log('Review: ' + req.body.stars + ' stars, ' + req.body.body + ', by ' + req.body.author + ' added to: ' + req.params.id);
+  Product.findByIdAndUpdate(req.params.id, {
     $push: {
       reviews: {
         stars: req.body.stars,
