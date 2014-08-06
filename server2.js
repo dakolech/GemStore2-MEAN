@@ -96,5 +96,5 @@ app["delete"]('/api/site/:id', api.deleteSite);
 app.get('*', routes.index);
 
 http.createServer(app).listen(app.get('port'), function() {
-  return console.log('Express server listening on port ' + app.get('port'));
+  return console.log('Express server listening on port? ' + app.get('port'));
 });
