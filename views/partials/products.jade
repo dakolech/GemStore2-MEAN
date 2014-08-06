@@ -1,5 +1,6 @@
 div(ng-controller='ProductsController')
-	a(href='products/show') All products 
+	.categories
+		a(href='products/show') All products 
 	ul(class="list-group", style='width:600px', class="pull-center")
 		li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
 			h3(product-title)

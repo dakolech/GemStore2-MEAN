@@ -1,21 +1,22 @@
 extends layout
 
 block body
-	section(ng-controller="AdminEditPanelController")				
-		ul(class="nav nav-pills")
-			li(ng-class="{ active:isSelected(1) }") 
-				a(href ng-click="selectTab(1)") Sites 
-			li(ng-class="{ active:isSelected(2) }")
-				a(href ng-click="selectTab(2)") Categories
-			li(ng-class="{ active:isSelected(3) }") 
-				a(href ng-click="selectTab(3)") Products 
-
-		div(class="panel", ng-show="isSelected(1)")
-			section(admin-sites)
-		div(class="panel", ng-show="isSelected(2)")
-			section(admin-categories)					
-		div(class="panel", ng-show="isSelected(3)")
-			section(admin-products)
+	section(ng-controller="AdminEditPanelController")	
+		.topMenu			
+			ul(class="nav nav-pills")
+				li(ng-class="{ active:isSelected(1) }") 
+					a(href ng-click="selectTab(1)") Sites 
+				li(ng-class="{ active:isSelected(2) }")
+					a(href ng-click="selectTab(2)") Categories
+				li(ng-class="{ active:isSelected(3) }") 
+					a(href ng-click="selectTab(3)") Products 
+		.view
+			div(class="panel", ng-show="isSelected(1)")
+				section(admin-sites)
+			div(class="panel", ng-show="isSelected(2)")
+				section(admin-categories)					
+			div(class="panel", ng-show="isSelected(3)")
+				section(admin-products)
 
 
 

@@ -2,22 +2,23 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
-    h2 GemStore
-    ul.menu
-      li
-        a(href='/') Main Page
-      li
-        a(href='products/show') All products
-      li(ng-repeat="category in categories")
-        a(href='products/show/{{category.name}}') {{category.name}}   
-      li(ng-repeat="site in sites", ng-hide="site.isIndex")
-        a(href='/{{site.title}}') {{site.title}}     
+    .topMenu  
+      h2 GemStore
+      ul.menu
+        li
+          a(href='/') Main Page
+        li
+          a(href='products/show') All products
+        li(ng-repeat="category in categories")
+          a(href='products/show/{{category.name}}') {{category.name}}   
+        li(ng-repeat="site in sites", ng-hide="site.isIndex")
+          a(href='/{{site.title}}') {{site.title}}     
+    .view
+      div(ng-view) 
 
-    div(ng-view) 
-
-    div
-      | Angular seed app: v
-      span(app-version)
+      div
+        | Angular seed app: v
+        span(app-version)
 
   script(src='js/lib/angular/angular.js')
   script(src='js/lib/angular/angular-resource.js')
