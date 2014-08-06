@@ -1,0 +1,12 @@
+div(ng-controller='AdminControllerCategories', class="row")
+	div(class="col-sm-8 col-sm-offset-2 text-center")
+		div(class="form-group")
+			form
+				h3 Add Category 
+				input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formCategory.name")
+				button(type="submit", class="btn btn-primary btn-lg", ng-click="addCategory()") Add
+
+
+		ul(class="list-group", style='width:600px', class="pull-center")
+			li(class="list-group-item", ng-repeat="category in categories")
+				{{category.name}}

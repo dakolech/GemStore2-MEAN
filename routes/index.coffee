@@ -12,3 +12,11 @@ exports.admin = (req, res) ->
 exports.partials = (req, res) ->
   name = req.params.name;
   res.render('partials/' + name);
+
+exports.partialsAdmin = (req, res) ->
+  name = req.params.name;
+  res.render('partials/admin/' + name);
+
+exports.templates = (req, res) ->
+  name = req.params.name;
+  res.render('partials/templates/' + name);

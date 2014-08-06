@@ -35,7 +35,7 @@
 			"file": "server2.coffee",
 			"settings":
 			{
-				"buffer_size": 2292,
+				"buffer_size": 2293,
 				"line_ending": "Windows"
 			}
 		},
@@ -207,14 +207,26 @@
 				"buffer_size": 319,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 1607,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 311.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
 			[
 				"ins",
 				"Package Control: Install Package"
@@ -236,7 +248,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 472.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -253,6 +265,12 @@
 	},
 	"file_history":
 	[
+		"/D/SitesWWW/GemStore2-MEAN/README.md",
+		"/D/SitesWWW/HerokuNode/Procfile",
+		"/D/SitesWWW/HerokuNode/web.coffee",
+		"/D/SitesWWW/GemStore2-MEAN/package.json",
+		"/D/SitesWWW/GemStore2-MEAN/Procfile",
+		"/D/SitesWWW/HerokuNode/package.json",
 		"/D/SitesWWW/GemStore2-MEAN/public/css/style.css",
 		"/D/SitesWWW/GemStore2-MEAN/views/layout.jade",
 		"/C/Users/Daniel/Downloads/textAngular-1.2.2/package.json",
@@ -260,7 +278,6 @@
 		"/D/SitesWWW/GemStore2-MEAN/views/products.jade",
 		"/D/SitesWWW/GemStore2-MEAN/views/product.jade",
 		"/D/SitesWWW/GemStore2-MEAN/routes/api.js",
-		"/D/SitesWWW/GemStore2-MEAN/package.json",
 		"/D/SitesWWW/angular-GemStore/package.json",
 		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-title.jade",
 		"/D/SitesWWW/GemStore2-MEAN/public/js/services.js",
@@ -305,7 +322,7 @@
 	"groups":
 	[
 		{
-			"selected": 19,
+			"selected": 23,
 			"sheets":
 			[
 				{
@@ -329,7 +346,7 @@
 							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -339,15 +356,15 @@
 					"file": "server2.coffee",
 					"settings":
 					{
-						"buffer_size": 2292,
+						"buffer_size": 2293,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1593,
-								1593
+								2268,
+								2268
 							]
 						],
 						"settings":
@@ -355,7 +372,7 @@
 							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 756.0,
+						"translation.y": 1134.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -915,6 +932,34 @@
 						"settings":
 						{
 							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 1607,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -59,6 +59,10 @@ app.get('/admin', routes.admin);
 
 app.get('/partials/:name', routes.partials);
 
+app.get('/partials/admin/:name', routes.partialsAdmin);
+
+app.get('/partials/templates/:name', routes.templates);
+
 app.get('/api/name', api.name);
 
 app.get('/api/products', api.products);
@@ -96,5 +100,5 @@ app["delete"]('/api/site/:id', api.deleteSite);
 app.get('*', routes.index);
 
 http.createServer(app).listen(app.get('port'), function() {
-  return console.log('Express server listening on port? ' + app.get('port'));
+  return console.log('Express server listening on port ' + app.get('port'));
 });

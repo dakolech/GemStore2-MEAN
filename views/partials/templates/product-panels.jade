@@ -22,7 +22,7 @@ div(class="panel", ng-show="isSelected(3)")
 		{{review.body}} <br>
 		cite by: {{review.author}}
 		
-	form(name="reviewForm", ng-submit="reviewForm.$valid && addReview(product)", novalidate)
+	form(name="reviewForm", ng-submit="reviewForm.$valid && addReview(product._id, product)", novalidate)
 		blockquote
 			b Stars: {{formReview.stars}} <br>
 			{{formReview.body}}<br>

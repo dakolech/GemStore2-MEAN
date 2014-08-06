@@ -55,6 +55,8 @@ app.get('/', routes.index);
 #app.get('/products', routes.products);
 app.get('/admin', routes.admin);
 app.get('/partials/:name', routes.partials);
+app.get('/partials/admin/:name', routes.partialsAdmin);
+app.get('/partials/templates/:name', routes.templates);
 
 # JSON API
 app.get('/api/name', api.name);
@@ -91,5 +93,5 @@ app.get('*', routes.index);
 
 
 http.createServer(app).listen(app.get('port'), -> 
-  console.log('Express server listening on port? ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 )

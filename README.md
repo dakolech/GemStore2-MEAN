@@ -1,4 +1,4 @@
-# MEAN (MongooseDB Express Angular Node) Application
+## MEAN (MongooseDB Express Angular Node) Application
 
 I'm learning about MEAN stack.
 
@@ -13,7 +13,7 @@ Run coffee watching:
     coffee -o public/js/ -cw public/js/
 
 
-## Directory Layout
+### Directory Layout
     
     server2.js          --> app config
     package.json        --> for npm
@@ -45,6 +45,6 @@ Run coffee watching:
 
 
 
-## Example on Heroku
+### Example on Heroku
 
     http://shielded-dusk-1504.herokuapp.com/

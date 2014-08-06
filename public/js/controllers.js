@@ -99,15 +99,61 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
       $scope.formReview = {};
     };
   }
-]).controller('AdminController', [
+]).controller('AdminControllerSites', [
+  '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    $scope.formSite = {};
+    $http.get('/api/sites').success(function(data) {
+      $scope.sites = data;
+      console.log(data);
+    }).error(function(data) {
+      console.log('Error: ' + data);
+    });
+    $scope.addSite = function() {
+      console.log($scope.formSite.title);
+      $http.post('/api/site', $scope.formSite).success(function(data) {
+        $scope.sites = data;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+      $scope.formReview = {};
+    };
+    $scope.deleteSite = function(id) {
+      if (confirm("Are you sure to delete this site?")) {
+        $http["delete"]('/api/site/' + id).success(function(data) {
+          $scope.sites = data;
+          console.log(data);
+        }).error(function(data) {
+          console.log('Error: ' + data);
+        });
+      }
+    };
+  }
+]).controller('AdminControllerCategories', [
+  '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    $scope.formCategory = {};
+    $http.get('/api/categories').success(function(data) {
+      $scope.categories = data;
+      console.log(data);
+    }).error(function(data) {
+      console.log('Error: ' + data);
+    });
+    $scope.addCategory = function() {
+      console.log($scope.formCategory.name);
+      $http.post('/api/category', $scope.formCategory).success(function(data) {
+        $scope.categories = data;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+      $scope.formReview = {};
+    };
+  }
+]).controller('AdminControllerProducts', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formData = {};
-    $scope.formReview = {};
     $scope.formImage = {};
     $scope.formEdit = {};
-    $scope.formCategory = {};
-    $scope.formSite = {};
-    $scope.editing = false;
     $http.get('/api/products').success(function(data) {
       $scope.products = data;
       console.log(data);
@@ -116,12 +162,6 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     });
     $http.get('/api/categories').success(function(data) {
       $scope.categories = data;
-      console.log(data);
-    }).error(function(data) {
-      console.log('Error: ' + data);
-    });
-    $http.get('/api/sites').success(function(data) {
-      $scope.sites = data;
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
@@ -168,12 +208,11 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
         console.log('Error: ' + data);
       });
     };
-    $scope.addReview = function(product) {
+    $scope.addReview = function(id, product) {
       var localReview;
-      $scope.formReview.id = product._id;
+      console.log(id);
       localReview = $scope.formReview;
-      console.log(localReview);
-      $http.post('/api/product/review', $scope.formReview).success(function(data) {
+      $http.post('/api/product/review/' + id, $scope.formReview).success(function(data) {
         product.reviews.push(localReview);
         console.log(data);
       }).error(function(data) {
@@ -222,36 +261,6 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
         $scope.formImage = {};
       }
     };
-    $scope.addCategory = function() {
-      console.log($scope.formCategory.name);
-      $http.post('/api/category', $scope.formCategory).success(function(data) {
-        $scope.categories = data;
-        console.log(data);
-      }).error(function(data) {
-        console.log('Error: ' + data);
-      });
-      $scope.formReview = {};
-    };
-    $scope.addSite = function() {
-      console.log($scope.formSite.title);
-      $http.post('/api/site', $scope.formSite).success(function(data) {
-        $scope.sites = data;
-        console.log(data);
-      }).error(function(data) {
-        console.log('Error: ' + data);
-      });
-      $scope.formReview = {};
-    };
-    $scope.deleteSite = function(id) {
-      if (confirm("Are you sure to delete this site?")) {
-        $http["delete"]('/api/site/' + id).success(function(data) {
-          $scope.sites = data;
-          console.log(data);
-        }).error(function(data) {
-          console.log('Error: ' + data);
-        });
-      }
-    };
   }
 ]).controller("PanelController", [
   '$scope', '$http', function($scope, $http) {
@@ -264,6 +273,16 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     };
   }
 ]).controller("AdminEditPanelController", [
+  '$scope', '$http', function($scope, $http) {
+    $scope.tab = 1;
+    $scope.selectTab = function(setTab) {
+      $scope.tab = setTab;
+    };
+    $scope.isSelected = function(checkTab) {
+      return $scope.tab === checkTab;
+    };
+  }
+]).controller("AdminPanelController", [
   '$scope', '$http', function($scope, $http) {
     $scope.tab = 1;
     $scope.selectTab = function(setTab) {

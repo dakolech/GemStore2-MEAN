@@ -10,11 +10,23 @@ angular.module('myApp.directives', []).
 	)
 	.directive 'productTitle', ->
 		restrict: 'A'
-		templateUrl: 'partials/product-title'
+		templateUrl: 'partials/templates/product-title'
+
+	.directive 'adminSites', ->
+		restrict: 'A'
+		templateUrl: 'partials/admin/sites'
+
+	.directive 'adminCategories', ->
+		restrict: 'A'
+		templateUrl: 'partials/admin/categories'
+
+	.directive 'adminProducts', ->
+		restrict: 'A'
+		templateUrl: 'partials/admin/products'
 		
 	.directive 'productPanels',  ->
 		restrict: 'A'
-		templateUrl: 'partials/product-panels'
+		templateUrl: 'partials/templates/product-panels'
 		controller: ->
 			this.tab = 1
 
@@ -27,7 +39,7 @@ angular.module('myApp.directives', []).
 		 
 	.directive "productGallery", ->
 		restrict: "A"
-		templateUrl: "partials/product-gallery"
+		templateUrl: "partials/templates/product-gallery"
 		controller:  ->
 			this.current = 0;
 			this.setCurrent = (imageNumber) ->

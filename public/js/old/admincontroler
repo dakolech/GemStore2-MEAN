@@ -1,0 +1,197 @@
+
+	.controller 'AdminController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.formData = {}
+		$scope.formReview = {}
+		$scope.formImage = {}
+		$scope.formEdit = {}
+		$scope.formCategory = {}
+		$scope.formSite = {}
+		$scope.editing = false
+				
+		$http.get('/api/products')
+			.success (data) ->
+				$scope.products = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+
+		$http.get('/api/categories')
+			.success (data) ->
+				$scope.categories = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+
+		$http.get('/api/sites')
+			.success (data) ->
+				$scope.sites = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+				
+				
+		$scope.addProduct = ->
+			console.log $scope.formData.category
+			$http.post('/api/product', $scope.formData)
+				.success (data) ->
+					$scope.formData = {}  #clear the form so our user is ready to enter another 
+					$scope.products = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+			
+		$scope.deleteProduct = (id) ->
+			if (confirm("Are you sure to delete this product?"))
+				$http.delete('/api/product/' + id)
+					.success (data) ->
+						$scope.products = data
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data)
+						return
+			return
+		
+		$scope.startEditProduct = (id) ->
+			console.log id
+			$scope.editing = true
+			$http.get('/api/product/' + id)
+		        .success (data) ->
+					$scope.formEdit = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
+		$scope.editProduct = (product) ->			
+			$http.post('/api/product/' + product._id, $scope.formEdit)
+				.success (data) ->
+					product.name = data.name
+					product.price = data.price
+					product.description = data.description
+					product.category = data.category
+					$scope.editing = false
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+		
+		$scope.addReview = (product) ->
+			$scope.formReview.id = product._id
+			localReview=$scope.formReview
+			console.log(localReview)
+			$http.post('/api/product/review', $scope.formReview)
+				.success (data) ->
+					product.reviews.push(localReview)
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+
+		$scope.imagesChanged = (elm) ->
+			$scope.files = elm.files
+			$scope.$apply();	
+			console.log $scope.files
+			return
+
+		$scope.addImages = (id) ->
+			for element, index in $scope.files
+				fd = new FormData()
+
+				fd.append("file", $scope.files[index])
+				console.log $scope.files[index]
+				
+				$http.post '/api/productImage/'+id, fd, {
+					withCredentials: true,
+					headers: {'Content-Type': undefined },
+					transformRequest: angular.identity}
+				.success (data) ->
+					$scope.products = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+					
+			$scope.formData = {}
+			$scope.files = {}
+			return 
+
+		$scope.deleteImage = (id, name) ->
+			if (confirm("Are you sure to delete this image?"))
+				$scope.formImage.name = name
+				$http.delete('/api/productImage/'+id+'/'+name)
+					.success (data) ->
+						$scope.products = data
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data);
+						return
+				
+				$scope.formImage = {}
+			return
+
+		$scope.addCategory = () ->
+			console.log($scope.formCategory.name)
+			$http.post('/api/category', $scope.formCategory)
+				.success (data) ->
+					$scope.categories = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		$scope.addSite = () ->
+			console.log($scope.formSite.title)
+			$http.post('/api/site', $scope.formSite)
+				.success (data) ->
+					$scope.sites = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		$scope.deleteSite = (id) ->
+			if (confirm("Are you sure to delete this site?"))
+				$http.delete('/api/site/' + id)
+					.success (data) ->
+						$scope.sites = data
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data)
+						return
+			return
+
+			
+		return
+
+	] 
+	

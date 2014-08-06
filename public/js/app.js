@@ -3,7 +3,7 @@ angular.module('myApp', ['ngRoute', 'myApp.controllers', 'myApp.filters', 'myApp
   $routeProvider.when('/:title', {
     templateUrl: 'partials/site',
     controller: 'SiteController'
-  }).when('/product/show/:id', {
+  }).when('/product/show/:id/:name', {
     templateUrl: 'partials/product',
     controller: 'StoreControllerOne'
   }).when('/products/show/:category', {

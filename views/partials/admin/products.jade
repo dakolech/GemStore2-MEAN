@@ -1,0 +1,67 @@
+div(ng-controller='AdminControllerProducts')
+	div(class="row")
+			div(class="col-sm-8 col-sm-offset-2 text-center")
+
+
+					div(class="form-group")
+						form(name="addProductForm", ng-submit="addProductForm.$valid && addProduct()", novalidate)
+							h3 Add Product 
+							input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formData.name")
+							input(input type="number", step="any",  class="form-control input-lg text-center", placeholder="Price", ng-model="formData.price")
+							input(input type="text", class="form-control input-lg text-center", placeholder="Description", ng-model="formData.description")
+							select(ng-model="formData.category", required)
+								option(ng-repeat="category in categories", value="{{category.name}}", class="form-control input-lg text-center") {{category.name}} 
+							button(type="submit", class="btn btn-primary btn-lg") Add
+						
+
+		
+		ul(class="list-group", style='width:600px', class="pull-center")
+			li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
+				a(href  ng-click="stopEditProduct(product._id)") Preview 
+				a(href  ng-click="startEditProduct(product._id)") Edit 
+				
+				section(ng-controller="AdminEditPanelController")
+				
+					ul(class="nav nav-pills")
+						li(ng-class="{ active:isSelected(1) }")
+							a(href ng-click="selectTab(1)") Preview
+						li(ng-class="{ active:isSelected(2) }") 
+							a(href ng-click="selectTab(2)") Edit 
+
+					
+					div(class="panel", ng-show="isSelected(1)")
+						h3(product-title)
+						section(product-gallery, ng-controller="GalleryController")
+						section(product-panels, ng-controller="PanelController")
+					
+					div(class="panel", ng-show="isSelected(2)")
+						a(href class="pull-right", ng-click="deleteProduct(product._id)") x <br>
+
+						a(href ng-click="startEditProduct(product._id)") Change parameters
+						div(class="panel", ng-show="editing")
+							form								
+								input(type="text", class="form-control input-lg text-center", value="{{product.name}}", ng-model="formEdit.name")
+								input(input type="number", step="any",  class="form-control input-lg text-center", value="{{product.price}}", ng-model="formEdit.price")
+								input(input type="text", class="form-control input-lg text-center", value="{{product.description}}", ng-model="formEdit.description")
+								select(ng-model="formEdit.category", required)
+									option(ng-selected="{{category.name == product.category}}", ng-repeat="category in categories", value="{{category.name}}") {{category.name}}
+								button(type="submit", class="btn btn-primary btn-lg", ng-click="editProduct(product)") Edit
+							<br>
+						div(class="panel", ng-hide="editing")
+							form
+								{{product.name}}<br>
+								{{product.price}}<br>
+								{{product.description}}<br>
+								{{product.category}}<br>
+							<br>
+
+						form
+							input(type="file", accept="image/*", image="image", onchange="angular.element(this).scope().imagesChanged(this)", multiple)
+							//input(ng-model="formData.image",  type="file", accept="image/*", image="image", onchange="angular.element(this).scope().imagesChanged(this)", multiple)
+							li(ng-repeat="file in files") {{file.name}}
+							button(ng-click="addImages(product._id)") Upload
+						
+						div(class="list-group-item", ng-repeat="image in product.images")
+							a(href class="pull-right", ng-click="deleteImage(product._id, image)") x <br>
+							{{image}} 
+							img(ng-src="./images/{{image}}", height="100px", width="100px")	

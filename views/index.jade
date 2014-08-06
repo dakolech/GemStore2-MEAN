@@ -10,7 +10,7 @@ block body
         a(href='products/show') All products
       li(ng-repeat="category in categories")
         a(href='products/show/{{category.name}}') {{category.name}}   
-      li(ng-repeat="site in sites")
+      li(ng-repeat="site in sites", ng-hide="site.isIndex")
         a(href='/{{site.title}}') {{site.title}}     
 
     div(ng-view) 

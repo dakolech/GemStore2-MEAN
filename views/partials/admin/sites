@@ -1,0 +1,14 @@
+div(ng-controller='AdminControllerSites')
+	div(class="form-group")
+		form
+			h3 Add Site 
+			input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formSite.title")
+			//input(type="text", class="form-control input-lg text-center", placeholder="Content", ng-model="formSite.content")
+			div(class="container app")
+				div(text-angular="text-angular", name="htmlcontent", ng-model="formSite.content", ta-disabled='disabled')
+			button(type="submit", class="btn btn-primary btn-lg", ng-click="addSite()") Add
+
+		ul(class="list-group", style='width:600px', class="pull-center")
+			li(class="list-group-item", ng-repeat="site in sites")
+				{{site.title}}
+				a(href class="pull-right", ng-click="deleteSite(site._id)") x <br>

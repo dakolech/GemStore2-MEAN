@@ -12,3 +12,15 @@ exports.partials = function(req, res) {
   name = req.params.name;
   return res.render('partials/' + name);
 };
+
+exports.partialsAdmin = function(req, res) {
+  var name;
+  name = req.params.name;
+  return res.render('partials/admin/' + name);
+};
+
+exports.templates = function(req, res) {
+  var name;
+  name = req.params.name;
+  return res.render('partials/templates/' + name);
+};

@@ -132,17 +132,82 @@ angular.module('myApp.controllers', []).
 
 		
 		return
-
 	] 
-	.controller 'AdminController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'AdminControllerSites', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.formSite = {}
+
+		$http.get('/api/sites')
+			.success (data) ->
+				$scope.sites = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+				
+		$scope.addSite = () ->
+			console.log($scope.formSite.title)
+			$http.post('/api/site', $scope.formSite)
+				.success (data) ->
+					$scope.sites = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+		$scope.deleteSite = (id) ->
+			if (confirm("Are you sure to delete this site?"))
+				$http.delete('/api/site/' + id)
+					.success (data) ->
+						$scope.sites = data
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data)
+						return
+			return
+
+		
+		return
+	] 
+	.controller 'AdminControllerCategories', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+		$scope.formCategory = {}
+
+		$http.get('/api/categories')
+			.success (data) ->
+				$scope.categories = data
+				console.log(data)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return	
+				
+		$scope.addCategory = () ->
+			console.log($scope.formCategory.name)
+			$http.post('/api/category', $scope.formCategory)
+				.success (data) ->
+					$scope.categories = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return	
+
+		
+		return
+	] 
+	.controller 'AdminControllerProducts', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formData = {}
-		$scope.formReview = {}
 		$scope.formImage = {}
 		$scope.formEdit = {}
-		$scope.formCategory = {}
-		$scope.formSite = {}
-		$scope.editing = false
-				
+
 		$http.get('/api/products')
 			.success (data) ->
 				$scope.products = data
@@ -159,17 +224,7 @@ angular.module('myApp.controllers', []).
 				return
 			.error (data) ->
 				console.log('Error: ' + data)
-				return
-
-		$http.get('/api/sites')
-			.success (data) ->
-				$scope.sites = data
-				console.log(data)
-				return
-			.error (data) ->
-				console.log('Error: ' + data)
-				return
-				
+				return			
 				
 		$scope.addProduct = ->
 			console.log $scope.formData.category
@@ -195,7 +250,7 @@ angular.module('myApp.controllers', []).
 						console.log('Error: ' + data)
 						return
 			return
-		
+
 		$scope.startEditProduct = (id) ->
 			console.log id
 			$scope.editing = true
@@ -207,8 +262,8 @@ angular.module('myApp.controllers', []).
 				.error (data) ->
 					console.log('Error: ' + data)
 					return
-			return
-
+			return			
+		
 		$scope.editProduct = (product) ->			
 			$http.post('/api/product/' + product._id, $scope.formEdit)
 				.success (data) ->
@@ -224,11 +279,10 @@ angular.module('myApp.controllers', []).
 					return
 			return
 		
-		$scope.addReview = (product) ->
-			$scope.formReview.id = product._id
-			localReview=$scope.formReview
-			console.log(localReview)
-			$http.post('/api/product/review', $scope.formReview)
+		$scope.addReview = (id, product) ->
+			console.log(id)
+			localReview = $scope.formReview
+			$http.post('/api/product/review/'+id, $scope.formReview)
 				.success (data) ->
 					product.reviews.push(localReview)
 					console.log(data)
@@ -285,51 +339,9 @@ angular.module('myApp.controllers', []).
 				$scope.formImage = {}
 			return
 
-		$scope.addCategory = () ->
-			console.log($scope.formCategory.name)
-			$http.post('/api/category', $scope.formCategory)
-				.success (data) ->
-					$scope.categories = data
-					console.log(data)
-					return
-				.error (data) ->
-					console.log('Error: ' + data)
-					return
-			
-			$scope.formReview = {}
-			return
-
-		$scope.addSite = () ->
-			console.log($scope.formSite.title)
-			$http.post('/api/site', $scope.formSite)
-				.success (data) ->
-					$scope.sites = data
-					console.log(data)
-					return
-				.error (data) ->
-					console.log('Error: ' + data)
-					return
-			
-			$scope.formReview = {}
-			return
-
-		$scope.deleteSite = (id) ->
-			if (confirm("Are you sure to delete this site?"))
-				$http.delete('/api/site/' + id)
-					.success (data) ->
-						$scope.sites = data
-						console.log(data)
-						return
-					.error (data) ->
-						console.log('Error: ' + data)
-						return
-			return
-
-			
+		
 		return
-
-	] 
-  
+	]  
 	.controller "PanelController", ['$scope', '$http', ($scope, $http) ->
 		$scope.tab = 1
 
@@ -343,6 +355,18 @@ angular.module('myApp.controllers', []).
 	]
 	  
 	.controller "AdminEditPanelController", ['$scope', '$http', ($scope, $http) ->
+		$scope.tab = 1
+
+		$scope.selectTab = (setTab) ->
+			$scope.tab = setTab
+			return
+
+		$scope.isSelected = (checkTab) ->
+			return $scope.tab == checkTab
+		return
+	]
+
+	.controller "AdminPanelController", ['$scope', '$http', ($scope, $http) ->
 		$scope.tab = 1
 
 		$scope.selectTab = (setTab) ->

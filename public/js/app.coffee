@@ -12,7 +12,7 @@ config( ($routeProvider, $locationProvider) ->
         templateUrl: 'partials/site',
         controller: 'SiteController'
     }).
-    when('/product/show/:id', {
+    when('/product/show/:id/:name', {
         templateUrl: 'partials/product',
         controller: 'StoreControllerOne'
     }).
