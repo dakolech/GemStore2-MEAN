@@ -1,8 +1,16 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
+  "name": "HerokuNode",
+  "version": "0.0.0",
+  "description": "",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "logfmt": "^1.1.2",
+    "coffee-script": "1.1.2",
     "body-parser": "^1.0.2",
     "connect-busboy": "0.0.1",
     "error-handler": "^0.1.4",
@@ -12,5 +20,8 @@
     "method-override": "^1.0.0",
     "mongoose": "~3.6.2",
     "morgan": "^1.0.0"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
