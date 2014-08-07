@@ -102,6 +102,7 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
 ]).controller('AdminControllerSites', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formSite = {};
+    $scope.isCollapsedAdd = true;
     $http.get('/api/sites').success(function(data) {
       $scope.sites = data;
       console.log(data);
@@ -132,8 +133,17 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
 ]).controller('AdminControllerCategories', [
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formCategory = {};
+    $scope.isCollapsedAdd = true;
+    $scope.formEditCategory = {};
+    $scope.isCollapsedEdit = [];
+    $scope.isCollapsedShow = [];
     $http.get('/api/categories').success(function(data) {
+      var i, _i, _ref;
       $scope.categories = data;
+      for (i = _i = 0, _ref = $scope.categories.length - 1; _i <= _ref; i = _i += 1) {
+        $scope.isCollapsedEdit[i] = true;
+        $scope.isCollapsedShow[i] = true;
+      }
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
@@ -141,12 +151,67 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.addCategory = function() {
       console.log($scope.formCategory.name);
       $http.post('/api/category', $scope.formCategory).success(function(data) {
+        var i, _i, _ref;
         $scope.categories = data;
+        for (i = _i = 0, _ref = $scope.categories.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+          $scope.isCollapsedShow[i] = true;
+        }
         console.log(data);
       }).error(function(data) {
         console.log('Error: ' + data);
       });
       $scope.formReview = {};
+    };
+    $scope.startEditCategory = function(id, index) {
+      $http.get('/api/category/' + id).success(function(data) {
+        var i, _i, _ref;
+        $scope.formEditCategory = data;
+        for (i = _i = 0, _ref = $scope.categories.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+        }
+        $scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index];
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
+    $scope.editCategory = function(category) {
+      console.log($scope.formEditCategory.name + category._id);
+      $http.post('/api/category/' + category._id + '/' + category.name, $scope.formEditCategory).success(function(data) {
+        category.name = data.name;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
+    $scope.showProducts = function(name, index) {
+      $http.get('/api/products/' + name).success(function(data) {
+        var i, _i, _ref;
+        $scope.products = data;
+        for (i = _i = 0, _ref = $scope.categories.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedShow[i] = true;
+        }
+        $scope.isCollapsedShow[index] = !$scope.isCollapsedShow[index];
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
+    $scope.deleteCategory = function(category) {
+      if (confirm("Are you sure to delete this category with all products?")) {
+        $http["delete"]('/api/category/' + category._id + '/' + category.name).success(function(data) {
+          var i, _i, _ref;
+          $scope.categories = data;
+          for (i = _i = 0, _ref = $scope.categories.length - 1; _i <= _ref; i = _i += 1) {
+            $scope.isCollapsedEdit[i] = true;
+            $scope.isCollapsedShow[i] = true;
+          }
+          console.log(data);
+        }).error(function(data) {
+          console.log('Error: ' + data);
+        });
+      }
     };
   }
 ]).controller('AdminControllerProducts', [
@@ -154,6 +219,7 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.formData = {};
     $scope.formImage = {};
     $scope.formEdit = {};
+    $scope.isCollapsedAdd = true;
     $http.get('/api/products').success(function(data) {
       $scope.products = data;
       console.log(data);
@@ -166,6 +232,14 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     }).error(function(data) {
       console.log('Error: ' + data);
     });
+    $scope.getCategories = function() {
+      return $http.get('/api/categories').success(function(data) {
+        $scope.categories = data;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
     $scope.addProduct = function() {
       console.log($scope.formData.category);
       $http.post('/api/product', $scope.formData).success(function(data) {

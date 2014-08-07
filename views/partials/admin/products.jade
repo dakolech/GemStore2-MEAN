@@ -1,17 +1,16 @@
 div(ng-controller='AdminControllerProducts')
-	div(class="row")
-			div(class="col-sm-8 col-sm-offset-2 text-center")
-
-
-					div(class="form-group")
-						form(name="addProductForm", ng-submit="addProductForm.$valid && addProduct()", novalidate)
-							h3 Add Product 
-							input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formData.name")
-							input(input type="number", step="any",  class="form-control input-lg text-center", placeholder="Price", ng-model="formData.price")
-							input(input type="text", class="form-control input-lg text-center", placeholder="Description", ng-model="formData.description")
-							select(ng-model="formData.category", required)
-								option(ng-repeat="category in categories", value="{{category.name}}", class="form-control input-lg text-center") {{category.name}} 
-							button(type="submit", class="btn btn-primary btn-lg") Add
+	div(class="col-sm-8 col-sm-offset-2 text-center")
+		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-show="isCollapsedAdd") Open new Product form
+		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-hide="isCollapsedAdd") Hide new Product form
+		div(class="form-group", collapse="isCollapsedAdd")
+			form(name="addProductForm", ng-submit="addProductForm.$valid && addProduct()", novalidate)
+				h3 Add Product 
+				input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formData.name")
+				input(input type="number", step="any",  class="form-control input-lg text-center", placeholder="Price", ng-model="formData.price")
+				input(input type="text", class="form-control input-lg text-center", placeholder="Description", ng-model="formData.description")
+				select(ng-model="formData.category", required)
+					option(ng-repeat="category in categories", value="{{category.name}}", class="form-control input-lg text-center") {{category.name}} 
+				button(type="submit", class="btn btn-primary btn-lg") Add
 						
 
 		
@@ -43,7 +42,7 @@ div(ng-controller='AdminControllerProducts')
 								input(type="text", class="form-control input-lg text-center", value="{{product.name}}", ng-model="formEdit.name")
 								input(input type="number", step="any",  class="form-control input-lg text-center", value="{{product.price}}", ng-model="formEdit.price")
 								input(input type="text", class="form-control input-lg text-center", value="{{product.description}}", ng-model="formEdit.description")
-								select(ng-model="formEdit.category", required)
+								select(ng-model="formEdit.category", ng-click="getCategories", required)
 									option(ng-selected="{{category.name == product.category}}", ng-repeat="category in categories", value="{{category.name}}") {{category.name}}
 								button(type="submit", class="btn btn-primary btn-lg", ng-click="editProduct(product)") Edit
 							<br>

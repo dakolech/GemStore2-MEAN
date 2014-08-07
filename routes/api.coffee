@@ -121,7 +121,7 @@ exports.addCategory = (req, res) ->
   console.log('Category created: '+req.body.name+' id: '+req.body.id)
   Category.create {
     name : req.body.name,
-  }, (err, product) ->
+  }, (err, category) ->
     if (err)
       res.send(err);
 
@@ -130,6 +130,58 @@ exports.addCategory = (req, res) ->
       if (err)
         res.send(err)
       res.json(categories);
+      return
+    return
+  return
+
+exports.category = (req, res) ->
+  Category.findById(req.params.id, (err, category) ->
+        res.send(err) if (err)
+    
+        res.json(category);
+      );
+
+exports.editCategory = (req, res) ->
+  console.log "Edit Category: " + req.params.id
+  Category.update {
+      _id : req.params.id
+      }, {
+      name : req.body.name
+    }, { multi: false }, (err, category) ->
+      if (err)
+        res.send(err);
+      return
+
+  Category.findById(req.params.id, (err, category) ->
+        res.send(err) if (err)
+
+        console.log req.body.name+req.params.oldname
+        Product.update {
+              category: req.params.oldname
+              }, {
+              category: req.body.name
+            }, { multi: true }, (err, product) ->
+              if (err)
+                res.send(err); 
+              return
+
+        res.json(category);
+      );
+
+exports.deleteCategory = (req, res) ->
+  Product.remove {
+    category : req.params.name
+  }, (err, product) ->
+    res.send(err) if (err)  
+
+  Category.remove {
+    _id : req.params.id
+  }, (err, category) ->
+    res.send(err) if (err)
+      
+    Category.find (err, categories) ->
+      res.send(err) if (err)            
+      res.json(categories)
       return
     return
   return

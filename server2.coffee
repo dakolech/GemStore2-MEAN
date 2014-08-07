@@ -72,6 +72,9 @@ app.get('/api/products/:category', api.productsCategory)
 
 app.get('/api/categories', api.categories);
 app.post('/api/category', api.addCategory);
+app.get('/api/category/:id', api.category);
+app.post('/api/category/:id/:oldname', api.editCategory);
+app.delete('/api/category/:id/:name', api.deleteCategory);
 
 app.get('/api/product/image/:file', api.image);
 app.post('/api/productImage/:id', api.AddImage);

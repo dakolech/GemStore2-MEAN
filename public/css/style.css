@@ -1,3 +1,5 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 .ng-invalid.ng-dirty {
 	border-color: ;
 }
@@ -72,4 +74,5 @@ ul {
   content: "";
   padding: 0;
 }
+
 

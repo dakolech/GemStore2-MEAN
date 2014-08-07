@@ -150,7 +150,72 @@ exports.addCategory = function(req, res) {
   console.log('Category created: ' + req.body.name + ' id: ' + req.body.id);
   Category.create({
     name: req.body.name
+  }, function(err, category) {
+    if (err) {
+      res.send(err);
+    }
+    Category.find(function(err, categories) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(categories);
+    });
+  });
+};
+
+exports.category = function(req, res) {
+  return Category.findById(req.params.id, function(err, category) {
+    if (err) {
+      res.send(err);
+    }
+    return res.json(category);
+  });
+};
+
+exports.editCategory = function(req, res) {
+  console.log("Edit Category: " + req.params.id);
+  Category.update({
+    _id: req.params.id
+  }, {
+    name: req.body.name
+  }, {
+    multi: false
+  }, function(err, category) {
+    if (err) {
+      res.send(err);
+    }
+  });
+  return Category.findById(req.params.id, function(err, category) {
+    if (err) {
+      res.send(err);
+    }
+    console.log(req.body.name + req.params.oldname);
+    Product.update({
+      category: req.params.oldname
+    }, {
+      category: req.body.name
+    }, {
+      multi: true
+    }, function(err, product) {
+      if (err) {
+        res.send(err);
+      }
+    });
+    return res.json(category);
+  });
+};
+
+exports.deleteCategory = function(req, res) {
+  Product.remove({
+    category: req.params.name
   }, function(err, product) {
+    if (err) {
+      return res.send(err);
+    }
+  });
+  Category.remove({
+    _id: req.params.id
+  }, function(err, category) {
     if (err) {
       res.send(err);
     }

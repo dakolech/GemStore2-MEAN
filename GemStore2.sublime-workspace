@@ -35,7 +35,7 @@
 			"file": "server2.coffee",
 			"settings":
 			{
-				"buffer_size": 2293,
+				"buffer_size": 2404,
 				"line_ending": "Windows"
 			}
 		},
@@ -51,7 +51,7 @@
 			"file": "routes/index.coffee",
 			"settings":
 			{
-				"buffer_size": 267,
+				"buffer_size": 477,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "models/product.js",
 			"settings":
 			{
-				"buffer_size": 391,
+				"buffer_size": 344,
 				"line_ending": "Windows"
 			}
 		},
@@ -88,31 +88,31 @@
 			}
 		},
 		{
-			"file": "views/index.jade",
+			"file": "public/css/app.css",
 			"settings":
 			{
-				"buffer_size": 915,
+				"buffer_size": 26,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/partials/product-title.jade",
+			"file": "public/css/style.css",
 			"settings":
 			{
-				"buffer_size": 108,
+				"buffer_size": 917,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "views/partials/product-panels.jade",
+			"file": "views/index.jade",
 			"settings":
 			{
-				"buffer_size": 1297,
-				"line_ending": "Windows"
+				"buffer_size": 991,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/partials/product-gallery.jade",
+			"file": "views/partials/templates/product-gallery.jade",
 			"settings":
 			{
 				"buffer_size": 373,
@@ -120,10 +120,26 @@
 			}
 		},
 		{
+			"file": "views/partials/templates/product-panels.jade",
+			"settings":
+			{
+				"buffer_size": 1297,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/partials/templates/product-title.jade",
+			"settings":
+			{
+				"buffer_size": 125,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "views/partials/product.jade",
 			"settings":
 			{
-				"buffer_size": 434,
+				"buffer_size": 450,
 				"line_ending": "Windows"
 			}
 		},
@@ -148,7 +164,7 @@
 			"file": "views/partials/productCategory.jade",
 			"settings":
 			{
-				"buffer_size": 431,
+				"buffer_size": 446,
 				"line_ending": "Windows"
 			}
 		},
@@ -156,7 +172,7 @@
 			"file": "views/partials/products.jade",
 			"settings":
 			{
-				"buffer_size": 374,
+				"buffer_size": 388,
 				"line_ending": "Windows"
 			}
 		},
@@ -164,7 +180,31 @@
 			"file": "views/admin.jade",
 			"settings":
 			{
-				"buffer_size": 5448,
+				"buffer_size": 1196,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/partials/admin/categories.jade",
+			"settings":
+			{
+				"buffer_size": 527,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/partials/admin/products.jade",
+			"settings":
+			{
+				"buffer_size": 3543,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/partials/admin/sites.jade",
+			"settings":
+			{
+				"buffer_size": 640,
 				"line_ending": "Windows"
 			}
 		},
@@ -172,7 +212,7 @@
 			"file": "public/js/app.coffee",
 			"settings":
 			{
-				"buffer_size": 850,
+				"buffer_size": 856,
 				"line_ending": "Windows"
 			}
 		},
@@ -180,7 +220,15 @@
 			"file": "public/js/controllers.coffee",
 			"settings":
 			{
-				"buffer_size": 8484,
+				"buffer_size": 9082,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/old/admincontroler",
+			"settings":
+			{
+				"buffer_size": 4550,
 				"line_ending": "Windows"
 			}
 		},
@@ -188,7 +236,7 @@
 			"file": "public/js/directives.coffee",
 			"settings":
 			{
-				"buffer_size": 787,
+				"buffer_size": 1085,
 				"line_ending": "Windows"
 			}
 		},
@@ -206,14 +254,6 @@
 			{
 				"buffer_size": 319,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 1607,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -265,6 +305,10 @@
 	},
 	"file_history":
 	[
+		"/D/SitesWWW/GemStore2-MEAN/public/css/app.css",
+		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-title.jade",
+		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-panels.jade",
+		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-gallery.jade",
 		"/D/SitesWWW/GemStore2-MEAN/README.md",
 		"/D/SitesWWW/HerokuNode/Procfile",
 		"/D/SitesWWW/HerokuNode/web.coffee",
@@ -279,9 +323,7 @@
 		"/D/SitesWWW/GemStore2-MEAN/views/product.jade",
 		"/D/SitesWWW/GemStore2-MEAN/routes/api.js",
 		"/D/SitesWWW/angular-GemStore/package.json",
-		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-title.jade",
 		"/D/SitesWWW/GemStore2-MEAN/public/js/services.js",
-		"/D/SitesWWW/GemStore2-MEAN/views/partials/product-gallery.jade",
 		"/D/SitesWWW/angular-GemStore/app/routes.js",
 		"/D/SitesWWW/GemStore2-MEAN/server.js",
 		"/D/SitesWWW/GemStore2-MEAN/views/index.jade",
@@ -322,7 +364,7 @@
 	"groups":
 	[
 		{
-			"selected": 23,
+			"selected": 19,
 			"sheets":
 			[
 				{
@@ -356,15 +398,15 @@
 					"file": "server2.coffee",
 					"settings":
 					{
-						"buffer_size": 2293,
+						"buffer_size": 2404,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2268,
-								2268
+								1378,
+								1378
 							]
 						],
 						"settings":
@@ -372,7 +414,7 @@
 							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1134.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -389,8 +431,8 @@
 						"selection":
 						[
 							[
-								2510,
-								2510
+								4659,
+								4659
 							]
 						],
 						"settings":
@@ -400,7 +442,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3294.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -410,15 +452,15 @@
 					"file": "routes/index.coffee",
 					"settings":
 					{
-						"buffer_size": 267,
+						"buffer_size": 477,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								93,
-								93
+								465,
+								465
 							]
 						],
 						"settings":
@@ -463,15 +505,15 @@
 					"file": "models/product.js",
 					"settings":
 					{
-						"buffer_size": 391,
+						"buffer_size": 344,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								120,
-								163
+								211,
+								211
 							]
 						],
 						"settings":
@@ -497,8 +539,8 @@
 						"selection":
 						[
 							[
-								246,
-								246
+								201,
+								208
 							]
 						],
 						"settings":
@@ -540,18 +582,74 @@
 				},
 				{
 					"buffer": 8,
-					"file": "views/index.jade",
+					"file": "public/css/app.css",
 					"settings":
 					{
-						"buffer_size": 915,
+						"buffer_size": 26,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								348,
-								348
+								26,
+								26
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "public/css/style.css",
+					"settings":
+					{
+						"buffer_size": 917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 389.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "views/index.jade",
+					"settings":
+					{
+						"buffer_size": 991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								448
 							]
 						],
 						"settings":
@@ -567,61 +665,8 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "views/partials/product-title.jade",
-					"settings":
-					{
-						"buffer_size": 108,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								21,
-								21
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "views/partials/product-panels.jade",
-					"settings":
-					{
-						"buffer_size": 1297,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								749,
-								749
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 11,
-					"file": "views/partials/product-gallery.jade",
+					"file": "views/partials/templates/product-gallery.jade",
 					"settings":
 					{
 						"buffer_size": 373,
@@ -631,8 +676,8 @@
 						"selection":
 						[
 							[
-								313,
-								371
+								0,
+								0
 							]
 						],
 						"settings":
@@ -647,18 +692,18 @@
 				},
 				{
 					"buffer": 12,
-					"file": "views/partials/product.jade",
+					"file": "views/partials/templates/product-panels.jade",
 					"settings":
 					{
-						"buffer_size": 434,
+						"buffer_size": 1297,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								173,
-								173
+								0,
+								0
 							]
 						],
 						"settings":
@@ -674,18 +719,18 @@
 				},
 				{
 					"buffer": 13,
-					"file": "views/partials/site.jade",
+					"file": "views/partials/templates/product-title.jade",
 					"settings":
 					{
-						"buffer_size": 88,
+						"buffer_size": 125,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								0
+								53,
+								53
 							]
 						],
 						"settings":
@@ -700,6 +745,59 @@
 				},
 				{
 					"buffer": 14,
+					"file": "views/partials/product.jade",
+					"settings":
+					{
+						"buffer_size": 450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								168,
+								168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "views/partials/site.jade",
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
 					"file": "views/partials/main.jade",
 					"settings":
 					{
@@ -726,19 +824,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 17,
 					"file": "views/partials/productCategory.jade",
 					"settings":
 					{
-						"buffer_size": 431,
+						"buffer_size": 446,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								109,
-								109
+								102,
+								102
 							]
 						],
 						"settings":
@@ -752,19 +850,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 18,
 					"file": "views/partials/products.jade",
 					"settings":
 					{
-						"buffer_size": 374,
+						"buffer_size": 388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								37,
-								37
+								55,
+								40
 							]
 						],
 						"settings":
@@ -779,11 +877,64 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 19,
 					"file": "views/admin.jade",
 					"settings":
 					{
-						"buffer_size": 5448,
+						"buffer_size": 1196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								406,
+								631
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "views/partials/admin/categories.jade",
+					"settings":
+					{
+						"buffer_size": 527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								45
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "views/partials/admin/products.jade",
+					"settings":
+					{
+						"buffer_size": 3543,
 						"regions":
 						{
 						},
@@ -791,7 +942,7 @@
 						[
 							[
 								62,
-								62
+								45
 							]
 						],
 						"settings":
@@ -806,19 +957,45 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
-					"file": "public/js/app.coffee",
+					"buffer": 22,
+					"file": "views/partials/admin/sites.jade",
 					"settings":
 					{
-						"buffer_size": 850,
+						"buffer_size": 640,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								208,
-								208
+								40,
+								40
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "public/js/app.coffee",
+					"settings":
+					{
+						"buffer_size": 856,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								346,
+								346
 							]
 						],
 						"settings":
@@ -834,19 +1011,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 24,
 					"file": "public/js/controllers.coffee",
 					"settings":
 					{
-						"buffer_size": 8484,
+						"buffer_size": 9082,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2186,
-								2186
+								7842,
+								7842
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5724.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "public/js/old/admincontroler",
+					"settings":
+					{
+						"buffer_size": 4550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -861,19 +1065,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 26,
 					"file": "public/js/directives.coffee",
 					"settings":
 					{
-						"buffer_size": 787,
+						"buffer_size": 1085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								250,
-								250
+								485,
+								485
 							]
 						],
 						"settings":
@@ -888,7 +1092,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 27,
 					"file": "public/js/filters.coffee",
 					"settings":
 					{
@@ -914,7 +1118,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 28,
 					"file": "public/js/services.coffee",
 					"settings":
 					{
@@ -932,34 +1136,6 @@
 						"settings":
 						{
 							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "README.md",
-					"settings":
-					{
-						"buffer_size": 1607,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

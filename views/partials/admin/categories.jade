@@ -1,12 +1,34 @@
 div(ng-controller='AdminControllerCategories', class="row")
 	div(class="col-sm-8 col-sm-offset-2 text-center")
-		div(class="form-group")
+		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-show="isCollapsedAdd") Open new Category form
+		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-hide="isCollapsedAdd") Hide new Category form
+		div(class="form-group", collapse="isCollapsedAdd")
 			form
 				h3 Add Category 
 				input(type="text", class="form-control input-lg text-center", placeholder="Name", ng-model="formCategory.name")
 				button(type="submit", class="btn btn-primary btn-lg", ng-click="addCategory()") Add
 
 
-		ul(class="list-group", style='width:600px', class="pull-center")
-			li(class="list-group-item", ng-repeat="category in categories")
+		ul(class="list-group", style='width:600px')
+			li(class="list-group-item text-left", ng-repeat="category in categories")
 				{{category.name}}
+				.pull-right
+					a(href ng-click="showProducts(category.name, $index)", ng-show="isCollapsedShow[$index]") Show products  
+					a(href ng-click="isCollapsedShow[$index] = true", ng-hide="isCollapsedShow[$index]") Hide products  
+					a(href ng-click="startEditCategory(category._id, $index)", ng-show="isCollapsedEdit[$index]") Edit 
+					a(href ng-click="isCollapsedEdit[$index] = true", ng-hide="isCollapsedEdit[$index]") Close (Edit)  
+					a(href ng-click="deleteCategory(category)") Delete
+				div(class="form-group", collapse="isCollapsedEdit[$index]") 
+					form 
+						input(type="text", class="form-control input-lg text-center", ng-model="formEditCategory.name")
+						button(type="submit", ng-click="editCategory(category)") Edit
+						button(type="submit", ng-click="isCollapsedEdit[$index] = true") Close
+				ul(class="list-group", style='width:500px', collapse="isCollapsedShow[$index]")
+					p There are {{products.length}} products
+					li(class="list-group-item text-left", ng-repeat="product in products")
+						{{product.name}}
+
+
+
+
+

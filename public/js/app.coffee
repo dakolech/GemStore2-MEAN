@@ -4,7 +4,8 @@ angular.module('myApp', [
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
-  'textAngular'
+  'textAngular',
+  'ui.bootstrap'
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.

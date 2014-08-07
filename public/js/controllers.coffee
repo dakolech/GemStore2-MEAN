@@ -135,6 +135,7 @@ angular.module('myApp.controllers', []).
 	] 
 	.controller 'AdminControllerSites', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formSite = {}
+		$scope.isCollapsedAdd = true
 
 		$http.get('/api/sites')
 			.success (data) ->
@@ -176,10 +177,18 @@ angular.module('myApp.controllers', []).
 	] 
 	.controller 'AdminControllerCategories', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formCategory = {}
+		$scope.isCollapsedAdd = true
+		$scope.formEditCategory = {}
+		$scope.isCollapsedEdit = []
+		$scope.isCollapsedShow = []
 
 		$http.get('/api/categories')
 			.success (data) ->
 				$scope.categories = data
+				for i in [0..$scope.categories.length-1] by 1
+					$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedShow[i] = true
+				#console.log $scope.isCollapsedEdit
 				console.log(data)
 				return
 			.error (data) ->
@@ -191,6 +200,9 @@ angular.module('myApp.controllers', []).
 			$http.post('/api/category', $scope.formCategory)
 				.success (data) ->
 					$scope.categories = data
+					for i in [0..$scope.categories.length-1] by 1
+							$scope.isCollapsedEdit[i] = true
+							$scope.isCollapsedShow[i] = true					
 					console.log(data)
 					return
 				.error (data) ->
@@ -200,6 +212,61 @@ angular.module('myApp.controllers', []).
 			$scope.formReview = {}
 			return	
 
+		$scope.startEditCategory = (id, index) ->
+			$http.get('/api/category/'+id)
+				.success (data) ->
+					$scope.formEditCategory = data
+					for i in [0..$scope.categories.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index]
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
+		$scope.editCategory = (category) ->
+			console.log $scope.formEditCategory.name+category._id
+
+			$http.post('/api/category/' + category._id+'/'+category.name, $scope.formEditCategory)
+				.success (data) ->
+					category.name = data.name
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return	
+
+		$scope.showProducts = (name, index) ->
+			$http.get('/api/products/'+name)
+				.success (data) ->
+					$scope.products = data
+					for i in [0..$scope.categories.length-1] by 1
+						$scope.isCollapsedShow[i] = true
+					$scope.isCollapsedShow[index] = !$scope.isCollapsedShow[index]
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
+		$scope.deleteCategory = (category) ->
+			if (confirm("Are you sure to delete this category with all products?"))
+				$http.delete('/api/category/' + category._id+'/'+category.name)
+					.success (data) ->
+						$scope.categories = data
+						for i in [0..$scope.categories.length-1] by 1
+							$scope.isCollapsedEdit[i] = true
+							$scope.isCollapsedShow[i] = true
+						console.log(data)
+						return
+					.error (data) ->
+						console.log('Error: ' + data)
+						return
+			return
 		
 		return
 	] 
@@ -207,6 +274,7 @@ angular.module('myApp.controllers', []).
 		$scope.formData = {}
 		$scope.formImage = {}
 		$scope.formEdit = {}
+		$scope.isCollapsedAdd = true
 
 		$http.get('/api/products')
 			.success (data) ->
@@ -224,7 +292,17 @@ angular.module('myApp.controllers', []).
 				return
 			.error (data) ->
 				console.log('Error: ' + data)
-				return			
+				return	
+
+		$scope.getCategories = ->
+			$http.get('/api/categories')
+				.success (data) ->
+					$scope.categories = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return			
 				
 		$scope.addProduct = ->
 			console.log $scope.formData.category
