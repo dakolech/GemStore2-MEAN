@@ -5,7 +5,8 @@ angular.module('myApp', [
   'myApp.services',
   'myApp.directives',
   'textAngular',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.sortable'
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.

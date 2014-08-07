@@ -136,10 +136,17 @@ angular.module('myApp.controllers', []).
 	.controller 'AdminControllerSites', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formSite = {}
 		$scope.isCollapsedAdd = true
+		$scope.formEditSite = {}
+		$scope.isCollapsedEdit = []
+		$scope.isCollapsedShow = []
+		$scope.sitesOrder = []
 
 		$http.get('/api/sites')
 			.success (data) ->
 				$scope.sites = data
+				for i in [0..$scope.sites.length-1] by 1
+					$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedShow[i] = true
 				console.log(data)
 				return
 			.error (data) ->
@@ -151,6 +158,9 @@ angular.module('myApp.controllers', []).
 			$http.post('/api/site', $scope.formSite)
 				.success (data) ->
 					$scope.sites = data
+					for i in [0..$scope.sites.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+						$scope.isCollapsedShow[i] = true
 					console.log(data)
 					return
 				.error (data) ->
@@ -160,11 +170,43 @@ angular.module('myApp.controllers', []).
 			$scope.formReview = {}
 			return
 
+		$scope.startEditSite = (title, index) ->
+			console.log title
+			$http.get('/api/site/'+title)
+				.success (data) ->
+					$scope.formEditSite = data
+					for i in [0..$scope.sites.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index]
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
+		$scope.editSite = (site) ->
+			console.log $scope.formEditSite.title+site._id
+
+			$http.post('/api/site/' + site._id, $scope.formEditSite)
+				.success (data) ->
+					site.title = data.title
+					site.content = data.content
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
 		$scope.deleteSite = (id) ->
 			if (confirm("Are you sure to delete this site?"))
 				$http.delete('/api/site/' + id)
 					.success (data) ->
 						$scope.sites = data
+						for i in [0..$scope.sites.length-1] by 1
+							$scope.isCollapsedEdit[i] = true
+							$scope.isCollapsedShow[i] = true
 						console.log(data)
 						return
 					.error (data) ->
@@ -172,7 +214,34 @@ angular.module('myApp.controllers', []).
 						return
 			return
 
-		
+		$scope.sortableOptions = {
+			stop: (e, ui) ->
+				for i in [0..$scope.sites.length-1] by 1
+					$scope.sitesOrder[i]=$scope.sites[i]._id
+					#console.log $scope.sites[i] 
+					#$scope.sites[i].place = i
+					#console.log $scope.sites[i].place
+				console.log $scope.sitesOrder
+				
+
+			}
+
+		$scope.saveOrder = () ->
+			$http.post('/api/sites/order', $scope.sitesOrder)
+			
+			$http.get('/api/sites')
+				.success (data) ->
+					$scope.sites = data
+					for i in [0..$scope.sites.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+						$scope.isCollapsedShow[i] = true
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return					
+			return
+	
 		return
 	] 
 	.controller 'AdminControllerCategories', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
@@ -188,7 +257,6 @@ angular.module('myApp.controllers', []).
 				for i in [0..$scope.categories.length-1] by 1
 					$scope.isCollapsedEdit[i] = true
 					$scope.isCollapsedShow[i] = true
-				#console.log $scope.isCollapsedEdit
 				console.log(data)
 				return
 			.error (data) ->

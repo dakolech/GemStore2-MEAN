@@ -103,8 +103,17 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
   '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.formSite = {};
     $scope.isCollapsedAdd = true;
+    $scope.formEditSite = {};
+    $scope.isCollapsedEdit = [];
+    $scope.isCollapsedShow = [];
+    $scope.sitesOrder = [];
     $http.get('/api/sites').success(function(data) {
+      var i, _i, _ref;
       $scope.sites = data;
+      for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+        $scope.isCollapsedEdit[i] = true;
+        $scope.isCollapsedShow[i] = true;
+      }
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
@@ -112,22 +121,79 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.addSite = function() {
       console.log($scope.formSite.title);
       $http.post('/api/site', $scope.formSite).success(function(data) {
+        var i, _i, _ref;
         $scope.sites = data;
+        for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+          $scope.isCollapsedShow[i] = true;
+        }
         console.log(data);
       }).error(function(data) {
         console.log('Error: ' + data);
       });
       $scope.formReview = {};
     };
+    $scope.startEditSite = function(title, index) {
+      console.log(title);
+      $http.get('/api/site/' + title).success(function(data) {
+        var i, _i, _ref;
+        $scope.formEditSite = data;
+        for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+        }
+        $scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index];
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
+    $scope.editSite = function(site) {
+      console.log($scope.formEditSite.title + site._id);
+      $http.post('/api/site/' + site._id, $scope.formEditSite).success(function(data) {
+        site.title = data.title;
+        site.content = data.content;
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
     $scope.deleteSite = function(id) {
       if (confirm("Are you sure to delete this site?")) {
         $http["delete"]('/api/site/' + id).success(function(data) {
+          var i, _i, _ref;
           $scope.sites = data;
+          for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+            $scope.isCollapsedEdit[i] = true;
+            $scope.isCollapsedShow[i] = true;
+          }
           console.log(data);
         }).error(function(data) {
           console.log('Error: ' + data);
         });
       }
+    };
+    $scope.sortableOptions = {
+      stop: function(e, ui) {
+        var i, _i, _ref;
+        for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.sitesOrder[i] = $scope.sites[i]._id;
+        }
+        return console.log($scope.sitesOrder);
+      }
+    };
+    $scope.saveOrder = function() {
+      $http.post('/api/sites/order', $scope.sitesOrder);
+      $http.get('/api/sites').success(function(data) {
+        var i, _i, _ref;
+        $scope.sites = data;
+        for (i = _i = 0, _ref = $scope.sites.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+          $scope.isCollapsedShow[i] = true;
+        }
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
     };
   }
 ]).controller('AdminControllerCategories', [

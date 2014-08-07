@@ -1,5 +1,5 @@
-div(ng-controller='AdminControllerSites')
-	div(class="col-sm-8 col-sm-offset-2 text-center")
+div(ng-controller='AdminControllerSites', class="row")
+	div(class="col-sm-8 col-sm-offset-3 text-center", style='width:600px')
 		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-show="isCollapsedAdd") Open new Site form
 		button(class="btn btn-default", ng-click="isCollapsedAdd = !isCollapsedAdd", ng-hide="isCollapsedAdd") Hide new Site form
 		div(class="form-group", collapse="isCollapsedAdd")
@@ -11,9 +11,32 @@ div(ng-controller='AdminControllerSites')
 				button(type="submit", class="btn btn-primary btn-lg", ng-click="addSite()") Add
 
 		<br>
-		ul(class="list-group", style='width:600px', class="pull-center")
-			li(class="list-group-item", ng-repeat="site in sites")
+		ul(class="list-group", style='width:600px', class="pull-center", ui-sortable="sortableOptions", ng-model="sites")
+			li(class="list-group-item text-left", ng-repeat="site in sites")
 				{{site.title}}
-				a(href class="pull-right", ng-click="deleteSite(site._id)") x <br>
+				.pull-right
+					a(href ng-click="isCollapsedShow[$index] = false", ng-show="isCollapsedShow[$index]") Show preview  
+					a(href ng-click="isCollapsedShow[$index] = true", ng-hide="isCollapsedShow[$index]") Hide preview 
+					a(href ng-click="startEditSite(site.title, $index)", ng-show="isCollapsedEdit[$index]") Edit 
+					a(href ng-click="isCollapsedEdit[$index] = true", ng-hide="isCollapsedEdit[$index]") Close (Edit) 
+					a(href ng-click="deleteSite(site._id)") Delete 
+
+				div(class="form-group", collapse="isCollapsedEdit[$index]") 
+					form 
+						input(type="text", class="form-control input-lg text-center", ng-model="formEditSite.title")
+						div
+							div(text-angular="text-angular", ng-model="formEditSite.content", ta-disabled='disabled')
+						button(type="submit", ng-click="editSite(site)") Edit
+						button(type="submit", ng-click="isCollapsedEdit[$index] = true") Close
+
+				div(style='width:500px', collapse="isCollapsedShow[$index]", ng-bind-html="site.content")
+			button(ng-click="saveOrder()") Save order
+
+
+		//ul(ui-sortable="sortableOptions", ng-model="sites")
+		//	li(ng-repeat="site in sites", class="item"){{site.title}}
+
+		//div(ng-repeat="site in sites") {{site.title}}
+
 
 	

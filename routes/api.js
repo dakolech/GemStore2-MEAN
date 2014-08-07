@@ -296,7 +296,9 @@ exports.deleteImage = function(req, res) {
 };
 
 exports.sites = function(req, res) {
-  return Site.find(function(err, sites) {
+  return Site.find({}).sort({
+    place: 1
+  }).execFind(function(err, sites) {
     if (err) {
       res.send(err);
     }
@@ -311,21 +313,48 @@ exports.addSite = function(req, res) {
     content: req.body.content
   }, function(err, product) {
     if (err) {
+      return res.send(err);
+    }
+  });
+  Site.find({}).sort({
+    place: 1
+  }).execFind(function(err, sites) {
+    if (err) {
       res.send(err);
     }
-    Site.find(function(err, sites) {
-      if (err) {
-        res.send(err);
-      }
-      res.json(sites);
-    });
+    res.json(sites);
   });
+  return;
 };
 
 exports.site = function(req, res) {
-  return Site.findOne({
+  Site.findOne({
     'title': req.params.title
   }, function(err, site) {
+    if (err) {
+      res.send(err);
+    }
+    return res.json(site);
+  });
+};
+
+exports.editSite = function(req, res) {
+  console.log("Edit Site: " + req.params.id);
+  Site.update({
+    _id: req.params.id
+  }, {
+    title: req.body.title,
+    content: req.body.content
+  }, {
+    multi: false
+  }, function(err, site) {
+    if (err) {
+      res.send(err);
+    }
+  });
+  Site.find({}).sort({
+    place: 1
+  }).execFind(function(err, sites) {
     if (err) {
       res.send(err);
     }
@@ -340,11 +369,39 @@ exports.deleteSite = function(req, res) {
     if (err) {
       res.send(err);
     }
-    Site.find(function(err, sites) {
+    Site.find({}).sort({
+      place: 1
+    }).execFind(function(err, sites) {
       if (err) {
         res.send(err);
       }
       res.json(sites);
     });
+  });
+};
+
+exports.orderSite = function(req, res) {
+  var i, _i, _ref;
+  console.log("Edit order Site: " + req.body);
+  for (i = _i = 0, _ref = req.body.length - 1; _i <= _ref; i = _i += 1) {
+    Site.update({
+      _id: req.body[i]
+    }, {
+      place: i
+    }, {
+      multi: false
+    }, function(err, site) {
+      if (err) {
+        res.send(err);
+      }
+    });
+  }
+  Site.find({}).sort({
+    place: 1
+  }).execFind(function(err, sites) {
+    if (err) {
+      res.send(err);
+    }
+    return res.json(sites);
   });
 };

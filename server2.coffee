@@ -83,7 +83,9 @@ app.delete('/api/productImage/:id/:name', api.deleteImage);
 app.get('/api/sites', api.sites);
 app.get('/api/site/:title', api.site);
 app.post('/api/site', api.addSite);
+app.post('/api/site/:id', api.editSite);
 app.delete('/api/site/:id', api.deleteSite);
+app.post('/api/sites/order', api.orderSite);
 
 
 

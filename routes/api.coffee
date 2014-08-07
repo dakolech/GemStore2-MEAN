@@ -241,11 +241,11 @@ exports.deleteImage = (req, res) ->
 
 
 exports.sites = (req, res) ->
-  Site.find((err, sites) ->
+  Site.find({}).sort({place: 1}).execFind (err, sites) ->
         res.send(err) if (err)
 
         res.json(sites)
-      );
+
 
 exports.addSite = (req, res) ->
   console.log('Category created: '+req.body.title+' id: '+req.body.id)
@@ -257,7 +257,7 @@ exports.addSite = (req, res) ->
       res.send(err);
 
     # get and return all the products after you create another
-    Site.find (err, sites) ->
+   Site.find({}).sort({place: 1}).execFind (err, sites) ->
       if (err)
         res.send(err)
       res.json(sites);
@@ -271,6 +271,25 @@ exports.site = (req, res) ->
     
         res.json(site);
       );
+  return
+
+exports.editSite = (req, res) ->
+  console.log "Edit Site: " + req.params.id
+  Site.update {
+      _id : req.params.id
+      }, {
+      title   : req.body.title,
+      content : req.body.content
+    }, { multi: false }, (err, site) ->
+      if (err)
+        res.send(err);
+      return
+
+  Site.find({}).sort({place: 1}).execFind (err, sites) ->
+        res.send(err) if (err)        
+
+        res.json(site);
+  return
 
 exports.deleteSite = (req, res) ->
   Site.remove {
@@ -280,9 +299,27 @@ exports.deleteSite = (req, res) ->
       
 
     # get and return all the products after you create another
-    Site.find (err, sites) ->
+    Site.find({}).sort({place: 1}).execFind (err, sites) ->
       res.send(err) if (err)            
       res.json(sites)
       return
     return
+  return
+
+exports.orderSite = (req, res) ->
+  console.log "Edit order Site: " + req.body
+
+  for i in [0..req.body.length-1] by 1
+    Site.update {
+        _id : req.body[i]
+        }, {
+        place   : i
+      }, { multi: false }, (err, site) ->
+        if (err)
+          res.send(err);
+        return
+
+  Site.find({}).sort({place: 1}).execFind (err, sites) ->
+    res.send(err) if (err)
+    res.json(sites)
   return
