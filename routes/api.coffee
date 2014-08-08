@@ -285,10 +285,11 @@ exports.editSite = (req, res) ->
         res.send(err);
       return
 
-  Site.find({}).sort({place: 1}).execFind (err, sites) ->
-        res.send(err) if (err)        
+  Site.findOne({ '_id': req.params.id }, (err, site) ->
+    res.send(err) if (err)
 
-        res.json(site);
+    res.json(site);
+  );
   return
 
 exports.deleteSite = (req, res) ->

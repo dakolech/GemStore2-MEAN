@@ -1,8 +1,12 @@
 div(ng-controller='StoreControllerOne')
 	.categories
-		a(href='products/show') All products > 
-		a(href='products/show/{{product.category}}') {{product.category}} > 
-		a(href='product/show/{{product._id}}') {{product.name}}
+		a(href='products/show') All products 
+		span > 
+		a(href='products/show/{{product.category}}') 
+			span(ng-bind="product.category") 
+		span  > 
+		a(href='product/show/{{product._id}}') 
+			span(ng-bind="product.name")
 	ul(class="list-group", style='width:600px', class="pull-center")
 		h3(product-title)
 		section(product-gallery, ng-controller="GalleryController")

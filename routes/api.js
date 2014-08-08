@@ -352,9 +352,9 @@ exports.editSite = function(req, res) {
       res.send(err);
     }
   });
-  Site.find({}).sort({
-    place: 1
-  }).execFind(function(err, sites) {
+  Site.findOne({
+    '_id': req.params.id
+  }, function(err, site) {
     if (err) {
       res.send(err);
     }

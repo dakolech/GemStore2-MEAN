@@ -286,8 +286,15 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.formImage = {};
     $scope.formEdit = {};
     $scope.isCollapsedAdd = true;
+    $scope.isCollapsedEdit = [];
+    $scope.isCollapsedShow = [];
     $http.get('/api/products').success(function(data) {
+      var i, _i, _ref;
       $scope.products = data;
+      for (i = _i = 0, _ref = $scope.products.length - 1; _i <= _ref; i = _i += 1) {
+        $scope.isCollapsedEdit[i] = true;
+        $scope.isCollapsedShow[i] = true;
+      }
       console.log(data);
     }).error(function(data) {
       console.log('Error: ' + data);
@@ -298,7 +305,7 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     }).error(function(data) {
       console.log('Error: ' + data);
     });
-    $scope.getCategories = function() {
+    $scope.refreshCategories = function() {
       return $http.get('/api/categories').success(function(data) {
         $scope.categories = data;
         console.log(data);
@@ -309,8 +316,13 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.addProduct = function() {
       console.log($scope.formData.category);
       $http.post('/api/product', $scope.formData).success(function(data) {
+        var i, _i, _ref;
         $scope.formData = {};
         $scope.products = data;
+        for (i = _i = 0, _ref = $scope.products.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+          $scope.isCollapsedShow[i] = true;
+        }
         console.log(data);
       }).error(function(data) {
         console.log('Error: ' + data);
@@ -319,18 +331,28 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
     $scope.deleteProduct = function(id) {
       if (confirm("Are you sure to delete this product?")) {
         $http["delete"]('/api/product/' + id).success(function(data) {
+          var i, _i, _ref;
           $scope.products = data;
+          for (i = _i = 0, _ref = $scope.products.length - 1; _i <= _ref; i = _i += 1) {
+            $scope.isCollapsedEdit[i] = true;
+            $scope.isCollapsedShow[i] = true;
+          }
           console.log(data);
         }).error(function(data) {
           console.log('Error: ' + data);
         });
       }
     };
-    $scope.startEditProduct = function(id) {
+    $scope.startEditProduct = function(id, index) {
       console.log(id);
       $scope.editing = true;
       $http.get('/api/product/' + id).success(function(data) {
+        var i, _i, _ref;
         $scope.formEdit = data;
+        for (i = _i = 0, _ref = $scope.products.length - 1; _i <= _ref; i = _i += 1) {
+          $scope.isCollapsedEdit[i] = true;
+        }
+        $scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index];
         console.log(data);
       }).error(function(data) {
         console.log('Error: ' + data);

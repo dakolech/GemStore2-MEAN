@@ -9,7 +9,7 @@ ul(class="nav nav-pills")
 
 div(class="panel", ng-show="isSelected(1)")
 	h4 Description
-	p {{product.description}}
+	p(ng-bind="product.description")  
 
 div(class="panel", ng-show="isSelected(2)")
 	h4 Specifications
@@ -18,9 +18,13 @@ div(class="panel", ng-show="isSelected(2)")
 div(class="panel", ng-show="isSelected(3)")
 	h4 Reviews
 	blockquote(ng-repeat="review in product.reviews")
-		b Stars: {{review.stars}} <br>
-		{{review.body}} <br>
-		cite by: {{review.author}}
+		b Stars: 
+			span(ng-bind="review.stars")  
+		<br>
+		span(ng-bind="review.body") 
+		<br>
+		cite by: 
+			span(ng-bind="review.author")
 		
 	form(name="reviewForm", ng-submit="reviewForm.$valid && addReview(product._id, product)", novalidate)
 		blockquote
@@ -39,6 +43,8 @@ div(class="panel", ng-show="isSelected(3)")
 		label by:
 		input(ng-model="formReview.author", type="email", required)
 		<br>
-		div reviewForm is {{reviewForm.$valid}} 
+		div reviewForm is 
+			span(ng-bind="reviewForm.$valid") 
+			//{{reviewForm.$valid}} 
 		input(type="submit", value="Submit")
 

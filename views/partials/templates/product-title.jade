@@ -1,3 +1,5 @@
-a(href='product/show/{{product._id}}/{{product.name}}') {{product.name}}
+a(href='product/show/{{product._id}}/{{product.name}}') 
+	span(ng-bind="product.name")
 em(class="pull-right")
-	{{product.price | currency}}
+	span(ng-bind="product.price | currency")
+	

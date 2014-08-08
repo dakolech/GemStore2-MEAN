@@ -1,4 +1,4 @@
 div(ng-controller='SiteController')
-	{{site.title}} 
+	span(ng-bind="site.title") 
 	div(ng-bind-html="site.content")
 	

@@ -343,10 +343,15 @@ angular.module('myApp.controllers', []).
 		$scope.formImage = {}
 		$scope.formEdit = {}
 		$scope.isCollapsedAdd = true
+		$scope.isCollapsedEdit = []
+		$scope.isCollapsedShow = []
 
 		$http.get('/api/products')
 			.success (data) ->
 				$scope.products = data
+				for i in [0..$scope.products.length-1] by 1
+					$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedShow[i] = true
 				console.log(data)
 				return
 			.error (data) ->
@@ -362,7 +367,7 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return	
 
-		$scope.getCategories = ->
+		$scope.refreshCategories = () ->
 			$http.get('/api/categories')
 				.success (data) ->
 					$scope.categories = data
@@ -378,6 +383,9 @@ angular.module('myApp.controllers', []).
 				.success (data) ->
 					$scope.formData = {}  #clear the form so our user is ready to enter another 
 					$scope.products = data
+					for i in [0..$scope.products.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+						$scope.isCollapsedShow[i] = true
 					console.log(data)
 					return
 				.error (data) ->
@@ -390,6 +398,9 @@ angular.module('myApp.controllers', []).
 				$http.delete('/api/product/' + id)
 					.success (data) ->
 						$scope.products = data
+						for i in [0..$scope.products.length-1] by 1
+							$scope.isCollapsedEdit[i] = true
+							$scope.isCollapsedShow[i] = true
 						console.log(data)
 						return
 					.error (data) ->
@@ -397,12 +408,15 @@ angular.module('myApp.controllers', []).
 						return
 			return
 
-		$scope.startEditProduct = (id) ->
+		$scope.startEditProduct = (id, index) ->
 			console.log id
 			$scope.editing = true
 			$http.get('/api/product/' + id)
 		        .success (data) ->
 					$scope.formEdit = data
+					for i in [0..$scope.products.length-1] by 1
+						$scope.isCollapsedEdit[i] = true
+					$scope.isCollapsedEdit[index] = !$scope.isCollapsedEdit[index]
 					console.log(data)
 					return
 				.error (data) ->
