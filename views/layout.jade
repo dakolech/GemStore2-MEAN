@@ -1,9 +1,10 @@
 !!!
-html(ng-app="myApp")
+html(ng-app="myApp",ng-controller='AppCtrl')
 	head
 		meta(charset='utf8')
 		base(href='/')
-		title GemStore
+		title(ng-bind="Page.title()+Page.title2()") Loading...
+		//title {{Page.title()}}
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/style.css')
 		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')

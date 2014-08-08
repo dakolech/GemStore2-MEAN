@@ -3,7 +3,10 @@
 # Controllers 
 
 angular.module('myApp.controllers', []).
-	controller('AppCtrl',  ($scope, $http) ->
+	controller('AppCtrl',  ($scope, $http, Page) ->
+
+		$scope.Page = Page;
+
 		$http.get('/api/categories')
 			.success (data) ->
 				$scope.categories = data
@@ -32,10 +35,12 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	]	
-	.controller 'SiteController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'SiteController', ['$scope', '$http', '$routeParams', 'Page' , ($scope, $http, $routeParams, Page) ->
 		$http.get('/api/site/' + $routeParams.title)
 	        .success (data) ->
 				$scope.site = data
+				Page.setTitle($scope.site.title)
+				Page.setTitle2(' - Gemstore.com')
 				console.log $scope.site
 				console.log(data.added)
 				return
