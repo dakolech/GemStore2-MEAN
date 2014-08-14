@@ -11,6 +11,10 @@ angular.module('myApp.directives', []).
 	.directive 'productTitle', ->
 		restrict: 'A'
 		templateUrl: 'partials/templates/product-title'
+		
+	.directive 'adminSettings', ->
+		restrict: 'A'
+		templateUrl: 'partials/admin/settings'
 
 	.directive 'adminSites', ->
 		restrict: 'A'

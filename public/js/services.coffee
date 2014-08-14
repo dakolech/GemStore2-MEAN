@@ -17,8 +17,37 @@ angular.module('myApp.services', []).
      setTitle2: (newTitle) ->  title2 = newTitle  
    }
 )
-	#.factory('ProductService', [ '$resource', ($resource) ->
-	  #  return $resource('/product/:id', {
-	  #      id : '@_id'
-	  #      });
-		# ]);
+.factory('Categories', ($http) ->
+  myService = {
+    async: ->
+      if !promise  
+        # $http returns a promise, which has a then function, which also returns a promise
+        promise = $http.get('/api/categories').then( (response) ->
+          # The then function here is an opportunity to modify the response
+          console.log(response);
+          # The return value gets picked up by the then in the controller.
+          return response.data;
+        );
+
+      # Return the promise to the controller
+      return promise;
+  };
+  return myService;
+)
+.factory('Settings', ($http) ->
+  myService = {
+    async: ->
+      if !promise  
+        # $http returns a promise, which has a then function, which also returns a promise
+        promise = $http.get('/api/settings').then( (response) ->
+          # The then function here is an opportunity to modify the response
+          console.log(response);
+          # The return value gets picked up by the then in the controller.
+          return response.data;
+        );
+
+      # Return the promise to the controller
+      return promise;
+  };
+  return myService;
+);

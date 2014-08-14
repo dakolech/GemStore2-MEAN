@@ -1,6 +1,7 @@
-Product = require('../models/product')
-Category = require('../models/category')
-Site = require('../models/site')
+Product   = require('../models/product')
+Category  = require('../models/category')
+Site      = require('../models/site')
+Settings  = require('../models/settings')
 fs = require('fs')
 im = require('imagemagick')
 im.identify.path = '../identify.exe'
@@ -323,4 +324,56 @@ exports.orderSite = (req, res) ->
   Site.find({}).sort({place: 1}).execFind (err, sites) ->
     res.send(err) if (err)
     res.json(sites)
+  return
+
+
+exports.settings = (req, res) ->
+  Settings.findOne({ '_id': '53ecbac2c7462a781f000002'}, (err, settings) ->
+    res.send(err) if (err)
+
+    res.json(settings)
+  );
+
+  return
+
+exports.editSettings = (req, res) ->
+  console.log "Edit settings"
+  Settings.update {
+      '_id' : '53ecbac2c7462a781f000002'
+      }, {
+      'title'       : req.body.title,
+      'footer'      : req.body.footer,
+      'indexTitle'  : req.body.indexTitle,
+      'productsTitle' : req.body.productsTitle,
+      'description' : req.body.description
+    }, { multi: false }, (err, settings) ->
+      if (err)
+        res.send(err);
+      return
+
+  Settings.findOne({ '_id': '53ecbac2c7462a781f000002' }, (err, settings) ->
+    res.send(err) if (err)
+
+    res.json(settings);
+  );
+  return
+
+exports.addSettings = (req, res) ->
+  console.log 'Settings created'
+  Settings.create {
+    title         : req.body.title,
+    footer        : req.body.footer,
+    indexTitle    : req.body.indexTitle,
+    productsTitle : req.body.productsTitle,
+    description   : req.body.description
+  }, (err, product) ->
+    if (err)
+      res.send(err);
+
+   Settings.find({}).execFind (err, settings) ->
+      if (err)
+        res.send(err)
+      res.json(settings);
+      return
+    return
   return

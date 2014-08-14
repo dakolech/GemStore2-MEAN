@@ -1,0 +1,24 @@
+div(ng-controller='AdminControllerSettings', class="row")
+	div(class="col-sm-8 col-sm-offset-2 text-center")
+
+		div(class="form-group", collapse="isCollapsedAdd")
+			form
+				ul(class="list-group", style='width:600px', class="pull-center", ui-sortable="sortableOptions", ng-model="sites")
+					li(class="list-group-item text-left")
+						h3(class="pull-left") Title
+						input(type="text", class="form-control input-lg text-center", ng-model="formSettings.title")
+					li(class="list-group-item text-left")
+						h3(class="pull-left") Footer
+						input(type="text", class="form-control input-lg text-center", ng-model="formSettings.footer")
+					li(class="list-group-item text-left")
+						h3(class="pull-left") Index Title
+						input(type="text", class="form-control input-lg text-center", ng-model="formSettings.indexTitle")
+					li(class="list-group-item text-left")
+						h3(class="pull-left") Products Title
+						input(type="text", class="form-control input-lg text-center", ng-model="formSettings.productsTitle")
+					li(class="list-group-item text-left")
+						h3(class="pull-left") Description
+						input(type="text", class="form-control input-lg text-center", ng-model="formSettings.description")
+				button(type="submit", class="btn btn-primary btn-lg", ng-click="editSettings()") Edit
+
+

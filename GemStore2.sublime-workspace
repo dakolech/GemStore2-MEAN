@@ -220,7 +220,7 @@
 			"file": "public/js/controllers.coffee",
 			"settings":
 			{
-				"buffer_size": 14065,
+				"buffer_size": 14217,
 				"line_ending": "Windows"
 			}
 		},
@@ -244,8 +244,16 @@
 			"file": "public/js/services.coffee",
 			"settings":
 			{
-				"buffer_size": 542,
+				"buffer_size": 962,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/services.js",
+			"settings":
+			{
+				"buffer_size": 822,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -361,7 +369,7 @@
 	"groups":
 	[
 		{
-			"selected": 23,
+			"selected": 26,
 			"sheets":
 			[
 				{
@@ -756,7 +764,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -987,15 +996,15 @@
 					"file": "public/js/controllers.coffee",
 					"settings":
 					{
-						"buffer_size": 14065,
+						"buffer_size": 14217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1572,
-								1572
+								472,
+								406
 							]
 						],
 						"settings":
@@ -1004,7 +1013,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 971.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1067,20 +1076,50 @@
 					"file": "public/js/services.coffee",
 					"settings":
 					{
-						"buffer_size": 542,
+						"buffer_size": 962,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								214
+								431,
+								431
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "public/js/services.js",
+					"settings":
+					{
+						"buffer_size": 822,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								435,
+								435
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

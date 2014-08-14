@@ -18,4 +18,34 @@ angular.module('myApp.services', []).value('version', '0.2').factory('Page', fun
       return title2 = newTitle;
     }
   };
+}).factory('Categories', function($http) {
+  var myService;
+  myService = {
+    async: function() {
+      var promise;
+      if (!promise) {
+        promise = $http.get('/api/categories').then(function(response) {
+          console.log(response);
+          return response.data;
+        });
+      }
+      return promise;
+    }
+  };
+  return myService;
+}).factory('Settings', function($http) {
+  var myService;
+  myService = {
+    async: function() {
+      var promise;
+      if (!promise) {
+        promise = $http.get('/api/settings').then(function(response) {
+          console.log(response);
+          return response.data;
+        });
+      }
+      return promise;
+    }
+  };
+  return myService;
 });

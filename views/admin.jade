@@ -5,17 +5,21 @@ block body
 		.topMenu			
 			ul(class="nav nav-pills")
 				li(ng-class="{ active:isSelected(1) }") 
-					a(href ng-click="selectTab(1)") Sites 
+					a(href ng-click="selectTab(1)") Global Settings 
 				li(ng-class="{ active:isSelected(2) }")
-					a(href ng-click="selectTab(2)") Categories
+					a(href ng-click="selectTab(2)") Sites
 				li(ng-class="{ active:isSelected(3) }") 
-					a(href ng-click="selectTab(3)") Products 
+					a(href ng-click="selectTab(3)") Categories 
+				li(ng-class="{ active:isSelected(4) }") 
+					a(href ng-click="selectTab(4)") Products 
 		.view
 			div(class="panel", ng-show="isSelected(1)")
-				section(admin-sites)
+				section(admin-settings)
 			div(class="panel", ng-show="isSelected(2)")
-				section(admin-categories)					
+				section(admin-sites)					
 			div(class="panel", ng-show="isSelected(3)")
+				section(admin-categories)
+			div(class="panel", ng-show="isSelected(4)")
 				section(admin-products)
 
 

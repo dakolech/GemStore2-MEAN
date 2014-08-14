@@ -3,10 +3,11 @@
 # Controllers 
 
 angular.module('myApp.controllers', []).
-	controller('AppCtrl',  ($scope, $http, Page) ->
+	controller('AppCtrl',  ($scope, $http, Page, Categories, Settings) ->
 
 		$scope.Page = Page;
 
+		###
 		$http.get('/api/categories')
 			.success (data) ->
 				$scope.categories = data
@@ -15,6 +16,15 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
+		###
+		Settings.async().then((d)->
+			$scope.settings = d
+			Page.setTitle2(' - '+$scope.settings.title)
+		)
+
+		Categories.async().then((d)->
+			$scope.categories = d
+		)
 
 		$http.get('/api/sites')
 			.success (data) ->
@@ -25,7 +35,13 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	)
-	.controller 'IndexController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'IndexController', ['$scope', '$http', '$routeParams', 'Page', 'Settings', ($scope, $http, $routeParams, Page, Settings) ->
+
+		Settings.async().then((d)->
+			$scope.settings = d
+			Page.setTitle($scope.settings.indexTitle)
+		)
+
 		$http.get('/api/site/index')
 	        .success (data) ->
 				$scope.site = data
@@ -35,12 +51,11 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	]	
-	.controller 'SiteController', ['$scope', '$http', '$routeParams', 'Page' , ($scope, $http, $routeParams, Page) ->
+	.controller 'SiteController', ['$scope', '$http', '$routeParams', 'Page', ($scope, $http, $routeParams, Page) ->
 		$http.get('/api/site/' + $routeParams.title)
 	        .success (data) ->
 				$scope.site = data
 				Page.setTitle($scope.site.title)
-				Page.setTitle2(' - Gemstore.com')
 				console.log $scope.site
 				console.log(data.added)
 				return
@@ -48,12 +63,13 @@ angular.module('myApp.controllers', []).
 				console.log('Error: ' + data)
 				return
 	]
-	.controller 'StoreControllerOne', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'StoreControllerOne', ['$scope', '$http', '$routeParams', 'Page', ($scope, $http, $routeParams, Page) ->
 		$scope.formReview = {}
 
 		$http.get('/api/product/' + $routeParams.id)
 	        .success (data) ->
 				$scope.product = data
+				Page.setTitle($scope.product.name)
 				console.log(data)
 				return
 			.error (data) ->
@@ -77,13 +93,14 @@ angular.module('myApp.controllers', []).
 
 		return				
 	]
-	.controller 'StoreControllerCategory', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'StoreControllerCategory', ['$scope', '$http', '$routeParams', 'Page', ($scope, $http, $routeParams, Page) ->
 		$scope.category = $routeParams.category
 		$scope.formReview = {}
 		
 		$http.get('/api/products/' + $routeParams.category)
 	        .success (data) ->
 				$scope.products = data
+				Page.setTitle($routeParams.category)
 				console.log(data)
 				return
 			.error (data) ->
@@ -107,8 +124,13 @@ angular.module('myApp.controllers', []).
 
 		return	
 	]
-	.controller 'ProductsController', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
+	.controller 'ProductsController', ['$scope', '$http', '$routeParams', 'Page', 'Settings', ($scope, $http, $routeParams, Page, Settings) ->
 		$scope.formReview = {}
+
+		Settings.async().then((d)->
+			$scope.settings = d
+			Page.setTitle($scope.settings.productsTitle)
+		)
 				
 		$http.get('/api/products')
 			.success (data) ->
@@ -137,6 +159,56 @@ angular.module('myApp.controllers', []).
 
 		
 		return
+	]
+
+	.controller 'AdminControllerSettings', ['$scope', '$http', '$routeParams', 'Page', 'Settings', ($scope, $http, $routeParams, Page, Settings) ->
+		$scope.formSettings = {}
+
+		Settings.async().then((d)->
+			$scope.formSettings = d
+			Page.setTitle('Admin Panel')
+			Page.setTitle2(' - '+$scope.formSettings.title)
+		)	
+
+		###
+		$http.get('/api/settings')
+	        .success (data) ->
+				$scope.formSettings = data
+				console.log $scope.formSettings
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+		###
+		$scope.editSettings = ->
+			console.log $scope.formSettings
+			$http.post('/api/settings', $scope.formSettings)
+				.success (data) ->
+					$scope.formSettings = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
+
+
+		$scope.addSettings = ->
+			$scope.formSettings.title = 'Gemstore.com'
+			$scope.formSettings.footer = 'Footer'
+			$scope.formSettings.indexTitle = 'Main Page'
+			$scope.formSettings.description = 'Description of Gemstore.com'
+			$http.post('/api/asettings', $scope.formSettings)
+				.success (data) ->
+					$scope.settings = data
+					console.log(data)
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			return
+
 	] 
 	.controller 'AdminControllerSites', ['$scope', '$http', '$routeParams', ($scope, $http, $routeParams) ->
 		$scope.formSite = {}

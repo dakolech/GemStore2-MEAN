@@ -107,6 +107,12 @@ app["delete"]('/api/site/:id', api.deleteSite);
 
 app.post('/api/sites/order', api.orderSite);
 
+app.get('/api/settings', api.settings);
+
+app.post('/api/settings', api.editSettings);
+
+app.post('/api/asettings', api.addSettings);
+
 app.get('*', routes.index);
 
 http.createServer(app).listen(app.get('port'), function() {
