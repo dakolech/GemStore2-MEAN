@@ -56,4 +56,17 @@ angular.module('myApp.directives', []).directive('appVersion', function(version)
     },
     controllerAs: "gallery"
   };
+}).directive("scroll", function($window) {
+  return function(scope, element, attrs) {
+    return angular.element($window).bind("scroll", function() {
+      if (this.pageYOffset >= 100) {
+        scope.boolChangeClass = true;
+        console.log('Scrolled below header.');
+      } else {
+        scope.boolChangeClass = false;
+        console.log('Header is in view.');
+      }
+      return scope.$apply();
+    });
+  };
 });

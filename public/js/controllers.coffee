@@ -20,6 +20,7 @@ angular.module('myApp.controllers', []).
 		Settings.async().then((d)->
 			$scope.settings = d
 			Page.setTitle2(' - '+$scope.settings.title)
+			Page.setDescription($scope.settings.description)
 		)
 
 		Categories.async().then((d)->

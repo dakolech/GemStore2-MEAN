@@ -10,11 +10,14 @@ angular.module('myApp.services', []).
 .factory('Page', ->
    title = 'Loading'
    title2 = '...'
+   description = ''
    return {
      title: -> title,
      setTitle: (newTitle) ->  title = newTitle,
      title2: -> title2,
-     setTitle2: (newTitle) ->  title2 = newTitle  
+     setTitle2: (newTitle) ->  title2 = newTitle,
+     description: -> description,
+     setDescription: (newDescription) ->  description = newDescription
    }
 )
 .factory('Categories', ($http) ->

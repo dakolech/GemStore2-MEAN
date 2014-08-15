@@ -51,3 +51,16 @@ angular.module('myApp.directives', []).
 				return
 			return
 		controllerAs: "gallery"
+
+	.directive("scroll", ($window) ->
+		return (scope, element, attrs) ->
+			angular.element($window).bind("scroll", ->
+				if this.pageYOffset >= 100
+					scope.boolChangeClass = true;
+					console.log('Scrolled below header.');
+				else 
+					scope.boolChangeClass = false;
+					console.log('Header is in view.');
+				scope.$apply();
+			)    
+	)

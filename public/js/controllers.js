@@ -15,7 +15,8 @@ angular.module('myApp.controllers', []).controller('AppCtrl', function($scope, $
    */
   Settings.async().then(function(d) {
     $scope.settings = d;
-    return Page.setTitle2(' - ' + $scope.settings.title);
+    Page.setTitle2(' - ' + $scope.settings.title);
+    return Page.setDescription($scope.settings.description);
   });
   Categories.async().then(function(d) {
     return $scope.categories = d;
