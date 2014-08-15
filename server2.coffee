@@ -9,6 +9,7 @@ http = require('http')
 path = require('path')
 mongoose = require('mongoose')
 busboy = require('connect-busboy')
+compressor = require('node-minify')
 
 app = module.exports = express()
 
@@ -100,6 +101,25 @@ app.post('/api/asettings', api.addSettings);
 app.get('*', routes.index);
 
 
+###
+new compressor.minify({
+    type: 'gcc',
+    fileIn: ['public/js/app.js', 'public/js/controllers.js', 'public/js/directives.js', 'public/js/filters.js', 'public/js/services.js'],
+    fileOut: 'public/js-min/app.js',
+    callback: (err, min) ->
+        console.log(err) if err
+        #console.log(min);
+});
+
+new compressor.minify({
+    type: 'yui-css',
+    fileIn: 'public/css/style.css',
+    fileOut: 'public/css-min/style.js',
+    callback: (err, min) ->
+        console.log(err) if err
+        #console.log(min);
+});
+###
 
 http.createServer(app).listen(app.get('port'), -> 
   console.log('Express server listening on port ' + app.get('port'));
