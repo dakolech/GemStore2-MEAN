@@ -14,16 +14,32 @@ $red: #FF0033
   -webkit-transition: background $duration ease-in-out
 
 
+
+@-webkit-keyframes opacityAnimation 
+  from 
+    opacity: .5
+  to 
+    opacity: 1
+
+
+@keyframes opacityAnimation 
+  from 
+    opacity: .5
+  to 
+    opacity: 1
+
+
+
 a:link 
   text-decoration: none
 
 header
   top: 0px
-  height: $logoSize+$menuSize - 5
+  height: $logoSize+$menuSize
   background-color: $blue
   margin-left: auto
   margin-right: auto
-  display: block
+  //display: block
   width: 100%
 
 .logo
@@ -39,23 +55,23 @@ header
   position: fixed
   z-index: 3
   height: $menuSize
-  padding-top: 5px
   background: url("../images/gemstore-logo-small.png")
   background-repeat: no-repeat
   background-position: left
   background-color: $blue
-
-
-
-
+  margin-top: auto
+  -webkit-animation: opacityAnimation 2s
+  animation: opacityAnimation 2s
 
 
 nav
+  height: $menuSize
   ul
     text-align: center
     font-size: 18px
     padding-top: 5px
     padding-bottom: 5px
+    margin-bottom: 0px
     li
       display: inline-block
       background-color: white
@@ -67,9 +83,28 @@ nav
       @include backgroundColorAnimation(.50s)
     li:hover
       background-color: $red
-      color: white 
+      color: white
 
+main
+  padding-top: 5px
+  margin-left: auto
+  margin-right: auto 
+  padding: 20px
+  width: 800px
+  border-color: black
+  border-width: 1px
+  border-top-style: none
+  border-right-style: solid
+  border-bottom-style: none
+  border-left-style: solid
 
+footer
+  width: 100%
+  height: 50px
+  background-color: $blue
+  color: white
+  text-align: center
+  padding: 5px
 
 
 
@@ -101,7 +136,5 @@ nav
 
 
 
-
-
 .viewscroll 
-  top: 151px
+  top: $logoSize+$menuSize + 5

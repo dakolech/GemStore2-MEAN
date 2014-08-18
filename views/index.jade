@@ -6,27 +6,26 @@ block body
       div(scroll ng-class="{hide:boolChangeClass}")
         .logo
       nav(scroll ng-class="{fixed:boolChangeClass}")
-        .logoSmall 
         ul
           a(href='/') 
             li Main Page
           a(href='products/show') 
             li All products
 
-          a(href='products/show/{{category.name}}')
-            li(ng-repeat="category in categories")            
+          a(ng-repeat="category in categories", href='products/show/{{category.name}}')
+            li           
               span(ng-bind="category.name") 
 
-          a(href='/{{site.title}}')
-            li(ng-repeat="site in sites", ng-hide="site.isIndex")
+          a(ng-repeat="site in sites", ng-hide="site.isIndex", href='{{site.title}}')
+            li
               span(ng-bind="site.title")  
               
     main(ng-view scroll ng-class="{viewscroll:boolChangeClass}")
 
 
     footer
-        | Angular seed app: v
-        span(app-version)
+      | Angular seed app: v
+      span(app-version)
 
   script(src='js/lib/jquery-1.11.1.min.js')
   script(src='js/lib/jquery-ui.min.js')
