@@ -59,7 +59,7 @@ angular.module('myApp.directives', []).directive('appVersion', function(version)
 }).directive("scroll", function($window) {
   return function(scope, element, attrs) {
     return angular.element($window).bind("scroll", function() {
-      if (this.pageYOffset >= 100) {
+      if (this.pageYOffset >= 150) {
         scope.boolChangeClass = true;
         console.log('Scrolled below header.');
       } else {

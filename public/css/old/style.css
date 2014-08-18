@@ -1,0 +1,87 @@
+.logo {
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+  background: url('/images/gemstore-logo.png');
+  background-size: auto 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.menu > li {
+  display: inline;
+}
+
+header {
+    /*position:fixed;*/
+    top:0px;
+    height:150px;
+    background-color: white;   
+}
+
+
+/*
+body {
+   border-style: solid;
+  border-width: 5px;
+}
+
+header {
+    /*position:fixed;*/
+    /*top:0px;
+    height:150px;
+    background-color: white;
+    
+}
+
+
+
+main{
+  margin-left:auto;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.ng-invalid.ng-dirty {
+	border-color: ;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}
+
+.ng-invalid.ng-pristine {
+	border-color: ;
+}
+
+
+
+.categories{
+    position:fixed;
+    top:151px;
+    z-index: 2;
+    background-color: white;
+    display:none;
+}
+
+
+
+
+
+.hide {
+  display: none;
+}
+
+.fixed {
+  position:fixed;
+  z-index: 3;
+  background-color: white;
+  width:100%;
+}
+
+.viewscroll {
+  top:151px;
+}
+
+
+*/

@@ -11,6 +11,7 @@ mongoose = require('mongoose')
 busboy = require('connect-busboy')
 compressor = require('node-minify')
 
+
 app = module.exports = express()
 
 mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vymyq');
@@ -120,6 +121,8 @@ new compressor.minify({
         #console.log(min);
 });
 ###
+
+
 
 http.createServer(app).listen(app.get('port'), -> 
   console.log('Express server listening on port ' + app.get('port'));

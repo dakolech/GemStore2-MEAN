@@ -3,8 +3,9 @@ extends layout
 block body
   div(ng-controller='AppCtrl')
     header
-      .logo(scroll ng-class="{hide:boolChangeClass}")
-        h2 GemStore
+      div(scroll ng-class="{hide:boolChangeClass}")
+        .logo
+        //img(src="/images/gemstore-logo.png", class="logo")
       nav(scroll ng-class="{fixed:boolChangeClass}")
         ul.menu
           li

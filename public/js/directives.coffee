@@ -55,7 +55,7 @@ angular.module('myApp.directives', []).
 	.directive("scroll", ($window) ->
 		return (scope, element, attrs) ->
 			angular.element($window).bind("scroll", ->
-				if this.pageYOffset >= 100
+				if this.pageYOffset >= 150
 					scope.boolChangeClass = true;
 					console.log('Scrolled below header.');
 				else 
