@@ -1,20 +1,51 @@
-.logo {
-  height: 150px;
+a:link {
+  text-decoration: none; }
+
+header, .fixed {
+  top: 0px;
+  height: 205px;
+  background-color: #3fa9f5;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  width: 100%; }
+
+.logo {
+  height: 150px;
   background: url("../images/gemstore-logo-normal.png");
   background-size: auto 150px;
   background-repeat: no-repeat;
   background-position: center; }
 
-.menu > li {
-  display: inline; }
+.fixed {
+  position: fixed;
+  z-index: 3;
+  height: 60px;
+  padding-top: 5px;
+  background: url("../images/gemstore-logo-small.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-color: #3fa9f5; }
 
-header {
-  top: 0px;
-  height: 200px;
-  background-color: white; }
+nav ul {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  nav ul li {
+    display: inline-block;
+    background-color: white;
+    list-style-type: none;
+    color: #3fa9f5;
+    border-radius: 5px;
+    text-align: center;
+    padding: 7px;
+    transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -webkit-transition: background-color 0.5s ease-in-out; }
+  nav ul li:hover {
+    background-color: #ff0033;
+    color: white; }
 
 .ng-invalid.ng-dirty {
   border-color: none; }
@@ -34,12 +65,6 @@ header {
 
 .hide {
   display: none; }
-
-.fixed {
-  position: fixed;
-  z-index: 3;
-  background-color: white;
-  width: 100%; }
 
 .viewscroll {
   top: 151px; }

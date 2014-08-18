@@ -1,57 +1,107 @@
 $logoSize: 150px
+$menuSize: 60px
+$blue: #3FA9F5
+$red: #FF0033
 
-.logo
-    height: $logoSize
-    margin-left: auto
-    margin-right: auto
-    display: block
-    background: url("../images/gemstore-logo-normal.png")
-    background-size: auto $logoSize
-    background-repeat: no-repeat
-    background-position: center
+@mixin backgroundColorAnimation($duration)
+  transition: background-color $duration ease-in-out 
+  -moz-transition: background-color $duration ease-in-out
+  -webkit-transition: background-color $duration ease-in-out
 
-.menu > li
-    display: inline
+@mixin backgroundImageAnimation($duration)
+  transition: background $duration ease-in-out 
+  -moz-transition: background $duration ease-in-out
+  -webkit-transition: background $duration ease-in-out
+
+
+a:link 
+  text-decoration: none
 
 header
-    top: 0px
-    height: $logoSize+50
-    background-color: white
+  top: 0px
+  height: $logoSize+$menuSize - 5
+  background-color: $blue
+  margin-left: auto
+  margin-right: auto
+  display: block
+  width: 100%
+
+.logo
+  height: $logoSize
+  background: url("../images/gemstore-logo-normal.png")
+  background-size: auto $logoSize
+  background-repeat: no-repeat
+  background-position: center
+
+.fixed 
+  @extend header
+  //@include backgroundImageAnimation(.50s)  
+  position: fixed
+  z-index: 3
+  height: $menuSize
+  padding-top: 5px
+  background: url("../images/gemstore-logo-small.png")
+  background-repeat: no-repeat
+  background-position: left
+  background-color: $blue
+
+
+
+
+
+
+nav
+  ul
+    text-align: center
+    font-size: 18px
+    padding-top: 5px
+    padding-bottom: 5px
+    li
+      display: inline-block
+      background-color: white
+      list-style-type: none
+      color: $blue
+      border-radius: 5px
+      text-align: center
+      padding: 7px
+      @include backgroundColorAnimation(.50s)
+    li:hover
+      background-color: $red
+      color: white 
+
+
+
 
 
 
 .ng-invalid.ng-dirty 
-    border-color: none
+  border-color: none
 
 
 .ng-valid.ng-dirty 
-    border-color: #78FA89
+  border-color: #78FA89
 
 
 .ng-invalid.ng-pristine 
-    border-color: none
+  border-color: none
 
- 
+
 
 
 .categories
-    position: fixed
-    top: 151px
-    z-index: 2
-    background-color: white
-    display: none
+  position: fixed
+  top: 151px
+  z-index: 2
+  background-color: white
+  display: none
 
 
 .hide 
-    display: none
+  display: none
 
 
-.fixed 
-    position: fixed
-    z-index: 3
-    background-color: white
-    width: 100%
+
 
 
 .viewscroll 
-    top: 151px
+  top: 151px
