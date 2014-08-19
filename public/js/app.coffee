@@ -6,7 +6,8 @@ angular.module('myApp', [
   'myApp.directives',
   'textAngular',
   'ui.bootstrap',
-  'ui.sortable'
+  'ui.sortable',
+  'angular-loading-bar'
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.

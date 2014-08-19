@@ -1,0 +1,1 @@
+sass --watch public\sass\style.sass:public\css\style.css --style compressed 
