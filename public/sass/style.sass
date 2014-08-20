@@ -33,6 +33,11 @@ body
   margin: 0
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 
+a
+  color: $blue
+a:hover
+  color: $red
+
 a:link 
   text-decoration: none
 
@@ -91,7 +96,7 @@ nav
 
 main
   margin-left: auto
-  margin-right: auto 
+  margin-right: auto
   width: $siteWidth
 
 .siteClass
@@ -110,6 +115,8 @@ ul.manyProducts
   position: relative
   display: block
   margin: 0 
+  margin-top: 5px
+  margin-bottom: 5px 
   padding: 0
   width: $siteWidth
   li
@@ -124,10 +131,6 @@ ul.manyProducts
       .name
         float: left
         font-size: 20px
-        a
-          color: $blue
-        a:hover
-          color: $red
       .price
         float: right
         font-size: 20px
@@ -156,12 +159,13 @@ ul.manyProducts
           display: none
           z-index: 2
           position: fixed
-          top: 100px
+          top: 150px
           img          
             border-style: solid
             border-width: 1px
             border-color: #ddd
             height: 300px 
+            margin-left: 0
           a
             display: inline-block
             img
@@ -175,6 +179,8 @@ ul.manyProducts
       .description
         p
           text-align: justify
+          a
+            font-style: italic
 
   li:nth-child(even)
     section
@@ -186,6 +192,11 @@ ul.manyProducts
         float: left
   li:last-child
     border-bottom-style: solid
+    section
+      .image
+        .preview
+          top: auto
+          bottom: 150px
 
 
 

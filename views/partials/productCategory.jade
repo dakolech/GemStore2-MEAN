@@ -5,11 +5,12 @@ div(ng-controller='StoreControllerCategory')
 		a(href='products/show/{{category}}')
 			span(ng-bind="category") 
 
-	ul(class="list-group", style='width:600px', class="pull-center")
-		li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
-			h3(product-title)
-			section(product-gallery, ng-controller="GalleryController")
-			section(product-panels, ng-controller="PanelController")
+	ul(class="manyProducts")
+		li(ng-repeat="product in products | orderBy:'price'")
+			section(products-many)
+			//h3(product-title)
+			//section(product-gallery, ng-controller="GalleryController")
+			//section(product-panels, ng-controller="PanelController")
 
 
 

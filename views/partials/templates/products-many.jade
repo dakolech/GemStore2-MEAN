@@ -14,6 +14,7 @@ em(class="image")
 		a(href ng-click="setCurrent($index)", ng-repeat="image in product.images") 
 			img(ng-src="./images/{{image}}")
 em(class="description")
+	<br>
 	span(ng-bind="product.description | limitTo:500") 
 	span(ng-if="product.description.length > 500") ...
 		a(href='product/show/{{product._id}}/{{product.name}}')  read more
