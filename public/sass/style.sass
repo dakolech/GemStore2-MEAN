@@ -2,6 +2,7 @@ $logoSize: 150px
 $menuSize: 60px
 $blue: #3FA9F5
 $red: #FF0033
+$siteWidth: 800px
 
 @mixin backgroundColorAnimation($duration)
   transition: background-color $duration ease-in-out 
@@ -28,7 +29,9 @@ $red: #FF0033
   to 
     opacity: 1
 
-
+body
+  margin: 0
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 
 a:link 
   text-decoration: none
@@ -71,13 +74,14 @@ nav
     font-size: 18px
     padding-top: 5px
     padding-bottom: 5px
+    padding-left: 0px
     margin-bottom: 0px
     li
       display: inline-block
       background-color: white
       list-style-type: none
       color: $blue
-      border-radius: 5px
+      //border-radius: 5px
       text-align: center
       padding: 7px
       @include backgroundColorAnimation(.50s)
@@ -86,17 +90,104 @@ nav
       color: white
 
 main
-  padding-top: 5px
   margin-left: auto
   margin-right: auto 
+  width: $siteWidth
+
+.siteClass
+  padding-top: 5px
   padding: 20px
   width: 800px 
-  border-color: black
+  border-color: #ddd
   border-width: 1px
   border-top-style: none
   border-right-style: solid
   border-bottom-style: none
   border-left-style: solid
+
+ul.manyProducts
+  list-style-type: none
+  position: relative
+  display: block
+  margin: 0 
+  padding: 0
+  width: $siteWidth
+  li
+    border-color: #ddd
+    border-width: 1px
+    border-style: solid
+    border-bottom-style: none
+    width:  $siteWidth
+    section
+      padding: 20px
+      min-height: 250px
+      .name
+        float: left
+        font-size: 20px
+        a
+          color: $blue
+        a:hover
+          color: $red
+      .price
+        float: right
+        font-size: 20px
+        padding: 5px
+        padding-left: 10px
+        padding-right: 10px
+        background-color: $blue
+        border-radius: 5px
+        color: white
+      .image
+        //float: left
+        margin: 10px
+        margin-top: 5px
+        .container
+          height: 150px
+          width: 150px
+          overflow: hidden
+          position: relative
+          border-style: solid
+          border-width: 1px
+          border-color: #ddd
+        img
+          height: inherit
+          margin-left: -15%
+        .preview
+          display: none
+          z-index: 2
+          position: fixed
+          top: 100px
+          img          
+            border-style: solid
+            border-width: 1px
+            border-color: #ddd
+            height: 300px 
+          a
+            display: inline-block
+            img
+              height: 100px
+              width: 100px       
+      .image:hover
+        .preview
+          display: block 
+          -webkit-animation: opacityAnimation 1s
+          animation: opacityAnimation 1s           
+      .description
+        p
+          text-align: justify
+
+  li:nth-child(even)
+    section
+      .image
+        float: right
+  li:nth-child(odd)
+    section
+      .image
+        float: left
+  li:last-child
+    border-bottom-style: solid
+
+
 
 footer
   width: 100%
@@ -138,3 +229,129 @@ footer
 
 .viewscroll 
   top: $logoSize+$menuSize + 5
+
+
+
+
+
+////////////////LOADING BAR//////////////////////
+#loading-bar,
+#loading-bar-spinner 
+  pointer-events: none
+  -webkit-pointer-events: none
+  -webkit-transition: 350ms linear all
+  -moz-transition: 350ms linear all
+  -o-transition: 350ms linear all
+  transition: 350ms linear all
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active 
+  opacity: 0
+
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave 
+  opacity: 1
+
+
+#loading-bar .bar 
+  -webkit-transition: width 350ms
+  -moz-transition: width 350ms
+  -o-transition: width 350ms
+  transition: width 350ms
+
+  background: $red
+  position: fixed
+  z-index: 10002
+  top: 0
+  left: 0
+  width: 100%
+  height: 2px
+  border-bottom-right-radius: 1px
+  border-top-right-radius: 1px
+
+
+/* Fancy blur effect */ 
+#loading-bar .peg 
+  position: absolute
+  width: 70px
+  right: 0
+  top: 0
+  height: 2px
+  opacity: .45
+  -moz-box-shadow: #29d 1px 0 6px 1px
+  -ms-box-shadow: #29d 1px 0 6px 1px
+  -webkit-box-shadow: #29d 1px 0 6px 1px
+  box-shadow: #29d 1px 0 6px 1px
+  -moz-border-radius: 100%
+  -webkit-border-radius: 100%
+  border-radius: 100%
+
+
+#loading-bar-spinner 
+  display: block
+  position: fixed
+  z-index: 10002
+  top: 10px
+  left: 10px
+
+
+#loading-bar-spinner .spinner-icon 
+  width: 14px
+  height: 14px
+
+  border:  solid 2px transparent
+  border-top-color:  $red
+  border-left-color: $red
+  border-radius: 10px
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite
+  -moz-animation:    loading-bar-spinner 400ms linear infinite
+  -ms-animation:     loading-bar-spinner 400ms linear infinite
+  -o-animation:      loading-bar-spinner 400ms linear infinite
+  animation:         loading-bar-spinner 400ms linear infinite
+
+@-webkit-keyframes loading-bar-spinner 
+  0%   
+    -webkit-transform: rotate(0deg)   
+    transform: rotate(0deg)
+  100% 
+    -webkit-transform: rotate(360deg) 
+    transform: rotate(360deg)
+
+@-moz-keyframes loading-bar-spinner 
+  0%   
+    -moz-transform: rotate(0deg)
+    transform: rotate(0deg)
+  100% 
+    -moz-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+@-o-keyframes loading-bar-spinner 
+  0%   
+    -o-transform: rotate(0deg)
+    transform: rotate(0deg)
+  100% 
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+@-ms-keyframes loading-bar-spinner 
+  0%   
+    -ms-transform: rotate(0deg)
+    transform: rotate(0deg)
+  100% 
+    -ms-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+@keyframes loading-bar-spinner 
+  0%   
+    transform: rotate(0deg)
+    transform: rotate(0deg)
+  100% 
+    transform: rotate(360deg)
+    transform: rotate(360deg)
+

@@ -1,0 +1,19 @@
+p
+	em(class="name")
+		a(href='product/show/{{product._id}}/{{product.name}}') 
+			span(ng-bind="product.name")
+	em(class="price")
+		span(ng-bind="product.price | currency")
+<br><br>
+em(class="image")
+	.container
+		img(ng-src="./images/{{product.images[current]}}")
+	.preview
+		img(ng-src="./images/{{product.images[current]}}")
+		<br>
+		a(href ng-click="setCurrent($index)", ng-repeat="image in product.images") 
+			img(ng-src="./images/{{image}}")
+em(class="description")
+	span(ng-bind="product.description | limitTo:500") 
+	span(ng-if="product.description.length > 500") ...
+		a(href='product/show/{{product._id}}/{{product.name}}')  read more

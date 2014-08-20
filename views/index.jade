@@ -8,9 +8,13 @@ block body
       nav(scroll ng-class="{fixed:boolChangeClass}")
         ul
           a(href='/') 
-            li Main Page
+            li 
+              span(ng-bind="settings.indexTitle") 
+              //Main Page
           a(href='products/show') 
-            li All products
+            li 
+              span(ng-bind="settings.productsTitle")
+                //All products
 
           a(ng-repeat="category in categories", href='products/show/{{category.name}}')
             li           

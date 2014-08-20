@@ -5,10 +5,9 @@ html(ng-app="myApp",ng-controller='AppCtrl')
 		base(href='/')
 		title(ng-bind="Page.title()+Page.title2()") Loading...
 		meta(name="description", content="Page.description()")
-		//title {{Page.title()}}
+		link(rel="shortcut icon", href="/images/gemstore-icon4-favicon.ico")
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/style.css')
-		link(rel='stylesheet', href='/css/loading-bar.css')
-		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/css/font-awesome.min.css')
 	body
 		block body

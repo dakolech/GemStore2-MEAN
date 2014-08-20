@@ -11,6 +11,17 @@ angular.module('myApp.directives', []).
 	.directive 'productTitle', ->
 		restrict: 'A'
 		templateUrl: 'partials/templates/product-title'
+
+	.directive 'productsMany', ->
+		restrict: 'A'
+		templateUrl: 'partials/templates/products-many'
+		controller:  ($scope) ->
+			$scope.current = 0;
+			$scope.setCurrent = (imageNumber) ->
+				$scope.current = imageNumber || 0
+				return
+			return
+		controllerAs: 'products'
 		
 	.directive 'adminSettings', ->
 		restrict: 'A'

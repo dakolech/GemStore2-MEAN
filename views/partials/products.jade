@@ -1,11 +1,12 @@
 div(ng-controller='ProductsController')
 	.categories
 		a(href='products/show') All products 
-	ul(class="list-group", style='width:600px', class="pull-center")
-		li(class="list-group-item", ng-repeat="product in products | orderBy:'price'")
-			h3(product-title)
-			section(product-gallery, ng-controller="GalleryController")
-			section(product-panels, ng-controller="PanelController")	
+	ul(style='width:600px', class="manyProducts")
+		li(ng-repeat="product in products | orderBy:'price'")
+			section(products-many)
+			//h3(product-title)
+			//section(product-gallery, ng-controller="GalleryController")
+			//section(product-panels, ng-controller="PanelController")	
 
 
 

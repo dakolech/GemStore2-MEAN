@@ -9,6 +9,18 @@ angular.module('myApp.directives', []).directive('appVersion', function(version)
     restrict: 'A',
     templateUrl: 'partials/templates/product-title'
   };
+}).directive('productsMany', function() {
+  return {
+    restrict: 'A',
+    templateUrl: 'partials/templates/products-many',
+    controller: function($scope) {
+      $scope.current = 0;
+      $scope.setCurrent = function(imageNumber) {
+        $scope.current = imageNumber || 0;
+      };
+    },
+    controllerAs: 'products'
+  };
 }).directive('adminSettings', function() {
   return {
     restrict: 'A',
