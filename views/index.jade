@@ -8,21 +8,24 @@ block body
       nav(scroll ng-class="{fixed:boolChangeClass}")
         ul
           a(href='/') 
-            li 
-              span(ng-bind="settings.indexTitle") 
-              //Main Page
+            li
+              .menuButton 
+                span(ng-bind="settings.indexTitle") 
           a(href='products/show') 
-            li 
-              span(ng-bind="settings.productsTitle")
-                //All products
+            li
+              .menuButton 
+                span(ng-bind="settings.productsTitle")
 
-          a(ng-repeat="category in categories", href='products/show/{{category.name}}')
-            li           
-              span(ng-bind="category.name") 
+              ul
+                a(ng-repeat="category in categories", href='products/show/{{category.name}}')
+                  li 
+                    .menuButton           
+                      span(ng-bind="category.name") 
 
           a(ng-repeat="site in sites", ng-hide="site.isIndex", href='{{site.title}}')
             li
-              span(ng-bind="site.title")  
+              .menuButton
+                span(ng-bind="site.title")  
               
     main(ng-view scroll ng-class="{viewscroll:boolChangeClass}")
 

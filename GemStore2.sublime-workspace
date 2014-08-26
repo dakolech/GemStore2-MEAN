@@ -103,7 +103,7 @@
 			"file": "routes/index.coffee",
 			"settings":
 			{
-				"buffer_size": 477,
+				"buffer_size": 469,
 				"line_ending": "Windows"
 			}
 		},
@@ -151,7 +151,7 @@
 			"file": "views/layout.jade",
 			"settings":
 			{
-				"buffer_size": 461,
+				"buffer_size": 533,
 				"line_ending": "Unix"
 			}
 		},
@@ -159,15 +159,23 @@
 			"file": "views/index.jade",
 			"settings":
 			{
-				"buffer_size": 1632,
+				"buffer_size": 1709,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/sass/style.sass",
+			"settings":
+			{
+				"buffer_size": 7894,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "public/css/style.css",
 			"settings":
 			{
-				"buffer_size": 4492,
+				"buffer_size": 6093,
 				"line_ending": "Windows"
 			}
 		},
@@ -207,7 +215,7 @@
 			"file": "views/partials/site.jade",
 			"settings":
 			{
-				"buffer_size": 119,
+				"buffer_size": 117,
 				"line_ending": "Windows"
 			}
 		},
@@ -215,17 +223,9 @@
 			"file": "views/partials/main.jade",
 			"settings":
 			{
-				"buffer_size": 70,
+				"buffer_size": 89,
 				"line_ending": "Windows",
 				"name": "Main Page"
-			}
-		},
-		{
-			"file": "public/sass/style.sass",
-			"settings":
-			{
-				"buffer_size": 7304,
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -397,6 +397,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Daniel/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Daniel/AppData/Roaming/Mozilla/Firefox/Profiles/ju21cdzk.default/cookies.sqlite",
 		"/D/SitesWWW/GemStore2-MEAN/public/sass/style.sass",
 		"/D/SitesWWW/GemStore2-MEAN/views/partials/templates/product-title.jade",
@@ -478,7 +479,7 @@
 	"groups":
 	[
 		{
-			"selected": 17,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -542,15 +543,15 @@
 					"file": "routes/index.coffee",
 					"settings":
 					{
-						"buffer_size": 477,
+						"buffer_size": 469,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								465,
-								465
+								0,
+								0
 							]
 						],
 						"settings":
@@ -702,15 +703,15 @@
 					"file": "views/layout.jade",
 					"settings":
 					{
-						"buffer_size": 461,
+						"buffer_size": 533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								282,
-								282
+								533,
+								533
 							]
 						],
 						"settings":
@@ -729,15 +730,15 @@
 					"file": "views/index.jade",
 					"settings":
 					{
-						"buffer_size": 1632,
+						"buffer_size": 1709,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								416,
-								416
+								803,
+								803
 							]
 						],
 						"settings":
@@ -754,18 +755,46 @@
 				},
 				{
 					"buffer": 10,
-					"file": "public/css/style.css",
+					"file": "public/sass/style.sass",
 					"settings":
 					{
-						"buffer_size": 4492,
+						"buffer_size": 7894,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								46,
-								46
+								2350,
+								2350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "public/css/style.css",
+					"settings":
+					{
+						"buffer_size": 6093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -781,7 +810,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "public/js/lib/angular/loading-bar.js",
 					"settings":
 					{
@@ -809,7 +838,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "views/partials/templates/product-gallery.jade",
 					"settings":
 					{
@@ -835,7 +864,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "views/partials/templates/product-panels.jade",
 					"settings":
 					{
@@ -862,7 +891,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "views/partials/product.jade",
 					"settings":
 					{
@@ -889,50 +918,23 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "views/partials/site.jade",
 					"settings":
 					{
-						"buffer_size": 119,
+						"buffer_size": 117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								43,
-								52
+								34,
+								53
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "views/partials/main.jade",
-					"settings":
-					{
-						"buffer_size": 70,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								36,
-								36
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Main Page",
 							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -943,28 +945,27 @@
 				},
 				{
 					"buffer": 17,
-					"file": "public/sass/style.sass",
+					"file": "views/partials/main.jade",
 					"settings":
 					{
-						"buffer_size": 7304,
+						"buffer_size": 89,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3100,
-								3100
+								54,
+								54
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"auto_name": "Main Page",
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2736.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -987,7 +988,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1234,7 +1236,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11316.0,
+						"translation.y": 6129.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1376,7 +1378,7 @@
 		"width": 0.0
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 150.0,

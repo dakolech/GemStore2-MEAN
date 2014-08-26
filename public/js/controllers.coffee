@@ -619,6 +619,19 @@ angular.module('myApp.controllers', []).
 	.controller('GalleryController',  ($scope, $http) ->
 		$scope.current = 0
 
+		$scope.marginValue = 0
+		$scope.marginLeft = '0px'
+
+		$scope.left = ->
+			$scope.marginValue += 104
+			$scope.marginLeft = $scope.marginValue + 'px'
+			return
+
+		$scope.right = ->
+			$scope.marginValue -= 104
+			$scope.marginLeft = $scope.marginValue + 'px'
+			return
+
 		$scope.setCurrent = (imageNumber) ->
 			$scope.current = imageNumber || 0
 			console.log("asd");

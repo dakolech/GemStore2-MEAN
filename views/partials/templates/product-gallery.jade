@@ -1,7 +1,15 @@
-div(ng-show="product.images.length")
+div(ng-show="product.images.length", class="gallery")
 	div(class="img-wrap")
 		img(ng-src="./images/{{product.images[current]}}", height="400px", width="500px")
-	ul(class="img-thumbnails clearfix")
-		li(class="small-image pull-left thumbnail", ng-repeat="image in product.images")
-			a(href ng-click="setCurrent($index)")
-				img(ng-src="./images/{{image}}", height="100px", width="100px")
+	.galleryAll
+		span(class="button disabled fa fa-angle-left fa-5x", style="vertical-align: middle;", ng-show="marginValue==0")
+		span(class="button fa fa-angle-left fa-5x", style="vertical-align: middle;", ng-click="left()", ng-hide="marginValue==0")
+		.gallerSlide
+			ul(ng-style="{'margin-left': marginLeft}")
+				li(ng-repeat="image in product.images")
+					a(href ng-click="setCurrent($index)")
+						img(ng-src="./images/{{image}}")
+		span(class="button disabled fa fa-angle-right fa-5x", ng-show="marginValue==-product.images.length*104+312")
+		span(class="button fa fa-angle-right fa-5x", ng-click="right()", ng-hide="marginValue==-product.images.length*104+312")
+
+
