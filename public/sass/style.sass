@@ -27,6 +27,11 @@ $siteWidth: 800px
   -ms-user-select: none
   user-select: none
 
+@mixin border
+  border-style: solid
+  border-width: 1px
+  border-color: #ddd
+
 
 
 @-webkit-keyframes opacityAnimation 
@@ -41,6 +46,23 @@ $siteWidth: 800px
     opacity: .5
   to 
     opacity: 1
+
+@keyframes opacityAnimation2 
+  from 
+    opacity: 0
+  to 
+    opacity: 1
+
+@-webkit-keyframes opacityAnimatio 
+  from 
+    opacity: 0
+  to 
+    opacity: 1
+
+
+.ng-enter
+  -webkit-animation: opacityAnimatio 2s
+  animation: opacityAnimatio 2s
 
 body
   margin: 0
@@ -112,9 +134,7 @@ nav
       background-color: white
       list-style-type: none
       color: $blue
-      border-style: solid
-      border-color: #ddd
-      border-width: 1px
+      @include border
       text-align: center
       padding: 0//7px
       //float: center
@@ -156,9 +176,7 @@ main
     //padding-top: 5px
     padding: 10px
     margin: 5px
-    border-color: #ddd
-    border-width: 1px
-    border-style: solid
+    @include border
     text-align: justify
 
 
@@ -177,9 +195,7 @@ ul.manyProducts
   padding: 0
   width: $siteWidth
   li
-    border-color: #ddd
-    border-width: 1px
-    border-style: solid
+    @include border
     border-bottom-style: none
     width:  $siteWidth
     section
@@ -206,9 +222,7 @@ ul.manyProducts
           width: 150px
           overflow: hidden
           position: relative
-          border-style: solid
-          border-width: 1px
-          border-color: #ddd
+          @include border
         img
           height: inherit
           margin-left: -15%
@@ -223,9 +237,7 @@ ul.manyProducts
             float: none
             position: relative
             display: block         
-            border-style: solid
-            border-width: 1px
-            border-color: #ddd
+            @include border
             height: 300px 
             margin-left: 0
           a
@@ -263,18 +275,24 @@ ul.manyProducts
           bottom: 150px
 
 .gallery
+  margin: 5px
+  //width: 100%
   .galleryAll
+    margin: 5px auto 5px auto
+    height: 122px
+    //width: 100%
     .button
       cursor: pointer
       height: 122px
-      background-color: $red
+      color: black
       width: 50px
       text-align: center
       padding-top: 20px
+      @include border
       @include noSelecting
       float: left
     .disabled
-      background-color: #ddd
+      color: #ddd
     .gallerSlide
       float: left
       height: 122px
@@ -282,9 +300,7 @@ ul.manyProducts
       padding: 0
       margin: 0 5px 0 5px
       overflow: hidden
-      border-style: solid
-      border-width: 1px
-      border-color: #ddd
+      @include border
       ul  
         width: 99999px  
         padding: 10px 
@@ -296,9 +312,7 @@ ul.manyProducts
             img
               height: 100px
               width: 100px
-              border-style: solid
-              border-width: 1px
-              border-color: #ddd
+              @include border
 
           
 

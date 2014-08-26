@@ -7,7 +7,8 @@ angular.module('myApp', [
   'textAngular',
   'ui.bootstrap',
   'ui.sortable',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'ngAnimate'
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.

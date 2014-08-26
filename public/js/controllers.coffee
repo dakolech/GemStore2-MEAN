@@ -3,7 +3,7 @@
 # Controllers 
 
 angular.module('myApp.controllers', []).
-	controller('AppCtrl',  ($scope, $http, Page, Categories, Settings) ->
+	controller 'AppCtrl',  ['$scope', '$http', 'Page', 'Categories', 'Settings', ($scope, $http, Page, Categories, Settings) ->
 
 		$scope.Page = Page;
 
@@ -35,7 +35,7 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
-	)
+	] 
 	.controller 'IndexController', ['$scope', '$http', '$routeParams', 'Page', 'Settings', ($scope, $http, $routeParams, Page, Settings) ->
 
 		Settings.async().then((d)->
@@ -616,7 +616,7 @@ angular.module('myApp.controllers', []).
 		return
 	]
 	  
-	.controller('GalleryController',  ($scope, $http) ->
+	.controller 'GalleryController', ['$scope', '$http', ($scope, $http) ->
 		$scope.current = 0
 
 		$scope.marginValue = 0
@@ -637,5 +637,5 @@ angular.module('myApp.controllers', []).
 			console.log("asd");
 			return
 		return
-	)
+	]
 
