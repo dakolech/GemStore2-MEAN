@@ -632,6 +632,14 @@ angular.module('myApp.controllers', []).
 			$scope.marginLeft = $scope.marginValue + 'px'
 			return
 
+		$scope.leftOne = ->
+			$scope.current--
+			return
+
+		$scope.rightOne = ->
+			$scope.current++
+			return
+
 		$scope.setCurrent = (imageNumber) ->
 			$scope.current = imageNumber || 0
 			console.log("asd");

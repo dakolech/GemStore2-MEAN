@@ -10,7 +10,7 @@ em(class="image")
 		img(ng-src="./images/{{product.images[current]}}")
 	.preview
 		img(ng-src="./images/{{product.images[current]}}")
-		a(href ng-click="setCurrent($index)", ng-repeat="image in product.images") 
+		a(href ng-click="setCurrent($index)", ng-repeat="image in product.images | limitTo: 3") 
 			img(ng-src="./images/{{image}}")
 em(class="description")
 	<br>

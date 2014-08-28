@@ -47,11 +47,6 @@ $siteWidth: 800px
   to 
     opacity: 1
 
-@keyframes opacityAnimation2 
-  from 
-    opacity: 0
-  to 
-    opacity: 1
 
 @-webkit-keyframes opacityAnimatio 
   from 
@@ -60,7 +55,7 @@ $siteWidth: 800px
     opacity: 1
 
 
-.ng-enter
+main.ng-enter
   -webkit-animation: opacityAnimatio 2s
   animation: opacityAnimatio 2s
 
@@ -75,11 +70,6 @@ a:hover
 
 a:link 
   text-decoration: none
-
-.left
-  float: left      
-.right
-  float: right
 
 header
   top: 0px
@@ -274,45 +264,119 @@ ul.manyProducts
           top: auto
           bottom: 150px
 
+$galleryHeight: 350px
+$galleryWidth: 400px
+$galleryBar: 75px
+
 .gallery
   margin: 5px
-  //width: 100%
-  .galleryAll
-    margin: 5px auto 5px auto
-    height: 122px
-    //width: 100%
-    .button
-      cursor: pointer
-      height: 122px
+  width: $galleryWidth
+  height: $galleryHeight
+  background-color: $red
+  .left
+    left: 0      
+  .right
+    right: 0
+  .button
+    cursor: pointer
+    height: $galleryBar
+    z-index: 2
+    position: absolute
+    text-align: center
+    background-color: rgba(0,0,0,0.15)
+    @include noSelecting
+    span
+      margin-top: $galleryBar/5.35
       color: black
-      width: 50px
+      opacity: .75
+  .button:hover
+    background-color: rgba(0,0,0,0.35)
+
+  .imageDiv
+    position: relative
+    height: $galleryHeight - $galleryBar
+    width: $galleryWidth
+    .one
+      height: $galleryHeight - $galleryBar
+      width: 30px
+      display: none
+      span
+        margin-top: ($galleryHeight - $galleryBar)*0.4
+        color: black
+        opacity: .75
+    .zoom
+      display: none
+      cursor: pointer
+      height: ($galleryHeight - $galleryBar)*0.25
+      width: $galleryWidth*0.18
+      z-index: 2
+      position: absolute
       text-align: center
-      padding-top: 20px
-      @include border
-      @include noSelecting
+      background-color: rgba(0,0,0,0.15)
+      left: $galleryWidth*0.4
+      top: ($galleryHeight - $galleryBar)*0.4
+      border-radius: 5px
+      span
+        opacity: .25
+        padding-top: 5px
+    .zoom:hover
+      background-color: rgba(0,0,0,0.35)
+      span
+        opacity: .75
+
+    .one:hover
+      background-color: rgba(0,0,0,0.35)
+
+    img
+      display: block
+      margin: auto
+
+      max-height: $galleryHeight - $galleryBar
+      max-width: $galleryWidth
+  .imageDiv:hover
+    .zoom
+      display: block
+    .one
+      display: block
+
+  .galleryBar
+    height: $galleryBar
+    width: $galleryWidth
+    position: relative
+    .many
+      display: none
+      height: $galleryBar
+      width: 20px
+      span
+        margin-top: $galleryBar*0.2
+        color: black
+        opacity: .75
+    .gallerMin
       float: left
-    .disabled
-      color: #ddd
-    .gallerSlide
-      float: left
-      height: 122px
-      width: 400px
+      height: $galleryBar
+      width: $galleryWidth
+      z-index: 1
       padding: 0
-      margin: 0 5px 0 5px
       overflow: hidden
-      @include border
       ul  
         width: 99999px  
-        padding: 10px 
+        padding: 0px
         @include marginLeftAnimation(.25s)
         li
-          padding: 2px
           display: inline
           a
             img
-              height: 100px
+              height: $galleryBar 
               width: 100px
-              @include border
+              border: none
+              overflow: hidden
+            img:hover
+              outline: 1px solid #ddd
+              outline-offset: -1px
+  .galleryBar:hover
+    .many
+      display: block
+
 
           
 

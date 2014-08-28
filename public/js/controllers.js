@@ -535,6 +535,12 @@ angular.module('myApp.controllers', []).controller('AppCtrl', [
       $scope.marginValue -= 104;
       $scope.marginLeft = $scope.marginValue + 'px';
     };
+    $scope.leftOne = function() {
+      $scope.current--;
+    };
+    $scope.rightOne = function() {
+      $scope.current++;
+    };
     $scope.setCurrent = function(imageNumber) {
       $scope.current = imageNumber || 0;
       console.log("asd");
