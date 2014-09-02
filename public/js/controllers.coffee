@@ -619,30 +619,68 @@ angular.module('myApp.controllers', []).
 	.controller 'GalleryController', ['$scope', '$http', ($scope, $http) ->
 		$scope.current = 0
 
+		$scope.marginValueMin = 0
+		$scope.marginLeftMin = '0px'
 		$scope.marginValue = 0
 		$scope.marginLeft = '0px'
+		$scope.fullGallery = false
+		$scope.marginValueBig = 0
+		$scope.marginLeftBig = '0%'
+		$scope.marginLeftBigBar = '45%'
+		$scope.marginValueBigBar = 0
+		$scope.marginLeftBigBarPercentage = '45%'
 
 		$scope.left = ->
-			$scope.marginValue += 104
-			$scope.marginLeft = $scope.marginValue + 'px'
+			$scope.marginValueMin += 104
+			$scope.marginLeftMin = $scope.marginValueMin + 'px'
 			return
 
 		$scope.right = ->
-			$scope.marginValue -= 104
-			$scope.marginLeft = $scope.marginValue + 'px'
+			$scope.marginValueMin -= 104
+			$scope.marginLeftMin = $scope.marginValueMin + 'px'
 			return
 
 		$scope.leftOne = ->
-			$scope.current--
+			$scope.marginValue += 400
+			$scope.marginLeft = $scope.marginValue + 'px'
+			#$scope.current--
 			return
 
 		$scope.rightOne = ->
-			$scope.current++
+			$scope.marginValue -= 400
+			$scope.marginLeft = $scope.marginValue + 'px'
+			#$scope.current++
+			return
+
+		$scope.leftOneBig = ->
+			$scope.marginValueBig += 100
+			$scope.marginLeftBig = $scope.marginValueBig + '%'
+			$scope.marginValueBigBar -= 100
+			$scope.marginLeftBigBar = $scope.marginValueBigBar + 'px'
+			#$scope.current--
+			return
+
+		$scope.rightOneBig = ->
+			$scope.marginValueBig -= 100
+			$scope.marginLeftBig = $scope.marginValueBig + '%'
+			$scope.marginValueBigBar += 100
+			$scope.marginLeftBigBar = '-webkit-calc('+$scope.marginLeftBigBarPercentage+'-'+$scope.marginValueBigBar + 'px);'
+			console.log $scope.marginLeftBigBar
+			#$scope.current++
+			return
+
+		$scope.setCurrentBig = (imageNumber) ->
+			#$scope.current = imageNumber || 0
+			$scope.marginValueBig = -imageNumber*100
+			$scope.marginLeftBig = $scope.marginValueBig + '%'
+			$scope.marginValueBigBar = imageNumber*100
+			$scope.marginLeftBigBar = $scope.marginValueBigBar + 'px'
 			return
 
 		$scope.setCurrent = (imageNumber) ->
-			$scope.current = imageNumber || 0
-			console.log("asd");
+			#$scope.current = imageNumber || 0
+			$scope.marginValue = -imageNumber*400
+			$scope.marginLeft = $scope.marginValue + 'px'
 			return
 		return
 	]

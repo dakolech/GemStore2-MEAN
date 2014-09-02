@@ -32,6 +32,10 @@ $siteWidth: 800px
   border-width: 1px
   border-color: #ddd
 
+@mixin outline
+  outline: 1px solid #ddd
+  outline-offset: -1px
+
 
 
 @-webkit-keyframes opacityAnimation 
@@ -264,15 +268,19 @@ ul.manyProducts
           top: auto
           bottom: 150px
 
-$galleryHeight: 350px
+$galleryHeight: 355px
 $galleryWidth: 400px
 $galleryBar: 75px
 
 .gallery
+  @include noSelecting
   margin: 5px
-  width: $galleryWidth
-  height: $galleryHeight
-  background-color: $red
+  width: $galleryWidth+10
+  height: $galleryHeight+15
+  padding: 5px
+  //outline: 1px solid #000
+  //outline-offset: 0px
+  background-color: #ddd
   .left
     left: 0      
   .right
@@ -286,13 +294,15 @@ $galleryBar: 75px
     background-color: rgba(0,0,0,0.15)
     @include noSelecting
     span
-      margin-top: $galleryBar/5.35
-      color: black
+      color: #666
       opacity: .75
   .button:hover
-    background-color: rgba(0,0,0,0.35)
+    background-color: rgba(0,0,0,0.45)
+    span
+      color: #ddd
 
   .imageDiv
+    margin-bottom: 5px
     position: relative
     height: $galleryHeight - $galleryBar
     width: $galleryWidth
@@ -302,7 +312,6 @@ $galleryBar: 75px
       display: none
       span
         margin-top: ($galleryHeight - $galleryBar)*0.4
-        color: black
         opacity: .75
     .zoom
       display: none
@@ -317,39 +326,74 @@ $galleryBar: 75px
       top: ($galleryHeight - $galleryBar)*0.4
       border-radius: 5px
       span
-        opacity: .25
+        color: #666
+        opacity: .35
         padding-top: 5px
     .zoom:hover
-      background-color: rgba(0,0,0,0.35)
+      background-color: rgba(0,0,0,0.45)
       span
         opacity: .75
+        color: #ddd
 
     .one:hover
       background-color: rgba(0,0,0,0.35)
 
-    img
-      display: block
-      margin: auto
+    //img
+      //display: block
+      //margin: auto
 
-      max-height: $galleryHeight - $galleryBar
-      max-width: $galleryWidth
+      //max-height: $galleryHeight - $galleryBar
+      //max-width: $galleryWidth
+
+    .imageHelper
+      float: left
+      height: $galleryHeight - $galleryBar
+      width: $galleryWidth
+      z-index: 1
+      padding: 0
+      overflow: hidden
+      ul  
+        height: $galleryHeight - $galleryBar
+        width: 99999px  
+        padding: 0px
+        margin-bottom: 0px
+        @include marginLeftAnimation(.25s)
+        li
+          display: inline-block
+          .imageContainer
+            height: $galleryHeight - $galleryBar
+            width: $galleryWidth
+            margin: 0
+            display: table-cell
+            vertical-align: middle
+            img
+              display: block
+              max-height: $galleryHeight - $galleryBar
+              max-width: $galleryWidth
+              border: none
+              overflow: hidden
+              margin: auto
+
   .imageDiv:hover
+    //@include outline
     .zoom
       display: block
     .one
       display: block
 
   .galleryBar
+    //margin-top: 5px
     height: $galleryBar
     width: $galleryWidth
     position: relative
+    //outline: 1px solid #000
+    //outline-offset: 0px
     .many
       display: none
       height: $galleryBar
       width: 20px
       span
         margin-top: $galleryBar*0.2
-        color: black
         opacity: .75
     .gallerMin
       float: left
@@ -361,6 +405,7 @@ $galleryBar: 75px
       ul  
         width: 99999px  
         padding: 0px
+        margin-bottom: 0px
         @include marginLeftAnimation(.25s)
         li
           display: inline
@@ -371,11 +416,120 @@ $galleryBar: 75px
               border: none
               overflow: hidden
             img:hover
-              outline: 1px solid #ddd
-              outline-offset: -1px
+              @include outline
   .galleryBar:hover
+    //@include outline
     .many
       display: block
+
+
+.fullGallery
+  @include noSelecting
+  width: 100%
+  height: 100%
+  position: fixed
+  z-index: 5
+  background-color: rgba(0,0,0,0.50)
+  top: 0
+  left: 0
+  display: relative
+  .left
+    left: 0      
+  .right
+    right: 0
+    left: auto
+  .button
+    cursor: pointer
+    z-index: 8
+    position: absolute
+    text-align: center
+    background-color: rgba(0,0,0,0.25)
+    span
+      color: #aaa
+      opacity: .75
+  .button:hover
+    background-color: rgba(0,0,0,0.55)
+    span
+      color: #ddd
+  .imageDiv
+    //margin-bottom: 1.5%
+    position: relative
+    height: 80%
+    width: 100%
+    .one
+      height: 100%
+      width: 3.5%
+      span
+        margin-top: 300%
+        opacity: .75
+
+    .close
+      z-index: 9
+      span
+        color: #ddd
+        opacity: 1
+
+    .imageHelper
+      float: left
+      height: 100%
+      width: 100%
+      z-index: 6
+      padding: 0
+      overflow: hidden
+      ul  
+        height: 100%
+        width: 10000% 
+        padding: 0
+        margin-bottom: 0
+        @include marginLeftAnimation(.25s)
+        li
+          display: inline-block
+          width: 1%
+          .imageContainer
+            height: 100%
+            width: 100%
+            margin-left: 0.05%
+            //display: table-cell
+            //vertical-align: middle
+            img
+              display: block
+              max-height: 100%
+              max-width: 100%
+              border: none
+              overflow: hidden
+              margin: auto
+
+  .galleryBar
+    height: $galleryBar
+    width: 100%
+    position: fixed
+    margin-top: 1%
+    z-index: 8
+    bottom: 1%
+    .gallerMin
+      float: left
+      min-height: $galleryBar
+      width: 100%
+      padding: 0
+      display: block
+      overflow: hidden
+      margin-left: 10px
+      ul  
+        width: 99999px  
+        padding: 0px
+        margin-bottom: 0px
+        margin-left: 0px
+        @include marginLeftAnimation(.25s)
+        li
+          display: inline
+          a
+            img
+              height: $galleryBar 
+              width: 100px
+              border: none
+              overflow: hidden
+            img:hover
+              @include outline
 
 
           

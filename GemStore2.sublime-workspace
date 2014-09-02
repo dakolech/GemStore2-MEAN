@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
 				"padd",
 				"padding"
 			],
@@ -46,10 +58,6 @@
 			[
 				"back",
 				"background-color"
-			],
-			[
-				"margin",
-				"margin-left"
 			],
 			[
 				"Title",
@@ -171,7 +179,7 @@
 			"file": "public/sass/style.sass",
 			"settings":
 			{
-				"buffer_size": 9425,
+				"buffer_size": 14067,
 				"line_ending": "Windows"
 			}
 		},
@@ -179,7 +187,7 @@
 			"file": "views/partials/templates/product-gallery.jade",
 			"settings":
 			{
-				"buffer_size": 800,
+				"buffer_size": 1953,
 				"line_ending": "Windows"
 			}
 		},
@@ -252,7 +260,7 @@
 			"file": "views/admin.jade",
 			"settings":
 			{
-				"buffer_size": 1646,
+				"buffer_size": 1699,
 				"line_ending": "Windows"
 			}
 		},
@@ -300,7 +308,7 @@
 			"file": "public/js/controllers.coffee",
 			"settings":
 			{
-				"buffer_size": 16279,
+				"buffer_size": 17755,
 				"line_ending": "Windows"
 			}
 		},
@@ -475,7 +483,7 @@
 	"groups":
 	[
 		{
-			"selected": 17,
+			"selected": 26,
 			"sheets":
 			[
 				{
@@ -529,7 +537,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4571.0,
+						"translation.y": 3602.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -733,8 +741,8 @@
 						"selection":
 						[
 							[
-								930,
-								930
+								1288,
+								1234
 							]
 						],
 						"settings":
@@ -744,7 +752,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -754,15 +762,15 @@
 					"file": "public/sass/style.sass",
 					"settings":
 					{
-						"buffer_size": 9425,
+						"buffer_size": 14067,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5451,
-								5451
+								10431,
+								10431
 							]
 						],
 						"settings":
@@ -772,7 +780,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5187.0,
+						"translation.y": 9356.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -782,15 +790,15 @@
 					"file": "views/partials/templates/product-gallery.jade",
 					"settings":
 					{
-						"buffer_size": 800,
+						"buffer_size": 1953,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								125,
-								125
+								1811,
+								1811
 							]
 						],
 						"settings":
@@ -799,7 +807,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1025,15 +1033,15 @@
 					"file": "views/admin.jade",
 					"settings":
 					{
-						"buffer_size": 1646,
+						"buffer_size": 1699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1129,
-								1129
+								1213,
+								1011
 							]
 						],
 						"settings":
@@ -1188,15 +1196,15 @@
 					"file": "public/js/controllers.coffee",
 					"settings":
 					{
-						"buffer_size": 16279,
+						"buffer_size": 17755,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15837,
-								15842
+								17111,
+								17111
 							]
 						],
 						"settings":
@@ -1205,7 +1213,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11343.0,
+						"translation.y": 12315.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1232,7 +1240,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 627.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

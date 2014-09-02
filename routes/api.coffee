@@ -3,9 +3,8 @@ Category  = require('../models/category')
 Site      = require('../models/site')
 Settings  = require('../models/settings')
 fs = require('fs')
-im = require('imagemagick')
-im.identify.path = '../identify.exe'
-im.convert.path = '../convert.exe'
+easyimg = require('easyimage')
+
  
 exports.name =  (req, res) ->
   res.json({
@@ -205,6 +204,34 @@ exports.AddImage = (req, res) ->
       name = filename
       console.log name
       fstream.on('close', ->
+
+        easyimg.resize({
+             src: './public/images/' + filename,
+             dst: './public/images/gallerySize/' + filename,
+             width: 400, 
+             height: 280,
+          }).then(
+          (image) ->
+             console.log('Resized: ' + image.width + ' x ' + image.height);
+          ,
+          (err) ->
+            console.log(err) 
+        );
+
+
+        easyimg.rescrop({
+             src: './public/images/' + filename,
+             dst: './public/images/thumbs/' + filename,
+             width:100, 
+             height:100,
+             gravity: "Center"
+          }).then(
+          (image) ->
+             console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
+          ,
+          (err) ->
+            console.log(err) 
+        );
 
         Product.findByIdAndUpdate req.params.id,
         {$push: {images: filename}},
