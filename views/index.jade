@@ -6,6 +6,7 @@ block body
       div(scroll ng-class="{hide:boolChangeClass}")
         .logo
       nav(scroll ng-class="{fixed:boolChangeClass}")
+        .logoSmall(scroll ng-class="{hide: !boolChangeClass}")
         ul
           a(href='/') 
             li
@@ -19,7 +20,8 @@ block body
               ul
                 a(ng-repeat="category in categories", href='products/show/{{category.name}}')
                   li 
-                    .menuButton           
+                    //.menuButton
+                    .menuButton2           
                       span(ng-bind="category.name") 
 
           a(ng-repeat="site in sites", ng-hide="site.isIndex", href='{{site.title}}')

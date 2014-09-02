@@ -107,8 +107,24 @@
 			"file": "routes/api.coffee",
 			"settings":
 			{
-				"buffer_size": 9246,
+				"buffer_size": 9968,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "routes/api.js",
+			"settings":
+			{
+				"buffer_size": 10100,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/SitesWWW/angular-GemStore/app/routes.js",
+			"settings":
+			{
+				"buffer_size": 6621,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -179,7 +195,7 @@
 			"file": "public/sass/style.sass",
 			"settings":
 			{
-				"buffer_size": 14067,
+				"buffer_size": 14261,
 				"line_ending": "Windows"
 			}
 		},
@@ -187,7 +203,7 @@
 			"file": "views/partials/templates/product-gallery.jade",
 			"settings":
 			{
-				"buffer_size": 1953,
+				"buffer_size": 1933,
 				"line_ending": "Windows"
 			}
 		},
@@ -401,6 +417,9 @@
 	},
 	"file_history":
 	[
+		"/D/SitesWWW/GemStore2-MEAN/package.json",
+		"/D/SitesWWW/angular-GemStore/app.js",
+		"/D/SitesWWW/angular-GemStore/routes/api.js",
 		"/D/SitesWWW/GemStore2-MEAN/public/css/style.css",
 		"/C/Users/Daniel/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Daniel/AppData/Roaming/Mozilla/Firefox/Profiles/ju21cdzk.default/cookies.sqlite",
@@ -430,7 +449,6 @@
 		"/D/SitesWWW/GemStore2-MEAN/README.md",
 		"/D/SitesWWW/HerokuNode/Procfile",
 		"/D/SitesWWW/HerokuNode/web.coffee",
-		"/D/SitesWWW/GemStore2-MEAN/package.json",
 		"/D/SitesWWW/GemStore2-MEAN/Procfile",
 		"/D/SitesWWW/HerokuNode/package.json",
 		"/D/SitesWWW/GemStore2-MEAN/views/layout.jade",
@@ -461,6 +479,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"im.",
 			"z-index",
 			"margin",
 			"Main",
@@ -483,7 +502,7 @@
 	"groups":
 	[
 		{
-			"selected": 26,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -519,15 +538,15 @@
 					"file": "routes/api.coffee",
 					"settings":
 					{
-						"buffer_size": 9246,
+						"buffer_size": 9968,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8465,
-								8465
+								5093,
+								5093
 							]
 						],
 						"settings":
@@ -537,13 +556,69 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3602.0,
+						"translation.y": 3883.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "routes/api.js",
+					"settings":
+					{
+						"buffer_size": 10100,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6244,
+								5091
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4536.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/D/SitesWWW/angular-GemStore/app/routes.js",
+					"settings":
+					{
+						"buffer_size": 6621,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4851,
+								4855
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2557.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "routes/index.coffee",
 					"settings":
 					{
@@ -569,7 +644,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "/D/SitesWWW/angular-GemStore/app/source/routes.coffee",
 					"settings":
 					{
@@ -596,7 +671,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "models/product.js",
 					"settings":
 					{
@@ -623,7 +698,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "models/settings.js",
 					"settings":
 					{
@@ -650,7 +725,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "models/site.js",
 					"settings":
 					{
@@ -676,7 +751,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "models/category.js",
 					"settings":
 					{
@@ -703,7 +778,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "views/layout.jade",
 					"settings":
 					{
@@ -730,7 +805,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "views/index.jade",
 					"settings":
 					{
@@ -758,19 +833,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "public/sass/style.sass",
 					"settings":
 					{
-						"buffer_size": 14067,
+						"buffer_size": 14261,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10431,
-								10431
+								1794,
+								1794
 							]
 						],
 						"settings":
@@ -780,25 +855,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9356.0,
+						"translation.y": 1311.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "views/partials/templates/product-gallery.jade",
 					"settings":
 					{
-						"buffer_size": 1953,
+						"buffer_size": 1933,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1811,
-								1811
+								1912,
+								1912
 							]
 						],
 						"settings":
@@ -807,13 +882,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 14,
 					"file": "public/js/lib/angular/loading-bar.js",
 					"settings":
 					{
@@ -841,7 +916,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 15,
 					"file": "views/partials/templates/product-panels.jade",
 					"settings":
 					{
@@ -868,7 +943,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 16,
 					"file": "views/partials/product.jade",
 					"settings":
 					{
@@ -895,7 +970,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 17,
 					"file": "views/partials/site.jade",
 					"settings":
 					{
@@ -921,7 +996,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 18,
 					"file": "views/partials/main.jade",
 					"settings":
 					{
@@ -948,7 +1023,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 19,
 					"file": "views/partials/templates/products-many.jade",
 					"settings":
 					{
@@ -975,7 +1050,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 20,
 					"file": "views/partials/products.jade",
 					"settings":
 					{
@@ -1002,7 +1077,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 21,
 					"file": "views/partials/productCategory.jade",
 					"settings":
 					{
@@ -1029,7 +1104,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 22,
 					"file": "views/admin.jade",
 					"settings":
 					{
@@ -1056,7 +1131,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 23,
 					"file": "views/partials/admin/products.jade",
 					"settings":
 					{
@@ -1083,7 +1158,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 24,
 					"file": "views/partials/admin/categories.jade",
 					"settings":
 					{
@@ -1110,7 +1185,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 25,
 					"file": "views/partials/admin/sites.jade",
 					"settings":
 					{
@@ -1137,7 +1212,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 26,
 					"file": "views/partials/admin/settings.jade",
 					"settings":
 					{
@@ -1164,7 +1239,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 27,
 					"file": "public/js/app.coffee",
 					"settings":
 					{
@@ -1192,7 +1267,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 28,
 					"file": "public/js/controllers.coffee",
 					"settings":
 					{
@@ -1219,7 +1294,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 29,
 					"file": "public/js/directives.coffee",
 					"settings":
 					{
@@ -1246,7 +1321,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 30,
 					"file": "public/js/filters.coffee",
 					"settings":
 					{
@@ -1272,7 +1347,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 31,
 					"file": "public/js/services.coffee",
 					"settings":
 					{

@@ -4,6 +4,18 @@ $blue: #3FA9F5
 $red: #FF0033
 $siteWidth: 800px
 
+@mixin backgroundColor
+  background: rgb(63,169,245)
+  background: -moz-linear-gradient(-45deg,  rgba(63,169,245,1) 0%, rgba(143,2,34,1) 62%, rgba(143,2,34,1) 62%, rgba(255,0,51,1) 100%)
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(63,169,245,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(100%,rgba(255,0,51,1)))
+  background: -webkit-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  background: -o-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  background: -ms-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  background: linear-gradient(135deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3fa9f5', endColorstr='#ff0033',GradientType=1 )
+
+  
+
 @mixin backgroundColorAnimation($duration)
   transition: background-color $duration ease-in-out 
   -moz-transition: background-color $duration ease-in-out
@@ -78,18 +90,17 @@ a:link
 header
   top: 0px
   height: $logoSize+$menuSize
-  background-color: $blue
+  //background-color: $red
+  @include backgroundColor
   margin-left: auto
   margin-right: auto
-  //display: block
   width: 100%
-
-.logo
-  height: $logoSize
-  background: url("../images/gemstore-logo-normal.png")
-  background-size: auto $logoSize
-  background-repeat: no-repeat
-  background-position: center
+  .logo
+    height: $logoSize
+    background: url("../images/gemstore-logo-white.png")
+    background-size: auto $logoSize - 40px
+    background-repeat: no-repeat
+    background-position: center
 
 .fixed 
   @extend header
@@ -97,13 +108,17 @@ header
   position: fixed
   z-index: 3
   height: $menuSize
-  background: url("../images/gemstore-logo-small.png")
+  @include backgroundColor
+  //background: url("../images/gemstore-logo-white-small.png")
   background-repeat: no-repeat
   background-position: left
-  background-color: $blue
+  //background-color: $blue
+
   margin-top: auto
   -webkit-animation: opacityAnimation 2s
   animation: opacityAnimation 2s
+
+
 
 
 nav
@@ -111,6 +126,17 @@ nav
   width: $siteWidth
   margin-left: auto
   margin-right: auto
+  .logoSmall
+    background: url("../images/gemstore-logo-white-small.png")
+    background-repeat: no-repeat
+    background-position: left
+    height: $menuSize
+    width: 333px
+    position: fixed
+    z-index: 10
+    top: 3px
+    left: 15px
+    //display: none
   ul
     text-align: center
     margin-left: auto
@@ -121,22 +147,29 @@ nav
     padding-left: 0px
     margin-bottom: 0px
     position: relative
-    //display: inline-table
     li
       display: inline-block
-      //float: left
-      background-color: white
+      //background-color: white
       list-style-type: none
-      color: $blue
       @include border
       text-align: center
-      padding: 0//7px
-      //float: center
+      padding: 0
       .menuButton 
         padding: 7px 20px
+        color: white
+        @include backgroundColorAnimation(.50s)
+        //span
+          //margin: 7px 20px
+      .menuButton2
+        padding: 7px 20px
+        background-color: $red
+        color: white
         @include backgroundColorAnimation(.50s)
       .menuButton:hover
         background-color: $red
+        color: white
+      .menuButton2:hover
+        background-color: #8f0222
         color: white
     li:hover > ul
       display: block
