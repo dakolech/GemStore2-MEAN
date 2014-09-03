@@ -66,25 +66,33 @@ $siteWidth: 800px
 
 @-webkit-keyframes mainAnimation 
   from 
-    margin-top: -100%//-200px
+    opacity: 0
   to 
-    margin-top: 0px
+    opacity: 1
 
 @keyframes mainAnimation 
   from 
-    margin-top: -100%//-200px
+    opacity: 0
   to 
-    margin-top: 0px
+    opacity: 1
 
 
 main.ng-enter
   -webkit-animation: mainAnimation 2s
   animation: mainAnimation 2s
 
+html
+  height: 100%
+
 body
   margin: 0
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
   background-color: #ddd
+  @include backgroundColor
+  color: white
+  height: 100%
+  background-repeat: no-repeat
+  background-attachment: fixed
 
 a
   color: $blue
@@ -98,7 +106,7 @@ header
   top: 0px
   height: $logoSize+$menuSize
   //background-color: $red
-  @include backgroundColor
+  //@include backgroundColor
   margin-left: auto
   margin-right: auto
   width: 100%
@@ -122,6 +130,9 @@ nav.fixed
   background-repeat: no-repeat
   background-position: left
   //background-color: $blue
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(50, 50, 50, 0.75)
+  -moz-box-shadow:    0px 4px 10px 0px rgba(50, 50, 50, 0.75)
+  box-shadow:         0px 4px 10px 0px rgba(50, 50, 50, 0.75)
 
   margin-top: auto
   -webkit-animation: opacityAnimation 2s
@@ -607,7 +618,7 @@ $galleryBar: 75px
 footer
   width: 100%
   height: 50px
-  background-color: $blue
+  //background-color: $blue
   color: white
   text-align: center
   padding: 5px
