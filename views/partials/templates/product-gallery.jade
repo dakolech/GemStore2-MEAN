@@ -22,7 +22,7 @@ div(ng-show="product.images.length", class="gallery")
 				li(ng-repeat="image in product.images")
 					a(href ng-click="setCurrent($index)")
 						img(ng-src="./images/thumbs/{{image}}")							
-		.button.many.right(ng-hide="marginValueMin==(-product.images.length+4)*104 || product.images.length<=3", ng-click="right()")
+		.button.many.right(ng-hide="marginValueMin==(-product.images.length+4)*100 || product.images.length<=3", ng-click="right()")
 			span(class="fa fa-angle-right fa-3x")
 
 .fullGallery(ng-show="fullGallery")

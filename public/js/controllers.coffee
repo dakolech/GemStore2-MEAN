@@ -631,12 +631,12 @@ angular.module('myApp.controllers', []).
 		$scope.marginLeftBigBarPercentage = '45%'
 
 		$scope.left = ->
-			$scope.marginValueMin += 104
+			$scope.marginValueMin += 100
 			$scope.marginLeftMin = $scope.marginValueMin + 'px'
 			return
 
 		$scope.right = ->
-			$scope.marginValueMin -= 104
+			$scope.marginValueMin -= 100
 			$scope.marginLeftMin = $scope.marginValueMin + 'px'
 			return
 
