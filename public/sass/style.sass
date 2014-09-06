@@ -623,7 +623,50 @@ $galleryBar: 75px
               @include outline
 
 
-          
+ul.panels
+  color: white
+  margin-top: 20px
+  margin-bottom: 0
+  padding: 0
+  width: 100%
+  display: table-row
+  li
+    cursor: pointer
+    display: table-cell
+    list-style-type: none
+    text-align: center    
+    border-color: #fff
+    border-style: solid
+    border-width: 1px
+    padding: 5px
+    @include backgroundColorAnimation(.50s)
+    border-left-style: none
+    background-color: rgba(50, 50, 50, 0.25)
+  li.active 
+    background: transparent
+    border-bottom-style: none
+    cursor: auto
+  li:hover
+    background-color: rgba($red, 0.25)
+  li.active:hover
+    background: transparent
+  li:first-child
+    border-left-style: solid
+  li:last-child
+    border-style: none
+    border-bottom-style: solid
+    width: 100%
+    background: transparent
+    cursor: auto
+
+.myPanel  
+  color: white
+  border-color: #fff
+  border-style: solid
+  border-width: 1px  
+  border-top-style: none
+  padding: 15px
+
 
 
 

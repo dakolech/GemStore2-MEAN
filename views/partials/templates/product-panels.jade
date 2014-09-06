@@ -1,22 +1,20 @@
-ul(class="nav nav-pills")
-	li(ng-class="{ active:isSelected(1) }") 
-		a(href ng-click="selectTab(1)") Description 
-	li(ng-class="{ active:isSelected(2) }") 
-		a(href ng-click="selectTab(2)") Specifications
-	li(ng-class="{ active:isSelected(3) }") 
-		a(href ng-click="selectTab(3)") Reviews 
+ul(class="panels")
+	li(ng-class="{ active:isSelected(1) }", ng-click="selectTab(1)") Description 
+	li(ng-class="{ active:isSelected(2) }", ng-click="selectTab(2)") Specifications 
+	li(ng-class="{ active:isSelected(3) }", ng-click="selectTab(3)") Reviews
+	li 
 
 
-div(class="panel", ng-show="isSelected(1)")
-	h4 Description
+div(class="myPanel", ng-show="isSelected(1)")
+	//h4 Description
 	p(ng-bind="product.description")  
 
-div(class="panel", ng-show="isSelected(2)")
-	h4 Specifications
+div(class="myPanel", ng-show="isSelected(2)")
+	//h4 Specifications
 	blockquote None yet
 	
-div(class="panel", ng-show="isSelected(3)")
-	h4 Reviews
+div(class="myPanel", ng-show="isSelected(3)")
+	//h4 Reviews
 	blockquote(ng-repeat="review in product.reviews")
 		b Stars: 
 			span(ng-bind="review.stars")  
