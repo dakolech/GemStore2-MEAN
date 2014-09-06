@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"whi",
+				"white"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
 				"ri",
 				"right"
 			],
@@ -18,10 +30,6 @@
 			[
 				"backgro",
 				"background-color"
-			],
-			[
-				"margin",
-				"margin-right"
 			],
 			[
 				"marg",
@@ -199,18 +207,15 @@
 			"file": "views/index.jade",
 			"settings":
 			{
-				"buffer_size": 1881,
+				"buffer_size": 1841,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "$logoSize: 150px\n$menuSize: 60px\n$blue: #3FA9F5\n$red: #FF0033\n$siteWidth: 800px\n\n@mixin backgroundColor\n  background: rgb(63,169,245)\n  background: -moz-linear-gradient(-45deg,  rgba(63,169,245,1) 0%, rgba(143,2,34,1) 62%, rgba(143,2,34,1) 62%, rgba(255,0,51,1) 100%)\n  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(63,169,245,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(100%,rgba(255,0,51,1)))\n  background: -webkit-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)\n  background: -o-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)\n  background: -ms-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)\n  background: linear-gradient(135deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3fa9f5', endColorstr='#ff0033',GradientType=1 )\n\n  \n\n@mixin backgroundColorAnimation($duration)\n  transition: background-color $duration ease-in-out \n  -moz-transition: background-color $duration ease-in-out\n  -webkit-transition: background-color $duration ease-in-out\n\n@mixin marginLeftAnimation($duration)\n  transition: margin-left $duration ease-in-out \n  -moz-transition: margin-left $duration ease-in-out\n  -webkit-transition: margin-left $duration ease-in-out\n\n@mixin backgroundImageAnimation($duration)\n  transition: background $duration ease-in-out \n  -moz-transition: background $duration ease-in-out\n  -webkit-transition: background $duration ease-in-out\n\n@mixin noSelecting\n  -webkit-touch-callout: none\n  -webkit-user-select: none\n  -khtml-user-select: none\n  -moz-user-select: none\n  -ms-user-select: none\n  user-select: none\n\n@mixin border\n  border-style: solid\n  border-width: 1px\n  border-color: #ddd\n\n@mixin outline\n  outline: 1px solid #ddd\n  outline-offset: -1px\n\n\n\n@-webkit-keyframes opacityAnimation \n  from \n    opacity: .5\n  to \n    opacity: 1\n\n\n@keyframes opacityAnimation \n  from \n    opacity: .5\n  to \n    opacity: 1\n\n\n@-webkit-keyframes opacityAnimatio \n  from \n    opacity: 0\n  to \n    opacity: 1\n\n\nmain.ng-enter\n  -webkit-animation: opacityAnimatio 2s\n  animation: opacityAnimatio 2s\n\nbody\n  margin: 0\n  font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif\n\na\n  color: $blue\na:hover\n  color: $red\n\na:link \n  text-decoration: none\n\nheader\n  top: 0px\n  height: $logoSize+$menuSize\n  //background-color: $red\n  @include backgroundColor\n  margin-left: auto\n  margin-right: auto\n  width: 100%\n  .logo\n    height: $logoSize\n    background: url(\"../images/gemstore-logo-white.png\")\n    background-size: auto $logoSize - 40px\n    background-repeat: no-repeat\n    background-position: center\n\nnav.fixed \n  @extend header\n  //@include backgroundImageAnimation(.50s)  \n  position: fixed\n  z-index: 3\n  height: $menuSize\n  @include backgroundColor\n  //background: url(\"../images/gemstore-logo-white-small.png\")\n  background-repeat: no-repeat\n  background-position: left\n  //background-color: $blue\n\n  margin-top: auto\n  -webkit-animation: opacityAnimation 2s\n  animation: opacityAnimation 2s\n  ul\n    text-align: right\n    margin-right: 10px\n\n\n\n\nnav\n  height: $menuSize\n  width: $siteWidth\n  margin-left: auto\n  margin-right: auto\n  .logoSmall\n    background: url(\"../images/gemstore-logo-white-small.png\")\n    background-repeat: no-repeat\n    background-position: left\n    height: $menuSize\n    width: 333px\n    position: fixed\n    z-index: 10\n    top: 3px\n    left: 10px\n    //display: none\n  ul\n    text-align: center\n    margin-left: auto\n    margin-right: auto\n    font-size: 18px\n    margin-top: 10px\n    padding-bottom: 0px\n    padding-left: 0px\n    margin-bottom: 0px\n    position: relative\n    li\n      display: inline-block\n      //background-color: white\n      list-style-type: none\n      @include border\n      text-align: center\n      padding: 0\n      border-color: #fff\n      border-style: solid\n      border-width: 1px\n      .menuButton \n        padding: 7px 20px\n        color: white\n        @include backgroundColorAnimation(.50s)\n      .menuButton2\n        padding: 7px 20px\n        background-color: $red\n        color: white\n        @include backgroundColorAnimation(.50s)\n      .menuButton:hover\n        background-color: $red\n        color: white\n      .menuButton2:hover\n        background-color: #8f0222\n        color: white\n    li:hover > ul\n      display: block\n    ul\n      -webkit-animation: opacityAnimation 1s\n      animation: opacityAnimation 1s\n      display: none\n      position: absolute\n      top: 100%\n      padding: 0\n      margin: 0\n      z-index: 5\n      //width: 100%\n      a\n        li\n          //padding: 0//7px\n          border-top-style: none\n          float: none\n          position: relative\n          display: block\n          width: inherit\n\n\n\n\n\n\nmain\n  margin-left: auto\n  margin-right: auto\n  width: $siteWidth\n\n  .siteClass\n    //padding-top: 5px\n    padding: 10px\n    margin: 5px\n    @include border\n    text-align: justify\n\n\n\n\n\n\n\nul.manyProducts\n  list-style-type: none\n  position: relative\n  display: block\n  margin: 0 \n  margin-top: 5px\n  margin-bottom: 5px \n  padding: 0\n  width: $siteWidth\n  li\n    @include border\n    border-bottom-style: none\n    width:  $siteWidth\n    section\n      padding: 20px\n      min-height: 250px\n      .name\n        float: left\n        font-size: 20px\n      .price\n        float: right\n        font-size: 20px\n        padding: 5px\n        padding-left: 10px\n        padding-right: 10px\n        background-color: $blue\n        border-radius: 5px\n        color: white\n      .image\n        //float: left\n        margin: 10px\n        margin-top: 5px\n        .container\n          height: 150px\n          width: 150px\n          overflow: hidden\n          position: relative\n          @include border\n        img\n          height: inherit\n          margin-left: -15%\n        .preview\n          display: none\n          //position: absolute\n          //top: 50%\n          z-index: 5\n          position: fixed\n          top: 150px\n          img \n            float: none\n            position: relative\n            display: block         \n            @include border\n            height: 300px \n            margin-left: 0\n          a\n            display: inline-block\n            float: none\n            position: relative \n            img\n              height: 100px\n              width: 100px       \n      .image:hover \n        .preview\n          display: block\n          -webkit-animation: opacityAnimation 1s\n          animation: opacityAnimation 1s           \n      .description\n        p\n          text-align: justify\n          a\n            font-style: italic\n\n  li:nth-child(even)\n    section\n      .image\n        float: right\n  li:nth-child(odd)\n    section\n      .image\n        float: left\n  li:last-child\n    border-bottom-style: solid\n    section\n      .image\n        .preview\n          top: auto\n          bottom: 150px\n\n$galleryHeight: 355px\n$galleryWidth: 400px\n$galleryBar: 75px\n\n.gallery\n  @include noSelecting\n  margin: 5px\n  width: $galleryWidth+10\n  height: $galleryHeight+15\n  padding: 5px\n  //outline: 1px solid #000\n  //outline-offset: 0px\n  background-color: #ddd\n  .left\n    left: 0      \n  .right\n    right: 0\n  .button\n    cursor: pointer\n    height: $galleryBar\n    z-index: 2\n    position: absolute\n    text-align: center\n    background-color: rgba(0,0,0,0.15)\n    @include noSelecting\n    span\n      color: #666\n      opacity: .75\n  .button:hover\n    background-color: rgba(0,0,0,0.45)\n    span\n      color: #ddd\n\n  .imageDiv\n    margin-bottom: 5px\n    position: relative\n    height: $galleryHeight - $galleryBar\n    width: $galleryWidth\n    .one\n      height: $galleryHeight - $galleryBar\n      width: 30px\n      display: none\n      span\n        margin-top: ($galleryHeight - $galleryBar)*0.4\n        opacity: .75\n    .zoom\n      display: none\n      cursor: pointer\n      height: ($galleryHeight - $galleryBar)*0.25\n      width: $galleryWidth*0.18\n      z-index: 2\n      position: absolute\n      text-align: center\n      background-color: rgba(0,0,0,0.15)\n      left: $galleryWidth*0.4\n      top: ($galleryHeight - $galleryBar)*0.4\n      border-radius: 5px\n      span\n        color: #666\n        opacity: .35\n        padding-top: 5px\n    .zoom:hover\n      background-color: rgba(0,0,0,0.45)\n      span\n        opacity: .75\n        color: #ddd\n\n    .one:hover\n      background-color: rgba(0,0,0,0.35)\n\n    //img\n      //display: block\n      //margin: auto\n\n      //max-height: $galleryHeight - $galleryBar\n      //max-width: $galleryWidth\n\n    .imageHelper\n      float: left\n      height: $galleryHeight - $galleryBar\n      width: $galleryWidth\n      z-index: 1\n      padding: 0\n      overflow: hidden\n      ul  \n        height: $galleryHeight - $galleryBar\n        width: 99999px  \n        padding: 0px\n        margin-bottom: 0px\n        @include marginLeftAnimation(.25s)\n        li\n          display: inline-block\n          .imageContainer\n            height: $galleryHeight - $galleryBar\n            width: $galleryWidth\n            margin: 0\n            display: table-cell\n            vertical-align: middle\n            img\n              display: block\n              max-height: $galleryHeight - $galleryBar\n              max-width: $galleryWidth\n              border: none\n              overflow: hidden\n              margin: auto\n\n  .imageDiv:hover\n    //@include outline\n    .zoom\n      display: block\n    .one\n      display: block\n\n  .galleryBar\n    //margin-top: 5px\n    height: $galleryBar\n    width: $galleryWidth\n    position: relative\n    //outline: 1px solid #000\n    //outline-offset: 0px\n    .many\n      display: none\n      height: $galleryBar\n      width: 20px\n      span\n        margin-top: $galleryBar*0.2\n        opacity: .75\n    .gallerMin\n      float: left\n      height: $galleryBar\n      width: $galleryWidth\n      z-index: 1\n      padding: 0\n      overflow: hidden\n      ul  \n        width: 99999px  \n        padding: 0px\n        margin-bottom: 0px\n        @include marginLeftAnimation(.25s)\n        li\n          display: inline\n          a\n            img\n              height: $galleryBar \n              width: 100px\n              border: none\n              overflow: hidden\n            img:hover\n              @include outline\n  .galleryBar:hover\n    //@include outline\n    .many\n      display: block\n\n\n.fullGallery\n  @include noSelecting\n  width: 100%\n  height: 100%\n  position: fixed\n  z-index: 5\n  background-color: rgba(0,0,0,0.50)\n  top: 0\n  left: 0\n  display: relative\n  .left\n    left: 0      \n  .right\n    right: 0\n    left: auto\n  .button\n    cursor: pointer\n    z-index: 8\n    position: absolute\n    text-align: center\n    background-color: rgba(0,0,0,0.25)\n    span\n      color: #aaa\n      opacity: .75\n  .button:hover\n    background-color: rgba(0,0,0,0.55)\n    span\n      color: #ddd\n  .imageDiv\n    //margin-bottom: 1.5%\n    position: relative\n    height: 80%\n    width: 100%\n    .one\n      height: 100%\n      width: 3.5%\n      span\n        margin-top: 300%\n        opacity: .75\n\n    .close\n      z-index: 9\n      span\n        color: #ddd\n        opacity: 1\n\n    .imageHelper\n      float: left\n      height: 100%\n      width: 100%\n      z-index: 6\n      padding: 0\n      overflow: hidden\n      ul  \n        height: 100%\n        width: 10000% \n        padding: 0\n        margin-bottom: 0\n        @include marginLeftAnimation(.25s)\n        li\n          display: inline-block\n          width: 1%\n          .imageContainer\n            height: 100%\n            width: 100%\n            margin-left: 0.05%\n            //display: table-cell\n            //vertical-align: middle\n            img\n              display: block\n              max-height: 100%\n              max-width: 100%\n              border: none\n              overflow: hidden\n              margin: auto\n\n  .galleryBar\n    height: $galleryBar\n    width: 100%\n    position: fixed\n    margin-top: 1%\n    z-index: 8\n    bottom: 1%\n    .gallerMin\n      float: left\n      min-height: $galleryBar\n      width: 100%\n      padding: 0\n      display: block\n      overflow: hidden\n      margin-left: 10px\n      ul  \n        width: 99999px  \n        padding: 0px\n        margin-bottom: 0px\n        margin-left: 0px\n        @include marginLeftAnimation(.25s)\n        li\n          display: inline\n          a\n            img\n              height: $galleryBar \n              width: 100px\n              border: none\n              overflow: hidden\n            img:hover\n              @include outline\n\n\n          \n\n\n\nfooter\n  width: 100%\n  height: 50px\n  background-color: $blue\n  color: white\n  text-align: center\n  padding: 5px\n\n\n\n\n.ng-invalid.ng-dirty \n  border-color: none\n\n\n.ng-valid.ng-dirty \n  border-color: #78FA89\n\n\n.ng-invalid.ng-pristine \n  border-color: none\n\n\n\n\n.categories\n  position: fixed\n  top: 151px\n  z-index: 2\n  background-color: white\n  display: none\n\n\n.hide \n  display: none\n\n\n\n.viewscroll \n  top: $logoSize+$menuSize + 5\n\n\n\n\n\n////////////////LOADING BAR//////////////////////\n#loading-bar,\n#loading-bar-spinner \n  pointer-events: none\n  -webkit-pointer-events: none\n  -webkit-transition: 350ms linear all\n  -moz-transition: 350ms linear all\n  -o-transition: 350ms linear all\n  transition: 350ms linear all\n\n#loading-bar.ng-enter,\n#loading-bar.ng-leave.ng-leave-active,\n#loading-bar-spinner.ng-enter,\n#loading-bar-spinner.ng-leave.ng-leave-active \n  opacity: 0\n\n\n#loading-bar.ng-enter.ng-enter-active,\n#loading-bar.ng-leave,\n#loading-bar-spinner.ng-enter.ng-enter-active,\n#loading-bar-spinner.ng-leave \n  opacity: 1\n\n\n#loading-bar .bar \n  -webkit-transition: width 350ms\n  -moz-transition: width 350ms\n  -o-transition: width 350ms\n  transition: width 350ms\n\n  background: $red\n  position: fixed\n  z-index: 10002\n  top: 0\n  left: 0\n  width: 100%\n  height: 2px\n  border-bottom-right-radius: 1px\n  border-top-right-radius: 1px\n\n\n/* Fancy blur effect */ \n#loading-bar .peg \n  position: absolute\n  width: 70px\n  right: 0\n  top: 0\n  height: 2px\n  opacity: .45\n  -moz-box-shadow: #29d 1px 0 6px 1px\n  -ms-box-shadow: #29d 1px 0 6px 1px\n  -webkit-box-shadow: #29d 1px 0 6px 1px\n  box-shadow: #29d 1px 0 6px 1px\n  -moz-border-radius: 100%\n  -webkit-border-radius: 100%\n  border-radius: 100%\n\n\n#loading-bar-spinner \n  display: block\n  position: fixed\n  z-index: 10002\n  top: 10px\n  left: 10px\n\n\n#loading-bar-spinner .spinner-icon \n  width: 14px\n  height: 14px\n\n  border:  solid 2px transparent\n  border-top-color:  $red\n  border-left-color: $red\n  border-radius: 10px\n\n  -webkit-animation: loading-bar-spinner 400ms linear infinite\n  -moz-animation:    loading-bar-spinner 400ms linear infinite\n  -ms-animation:     loading-bar-spinner 400ms linear infinite\n  -o-animation:      loading-bar-spinner 400ms linear infinite\n  animation:         loading-bar-spinner 400ms linear infinite\n\n@-webkit-keyframes loading-bar-spinner \n  0%   \n    -webkit-transform: rotate(0deg)   \n    transform: rotate(0deg)\n  100% \n    -webkit-transform: rotate(360deg) \n    transform: rotate(360deg)\n\n@-moz-keyframes loading-bar-spinner \n  0%   \n    -moz-transform: rotate(0deg)\n    transform: rotate(0deg)\n  100% \n    -moz-transform: rotate(360deg)\n    transform: rotate(360deg)\n\n@-o-keyframes loading-bar-spinner \n  0%   \n    -o-transform: rotate(0deg)\n    transform: rotate(0deg)\n  100% \n    -o-transform: rotate(360deg)\n    transform: rotate(360deg)\n\n@-ms-keyframes loading-bar-spinner \n  0%   \n    -ms-transform: rotate(0deg)\n    transform: rotate(0deg)\n  100% \n    -ms-transform: rotate(360deg)\n    transform: rotate(360deg)\n\n@keyframes loading-bar-spinner \n  0%   \n    transform: rotate(0deg)\n    transform: rotate(0deg)\n  100% \n    transform: rotate(360deg)\n    transform: rotate(360deg)\n\n",
 			"file": "public/sass/style.sass",
-			"file_size": 16593,
-			"file_write_time": 130541609806035940,
 			"settings":
 			{
-				"buffer_size": 15849,
+				"buffer_size": 17775,
 				"line_ending": "Windows"
 			}
 		},
@@ -824,15 +829,15 @@
 					"file": "views/index.jade",
 					"settings":
 					{
-						"buffer_size": 1881,
+						"buffer_size": 1841,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								232,
-								232
+								988,
+								988
 							]
 						],
 						"settings":
@@ -852,15 +857,15 @@
 					"file": "public/sass/style.sass",
 					"settings":
 					{
-						"buffer_size": 15849,
+						"buffer_size": 17775,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3636,
-								3636
+								3237,
+								3242
 							]
 						],
 						"settings":
@@ -870,7 +875,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1951.0,
+						"translation.y": 9006.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -887,8 +892,8 @@
 						"selection":
 						[
 							[
-								1912,
-								1912
+								1097,
+								1097
 							]
 						],
 						"settings":
@@ -1293,8 +1298,8 @@
 						"selection":
 						[
 							[
-								17111,
-								17111
+								16363,
+								16363
 							]
 						],
 						"settings":
@@ -1303,7 +1308,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 12315.0,
+						"translation.y": 11631.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

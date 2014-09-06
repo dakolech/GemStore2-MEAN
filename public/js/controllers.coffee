@@ -3,9 +3,10 @@
 # Controllers 
 
 angular.module('myApp.controllers', []).
-	controller 'AppCtrl',  ['$scope', '$http', 'Page', 'Categories', 'Settings', ($scope, $http, Page, Categories, Settings) ->
+	controller 'AppCtrl',  ['$rootScope', '$scope', '$http', 'Page', 'Categories', 'Settings', ($rootScope, $scope, $http, Page, Categories, Settings) ->
 
-		$scope.Page = Page;
+		$scope.Page = Page
+		$rootScope.hideMenu = false
 
 		###
 		$http.get('/api/categories')
@@ -616,7 +617,7 @@ angular.module('myApp.controllers', []).
 		return
 	]
 	  
-	.controller 'GalleryController', ['$scope', '$http', ($scope, $http) ->
+	.controller 'GalleryController', ['$rootScope', '$scope', '$http', ($rootScope, $scope, $http) ->
 		$scope.current = 0
 
 		$scope.marginValueMin = 0
@@ -682,6 +683,17 @@ angular.module('myApp.controllers', []).
 			$scope.marginValue = -imageNumber*400
 			$scope.marginLeft = $scope.marginValue + 'px'
 			return
+
+		$scope.showFullGallery = ->
+			$rootScope.hideMenu = true
+			$scope.fullGallery = true
+			return
+
+		$scope.hideFullGallery = ->
+			$rootScope.hideMenu = false
+			$scope.fullGallery = false
+			return
+
 		return
 	]
 

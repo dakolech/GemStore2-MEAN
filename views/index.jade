@@ -5,7 +5,7 @@ block body
     header
       div(scroll ng-class="{hide:boolChangeClass}")
         .logo
-      nav(scroll ng-class="{fixed:boolChangeClass}")
+      nav(scroll ng-class="{'fixed': boolChangeClass, 'hide': hideMenu}")
         .logoSmall(scroll ng-class="{hide: !boolChangeClass}")
         ul
           a(href='/') 

@@ -7,7 +7,7 @@ div(ng-show="product.images.length", class="gallery")
 		.button.one.right(ng-hide="marginValue==(-product.images.length+1)*400", ng-click="rightOne()")
 			span(class="fa fa-angle-right fa-4x")
 		.zoom
-			span(class="fa fa-search-plus fa-4x", ng-click="fullGallery=true")
+			span(class="fa fa-search-plus fa-4x", ng-click="showFullGallery()")
 		.imageHelper
 			ul(ng-style="{'margin-left': marginLeft}")
 				li(ng-repeat="image in product.images")
@@ -31,13 +31,13 @@ div(ng-show="product.images.length", class="gallery")
 			span(class="fa fa-angle-left fa-5x")
 		.button.one.right(ng-hide="marginValueBig==(-product.images.length+1)*100", ng-click="rightOneBig()")
 			span(class="fa fa-angle-right fa-5x")
-		.button.close.right(ng-click="fullGallery=false")
+		.button.close.right(ng-click="hideFullGallery()")
 			span(class="fa fa-times fa-3x fa-fw")
 		.imageHelper
 			ul(ng-style="{'margin-left': marginLeftBig}")
-				li(ng-repeat="image in product.images")
-					.imageContainer
-						img(ng-src="./images/{{image}}")
+				//li(ng-repeat="image in product.images")
+				.imageContainer(ng-repeat="image in product.images")
+					img(ng-src="./images/{{image}}")
 	.galleryBar
 		.gallerMin
 			ul
