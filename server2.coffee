@@ -1,15 +1,21 @@
-express = require('express')
-bodyParser = require('body-parser')
-methodOverride = require('method-override')
-errorHandler = require('error-handler')
-morgan = require('morgan')
-routes = require('./routes')
-api = require('./routes/api')
-http = require('http')
-path = require('path')
-mongoose = require('mongoose')
-busboy = require('connect-busboy')
-compressor = require('node-minify')
+express          = require('express')
+bodyParser       = require('body-parser')
+cookieParser     = require('cookie-parser')
+session          = require('express-session');
+methodOverride   = require('method-override')
+errorHandler     = require('error-handler')
+morgan           = require('morgan')
+routes           = require('./routes')
+api              = require('./routes/api')
+http             = require('http')
+path             = require('path')
+mongoose         = require('mongoose')
+busboy           = require('connect-busboy')
+compressor       = require('node-minify')
+passport         = require("passport")
+LocalStrategy    = require('passport-local').Strategy
+FacebookStrategy = require('passport-facebook').Strategy
+GoogleStrategy   = require('passport-google').Strategy
 
 
 app = module.exports = express()
@@ -19,18 +25,22 @@ mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vym
 
 
 # all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(morgan('dev'));
-app.use(busboy());
+app.set('port', process.env.PORT || 3000)
+app.set('views', __dirname + '/views')
+app.set('view engine', 'jade')
+app.use(morgan('dev'))
+app.use(busboy())
 #app.use(bodyParser());
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
-}));
-app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+}))
+app.use(cookieParser())
+app.use(methodOverride())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({ saveUninitialized: true, resave: true, secret: 'SECRET' }))
+app.use(passport.initialize())
+app.use(passport.session())
 
 env = process.env.NODE_ENV || 'development';
 

@@ -14,6 +14,16 @@ $siteWidth: 800px
   background: linear-gradient(135deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3fa9f5', endColorstr='#ff0033',GradientType=1 )
 
+@mixin backgroundColorBorder
+  border-color: rgb(63,169,245)
+  -moz-border-image: -moz-linear-gradient(-45deg,  rgba(63,169,245,1) 0%, rgba(143,2,34,1) 62%, rgba(143,2,34,1) 62%, rgba(255,0,51,1) 100%)
+  -webkit-border-image: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(63,169,245,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(62%,rgba(143,2,34,1)), color-stop(100%,rgba(255,0,51,1)))
+  -webkit-border-image: -webkit-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  -o-border-image: -o-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  -ms-border-image: -ms-linear-gradient(-45deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  border-image: linear-gradient(135deg,  rgba(63,169,245,1) 0%,rgba(143,2,34,1) 62%,rgba(143,2,34,1) 62%,rgba(255,0,51,1) 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3fa9f5', endColorstr='#ff0033',GradientType=1 )
+
   
 
 @mixin backgroundColorAnimation($duration)
@@ -43,6 +53,7 @@ $siteWidth: 800px
   border-style: solid
   border-width: 1px
   border-color: #ddd
+
 
 @mixin outline
   outline: 1px solid #ddd
@@ -81,6 +92,13 @@ main.ng-enter
   -webkit-animation: mainAnimation 2s
   animation: mainAnimation 2s
 
+.gradientBorder
+  padding: 3px
+  margin: 20px
+  @include backgroundColor
+  //background-color: white
+
+
 html
   height: 100%
 
@@ -88,8 +106,9 @@ body
   margin: 0px
   padding: 0px
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-  background-color: #ddd
+  //background-color: #ddd
   @include backgroundColor
+  //background-color: white
   color: white
   height: 100%
   width: 100%
@@ -239,12 +258,14 @@ main
   //margin-top: -100px
   z-index: 0
   position: relative
+  margin-top: 10px
 
   .siteClass
     //padding-top: 5px
     padding: 10px
-    margin: 5px
+    //margin: 5px
     @include border
+    //background-color: white
     text-align: justify
 
 
@@ -354,6 +375,7 @@ $galleryBar: 75px
   padding: 10px
   outline: 1px solid #fff
   outline-offset: -5px
+  float: left
   //background-color: #ddd
 
   .left
@@ -622,50 +644,66 @@ $galleryBar: 75px
             img:hover
               @include outline
 
+.panels
+  float: left
+  margin-top: 10px
+  ul.tabs
+    margin-top: 20px
+    margin-bottom: 0
+    padding: 0
+    width: 100%
+    display: table-row
+    li
+      cursor: pointer
+      display: table-cell
+      list-style-type: none
+      text-align: center    
+      border-color: #fff
+      border-style: solid
+      border-width: 1px
+      padding: 5px
+      @include backgroundColorAnimation(.50s)
+      border-left-style: none
+      background-color: rgba(50, 50, 50, 0.25)
+      color: rgba(black, 0.75)
+    li.active 
+      background: transparent
+      border-bottom-style: none
+      cursor: auto
+    li:hover
+      background-color: rgba($red, 0.25)
+    li.active:hover
+      background: transparent
+    li:first-child
+      border-left-style: solid
+    li:last-child
+      border-style: none
+      border-bottom-style: solid
+      width: 100%
+      background: transparent
+      cursor: auto
 
-ul.panels
-  color: white
-  margin-top: 20px
-  margin-bottom: 0
-  padding: 0
-  width: 100%
-  display: table-row
-  li
-    cursor: pointer
-    display: table-cell
-    list-style-type: none
-    text-align: center    
+  .myTab  
     border-color: #fff
     border-style: solid
-    border-width: 1px
-    padding: 5px
-    @include backgroundColorAnimation(.50s)
-    border-left-style: none
-    background-color: rgba(50, 50, 50, 0.25)
-  li.active 
-    background: transparent
-    border-bottom-style: none
-    cursor: auto
-  li:hover
-    background-color: rgba($red, 0.25)
-  li.active:hover
-    background: transparent
-  li:first-child
-    border-left-style: solid
-  li:last-child
-    border-style: none
-    border-bottom-style: solid
-    width: 100%
-    background: transparent
-    cursor: auto
+    border-width: 1px  
+    border-top-style: none
+    padding: 15px
 
-.myPanel  
-  color: white
-  border-color: #fff
-  border-style: solid
-  border-width: 1px  
-  border-top-style: none
-  padding: 15px
+.product-details
+  //width: 50%
+  float: right
+  width: 42%
+  padding-top: 20px
+  span
+    display: block
+  .title
+    font-size: 30px
+    font-weight: bold 
+  .price
+    font-size: 15px
+    font-style: italic 
+
 
 
 
@@ -674,9 +712,11 @@ footer
   width: 100%
   height: 50px
   //background-color: $blue
-  color: white
+  //color: white
   text-align: center
   padding: 0px
+  display: inline-table
+  margin-top: 10px
 
 
 
@@ -696,11 +736,9 @@ footer
 
 
 .categories
-  position: fixed
-  top: 151px
-  z-index: 2
-  background-color: white
-  display: none
+  margin: 0 0 10px 0
+
+  //background-color: white
 
 
 .hide 
@@ -774,6 +812,8 @@ footer
   z-index: 10002
   top: 10px
   left: 10px
+  padding: 0
+  margin: 0 
 
 
 #loading-bar-spinner .spinner-icon 

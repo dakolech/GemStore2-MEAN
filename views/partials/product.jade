@@ -1,4 +1,4 @@
-div(ng-controller='StoreControllerOne', class="siteClass")
+div(ng-controller='StoreControllerOne')
 	.categories
 		a(href='products/show') All products 
 		span > 
@@ -7,9 +7,12 @@ div(ng-controller='StoreControllerOne', class="siteClass")
 		span  > 
 		a(href='product/show/{{product._id}}') 
 			span(ng-bind="product.name")
-	h3(product-title)
+	.product-details
+		span(ng-bind="product.name", class="title")
+		span(ng-bind="product.price | currency", class="price")
+
 	section(product-gallery, ng-controller="GalleryController")
-	section(product-panels, ng-controller="PanelController")
+	section(product-panels, ng-controller="PanelController", class="panels")
 	//-div(ng-view)
 
 

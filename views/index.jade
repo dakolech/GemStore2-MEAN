@@ -3,10 +3,11 @@ extends layout
 block body
   div(ng-controller='AppCtrl')
     header
-      div(scroll ng-class="{hide:boolChangeClass}")
-        .logo
+      div(scroll ng-hide="boolChangeClass")
+        a(href="/")
+          .logo
       nav(scroll ng-class="{'fixed': boolChangeClass, 'hide': hideMenu}")
-        .logoSmall(scroll ng-class="{hide: !boolChangeClass}")
+        .logoSmall(scroll ng-show="boolChangeClass")
         ul
           a(href='/') 
             li
