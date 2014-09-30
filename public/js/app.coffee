@@ -12,6 +12,18 @@ angular.module('myApp', [
 ]).
 config( ($routeProvider, $locationProvider) ->
   $routeProvider.
+    when('/profile', {
+        templateUrl: 'partials/profile',
+        controller: 'ProfileController'
+    }).
+    when('/signup', {
+        templateUrl: 'partials/signup',
+        controller: 'SignUpController'
+    }).
+    when('/login', {
+        templateUrl: 'partials/login',
+        controller: 'LoginController'
+    }).
     when('/:title', {
         templateUrl: 'partials/site',
         controller: 'SiteController'

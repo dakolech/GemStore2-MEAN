@@ -2,6 +2,7 @@ Product   = require('../models/product')
 Category  = require('../models/category')
 Site      = require('../models/site')
 Settings  = require('../models/settings')
+User      = require('../models/user')
 fs = require('fs')
 easyimg = require('easyimage')
 
@@ -403,4 +404,30 @@ exports.addSettings = (req, res) ->
       res.json(settings);
       return
     return
+  return
+
+exports.users = (req, res) ->
+  User.find((err, users) ->
+        res.send(err) if (err)
+
+        res.json(users)
+      );
+
+exports.userCookie = (req, res) ->
+  User.findOne({ 'local.cookie': req.cookies["connect.sid"] }, (err, user) ->
+        res.send(err) if (err)
+        #console.log user
+        res.json(user)
+      );
+
+exports.logout = (req, res) ->
+  User.update {
+      'local.cookie': req.cookies["connect.sid"]
+      }, {
+      'local.cookie'   : false,
+    }, { multi: false }, (err, user) ->
+      if (err)
+        res.send(err);
+      res.json(user)
+      return
   return

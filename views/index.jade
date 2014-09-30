@@ -2,6 +2,9 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
+    span(ng-bind="User.name")
+    a(href ng-click="logout()") Logout
+    //span(ng-bind="User1.isAdmin")
     header
       div(scroll ng-hide="boolChangeClass")
         a(href="/")

@@ -16,8 +16,11 @@ passport         = require("passport")
 LocalStrategy    = require('passport-local').Strategy
 FacebookStrategy = require('passport-facebook').Strategy
 GoogleStrategy   = require('passport-google').Strategy
+TwitterStrategy  = require('passport-twitter').Strategy
+flash            = require('connect-flash')
 
-
+require('./passport/passport')(passport)
+ 
 app = module.exports = express()
 
 mongoose.connect('mongodb://dakolech:dako222@novus.modulusmongo.net:27017/po5Vymyq');
@@ -41,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({ saveUninitialized: true, resave: true, secret: 'SECRET' }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash());
 
 env = process.env.NODE_ENV || 'development';
 
@@ -103,10 +107,51 @@ app.get('/api/settings', api.settings);
 app.post('/api/settings', api.editSettings);
 app.post('/api/asettings', api.addSettings);
 
+app.get('/api/users', api.users);
 
+app.get('/api/userCookie', api.userCookie);
 
+app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect : '/profile', # redirect to the secure profile section
+        failureRedirect : '/signup', # redirect back to the signup page if there is an error
+        failureFlash : true # allow flash messages
+    }));
+###
+app.post('/login', passport.authenticate('local-login', {
+        #successRedirect : '/profile', # redirect to the secure profile section
+        #failureRedirect : '/login', # redirect back to the signup page if there is an error
+        failureFlash : true # allow flash messages
+    }));
+###
 
-
+User            = require('./models/user');
+app.get('/logout', api.logout);
+app.post('/login', (req, res, next) ->
+  passport.authenticate('local-login', (err, user, info) ->
+    #console.log user
+    if (err) 
+        return next(err)
+    if (!user) 
+        return res.json([1])
+    if (user=='wrongpassword')
+        return res.json([1,1])
+    req.logIn(user, (err) ->
+      if (err) 
+        return next(err)
+      User.update {
+          'local.email' : user.local.email
+          }, {
+          'local.cookie' : req.cookies["connect.sid"]
+        }, { multi: false }, (err, user) ->
+          if (err)
+            res.send(err);
+          return
+      return res.json(user);
+    );
+  )(req, res, next);
+); 
+ 
+ 
 
 # redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

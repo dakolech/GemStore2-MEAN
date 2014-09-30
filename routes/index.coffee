@@ -1,12 +1,21 @@
 
 exports.index = (req, res) ->
+  #req.cookies.remember
+  console.log("connect.sid: ", req.cookies["connect.sid"])
+  #console.log req.cookies.remember
+  #console.log(req.cookies)
+  #console.log(req.session)
   res.render('index')
   
 #exports.products = (req, res) ->
  # res.render('products');
 
 exports.admin = (req, res) ->
-  res.render('admin')
+  if (req.isAuthenticated())
+    res.render('admin')
+  else 
+  	res.redirect('/');
+  
 
 
 exports.partials = (req, res) ->

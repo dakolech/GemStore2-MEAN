@@ -20,6 +20,16 @@ angular.module('myApp.services', []).
      setDescription: (newDescription) ->  description = newDescription
    }
 )
+.factory('User', ->
+   name = false
+   isAdmin = false
+   return {
+     getName: -> name,
+     setName: (newName) ->  name = newName,
+     isAdmin: -> isAdmin,
+     setisAdmin: (newisAdmin) ->  isAdmin = newisAdmin,
+   }
+)
 .factory('Categories', ($http) ->
   myService = {
     async: ->

@@ -3,10 +3,32 @@
 # Controllers 
 
 angular.module('myApp.controllers', []).
-	controller 'AppCtrl',  ['$rootScope', '$scope', '$http', 'Page', 'Categories', 'Settings', ($rootScope, $scope, $http, Page, Categories, Settings) ->
+	controller 'AppCtrl',  ['$rootScope', '$scope', '$http', 'Page', 'User', 'Categories', 'Settings', ($rootScope, $scope, $http, Page, User, Categories, Settings) ->
 
 		$scope.Page = Page
 		$rootScope.hideMenu = false
+
+		$scope.User = []
+
+		$scope.$watch (->
+		  User.getName()
+		), (value) ->
+		  $scope.User.name = value
+		  return
+
+		$http.get('/api/userCookie')
+			.success (data) ->
+				console.log data.length
+				if (data.length == 4)
+					$scope.User.name = false
+				else
+					#$scope.User.name = data.local.email
+					User.setName(data.local.email)	
+				console.log(data.local)
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
 
 		###
 		$http.get('/api/categories')
@@ -36,6 +58,19 @@ angular.module('myApp.controllers', []).
 			.error (data) ->
 				console.log('Error: ' + data)
 				return
+
+		$scope.logout = ->
+			User.setName(false)
+
+			$http.get('/logout')
+			.success (data) ->
+				console.log data
+				return
+			.error (data) ->
+				console.log('Error: ' + data)
+				return
+
+			return
 	] 
 	.controller 'IndexController', ['$scope', '$http', '$routeParams', 'Page', 'Settings', ($scope, $http, $routeParams, Page, Settings) ->
 
@@ -581,6 +616,48 @@ angular.module('myApp.controllers', []).
 		
 		return
 	]  
+
+	.controller "LoginController", ['$scope', '$http', 'User', ($scope, $http, User) ->
+		$scope.User = User
+		$scope.formLogin = []
+		$scope.message = []
+
+		$scope.$watch (->
+		  User.getName()
+		), (value) ->
+		  $scope.User.name = value
+		  return
+
+		$scope.login =  ->
+			#console.log(id)
+			#localReview = $scope.formReview
+			$http.post('/login', {email: $scope.formLogin.email, password: $scope.formLogin.password})
+				.success (data) ->
+					#product.reviews.push(localReview)
+					
+					$scope.message = []
+					#console.log(data.length)
+					if (data.length == 1)
+						$scope.message = 'Invalid Email. Try again'
+					else
+						if (data.length == 2)
+							$scope.message = 'Invalid Password. Try again'
+						else
+							console.log(data)
+							User.setName(data.local.email)	
+					#if data.user
+					#	console.log 'asd'
+
+					return
+				.error (data) ->
+					console.log('Error: ' + data)
+					return
+			
+			$scope.formReview = {}
+			return
+
+	]
+
 	.controller "PanelController", ['$scope', '$http', ($scope, $http) ->
 		$scope.tab = 1
 
